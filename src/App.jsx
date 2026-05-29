@@ -4,7 +4,7 @@ import Layout from "./components/layout/Layout";
 import Dashboard from "./pages/Dashboard";
 import FirmReports from "./pages/FirmReports";
 import MarketplaceReports from "./pages/MarketplaceReports";
-import GenerateReport from "./pages/GenerateReport";
+import GenerateReport from "./pages/GenerateReport.jsx";
 
 function App() {
   return (
