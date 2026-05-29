@@ -1,0 +1,365 @@
+.app {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #ffffff 0%, #fff7f7 100%);
+}
+
+/* Navbar */
+
+.navbar {
+  width: 100%;
+  background: var(--white);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: 0 3px 16px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  min-height: 78px;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.logo-wrapper {
+  flex-shrink: 0;
+}
+
+.logo-placeholder {
+  min-width: 150px;
+  height: 44px;
+  border: 2px solid var(--primary-red);
+  color: var(--primary-red);
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+}
+
+.logo-img {
+  max-height: 48px;
+  width: auto;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 44px;
+  flex: 1;
+}
+
+.nav-links a {
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  letter-spacing: 0.4px;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary-red);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  min-height: 44px;
+  padding: 0 22px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-outline {
+  background: var(--white);
+  color: var(--primary-red);
+  border: 1.5px solid rgba(191, 0, 0, 0.3);
+}
+
+.btn-outline:hover {
+  border-color: var(--primary-red);
+  background: #fff5f5;
+}
+
+.btn-filled {
+  background: var(--primary-red);
+  color: var(--white);
+  border: 1.5px solid var(--primary-red);
+}
+
+.btn-filled:hover {
+  background: var(--primary-red-dark);
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: var(--primary-red);
+  color: var(--white);
+  border: none;
+  width: 44px;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Page Layout */
+
+.page {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 54px 28px 80px;
+}
+
+.hero-section {
+  margin-bottom: 42px;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 34px;
+}
+
+.breadcrumb span:last-child {
+  color: var(--primary-red);
+}
+
+.page-heading {
+  max-width: 760px;
+}
+
+.heading-line {
+  display: block;
+  width: 54px;
+  height: 5px;
+  background: var(--primary-red);
+  border-radius: 99px;
+  margin-bottom: 14px;
+}
+
+.page-heading h1 {
+  font-size: clamp(32px, 5vw, 48px);
+  color: var(--black);
+  line-height: 1.1;
+  margin-bottom: 12px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.page-heading p {
+  font-size: 17px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+/* Content Card */
+
+.content-card {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 30px 34px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.card-header h2 {
+  font-size: 24px;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+
+.card-header p {
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.primary-action {
+  background: var(--primary-red);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  min-height: 46px;
+  padding: 0 24px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(191, 0, 0, 0.25);
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.primary-action:hover {
+  background: var(--primary-red-dark);
+  transform: translateY(-1px);
+}
+
+.empty-state {
+  min-height: 320px;
+  padding: 60px 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(circle at top left, rgba(191, 0, 0, 0.06), transparent 32%),
+    linear-gradient(180deg, #ffffff 0%, #fff9f9 100%);
+}
+
+.empty-state h3 {
+  font-size: 26px;
+  color: var(--black);
+  margin-bottom: 12px;
+}
+
+.empty-state p {
+  max-width: 560px;
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .navbar-container {
+    gap: 20px;
+  }
+
+  .nav-links {
+    gap: 24px;
+  }
+
+  .btn {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 860px) {
+  .navbar-container {
+    min-height: auto;
+    padding: 18px 22px;
+    flex-wrap: wrap;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+    margin-left: auto;
+  }
+
+  .nav-links,
+  .nav-actions {
+    display: none;
+    width: 100%;
+  }
+
+  .nav-links.active,
+  .nav-actions.active {
+    display: flex;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    padding-top: 22px;
+  }
+
+  .nav-actions {
+    flex-direction: column;
+    align-items: stretch;
+    padding-top: 18px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .page {
+    padding: 42px 22px 64px;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 26px 24px;
+  }
+
+  .primary-action {
+    width: 100%;
+  }
+
+  .empty-state {
+    padding: 48px 24px;
+  }
+}
+
+@media (max-width: 520px) {
+  .logo-placeholder {
+    min-width: 125px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .breadcrumb {
+    flex-wrap: wrap;
+    font-size: 14px;
+  }
+
+  .page-heading h1 {
+    font-size: 32px;
+  }
+
+  .page-heading p {
+    font-size: 15px;
+  }
+
+  .card-header h2 {
+    font-size: 21px;
+  }
+
+  .empty-state h3 {
+    font-size: 22px;
+  }
+
+  .empty-state p {
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,169 @@
+.marketplace-reports-page {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.marketplace-report-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #8b8b8b;
+  font-size: 14px;
+  font-weight: 800;
+  margin-bottom: 34px;
+}
+
+.marketplace-report-breadcrumb a {
+  color: #8b8b8b;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.marketplace-report-breadcrumb a:hover {
+  color: #bf0000;
+}
+
+.marketplace-report-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 28px;
+  margin-bottom: 34px;
+}
+
+.marketplace-heading-line {
+  display: block;
+  width: 36px;
+  height: 4px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.marketplace-report-top h1 {
+  font-size: 30px;
+  line-height: 1.1;
+  margin-bottom: 8px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #111111;
+}
+
+.marketplace-report-top p {
+  color: #777777;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.marketplace-report-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.marketplace-light-btn,
+.marketplace-solid-btn {
+  height: 38px;
+  border-radius: 8px;
+  padding: 0 16px;
+  font-size: 12px;
+  font-weight: 900;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.marketplace-light-btn {
+  background: #ffffff;
+  color: var(--marketplace-color);
+  border: 1.5px solid color-mix(in srgb, var(--marketplace-color) 35%, #ffffff);
+}
+
+.marketplace-solid-btn {
+  background: var(--marketplace-color);
+  color: #ffffff;
+  border: 1.5px solid var(--marketplace-color);
+}
+
+.monthly-report-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  background: #ffffff;
+  border: 1px solid #e1e5ea;
+  border-radius: 10px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.06);
+}
+
+.monthly-report-table {
+  width: 100%;
+  min-width: 850px;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.monthly-report-table thead {
+  background: #f8fafc;
+}
+
+.monthly-report-table th,
+.monthly-report-table td {
+  padding: 15px 14px;
+  border-bottom: 1px solid #eef1f4;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+  color: #111111;
+}
+
+.monthly-report-table th:first-child,
+.monthly-report-table td:first-child {
+  text-align: left;
+}
+
+.monthly-report-table td {
+  color: #222222;
+}
+
+.monthly-report-table tbody tr:hover {
+  background: #fffafa;
+}
+
+.generate-month-btn {
+  height: 32px;
+  padding: 0 13px;
+  border: none;
+  border-radius: 6px;
+  background: var(--marketplace-color);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.generate-month-btn:hover {
+  filter: brightness(0.92);
+}
+
+@media (max-width: 760px) {
+  .marketplace-report-top {
+    flex-direction: column;
+  }
+
+  .marketplace-report-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .marketplace-light-btn,
+  .marketplace-solid-btn {
+    width: 100%;
+  }
+
+  .marketplace-report-top h1 {
+    font-size: 26px;
+  }
+}

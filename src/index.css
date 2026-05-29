@@ -1,0 +1,43 @@
+:root {
+  --primary-red: #bf0000;
+  --primary-red-dark: #940000;
+  --white: #ffffff;
+  --black: #111111;
+  --text-dark: #1f2937;
+  --text-muted: #6b7280;
+  --border-light: #eeeeee;
+  --bg-light: #fafafa;
+  --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.08);
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --container-width: 1280px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: var(--white);
+  color: var(--text-dark);
+}
+
+body {
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}

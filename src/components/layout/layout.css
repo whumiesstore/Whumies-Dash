@@ -1,0 +1,12 @@
+.layout-main {
+  width: 100%;
+  min-height: calc(100vh - 78px);
+  background: linear-gradient(180deg, #ffffff 0%, #fff8f8 100%);
+}
+
+.layout-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 36px clamp(18px, 4vw, 56px);
+}
