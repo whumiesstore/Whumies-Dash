@@ -506,140 +506,7 @@
   background: #970000;
 }
 
-/* Mobile modal */
-
-@media (max-width: 640px) {
-  .upload-modal-overlay {
-    padding: 14px;
-  }
-
-  .upload-error-modal,
-  .upload-success-modal {
-    width: 100%;
-    border-radius: 14px;
-    padding: 20px;
-  }
-
-  .upload-error-modal h2 {
-    font-size: 20px;
-  }
-
-  .upload-error-box {
-    padding: 16px;
-  }
-
-  .upload-error-message {
-    font-size: 15px;
-  }
-
-  .upload-error-detail {
-    font-size: 13px;
-  }
-
-  .success-title-row {
-    gap: 12px;
-    align-items: flex-start;
-  }
-
-  .success-check {
-    width: 38px;
-    height: 38px;
-    font-size: 23px;
-  }
-
-  .success-title-row h2 {
-    font-size: 18px;
-  }
-
-  .success-month-box {
-    padding: 16px;
-  }
-
-  .success-month-box h3 {
-    font-size: 22px;
-  }
-
-  .success-note {
-    font-size: 13.5px;
-  }
-
-  .success-actions {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  .upload-modal-outline-btn,
-  .upload-modal-primary-btn {
-    min-height: 42px;
-    font-size: 13.5px;
-  }
-}
-
-/* Responsive */
-
-@media (max-width: 980px) {
-  .generate-report-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .instruction-card {
-    max-width: 620px;
-  }
-}
-
-@media (max-width: 640px) {
-  .generate-report-heading {
-    margin-bottom: 26px;
-  }
-
-  .generate-report-heading h1 {
-    font-size: 24px;
-  }
-
-  .generate-report-heading p {
-    font-size: 13.5px;
-  }
-
-  .upload-box {
-    min-height: 230px;
-    padding: 24px 18px;
-  }
-
-  .upload-main-btn {
-    width: 100%;
-    min-height: 50px;
-    padding: 0 16px;
-    font-size: 13.5px;
-    text-align: center;
-  }
-
-  .instruction-step {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 22px 18px;
-  }
-
-  .step-number {
-    width: 34px;
-    height: 34px;
-  }
-
-  .date-range-boxes {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .date-arrow {
-    text-align: center;
-    transform: rotate(90deg);
-  }
-
-  .date-box {
-    width: 100%;
-  }
-}
-
-/* SKU Cost Modal */
+/* SKU Cost Modal Responsive Layout */
 
 .sku-cost-modal-overlay {
   position: fixed;
@@ -667,6 +534,7 @@
 }
 
 .sku-cost-header {
+  flex-shrink: 0;
   min-height: 72px;
   padding: 18px 22px;
   border-bottom: 1px solid #eeeeee;
@@ -680,12 +548,14 @@
   font-size: 21px;
   color: #111111;
   font-weight: 800;
+  white-space: nowrap;
 }
 
 .sku-cost-header-actions {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-shrink: 0;
 }
 
 .sku-outline-btn,
@@ -713,6 +583,7 @@
 }
 
 .sku-cost-toolbar {
+  flex-shrink: 0;
   min-height: 54px;
   padding: 12px 22px;
   border-bottom: 1px solid #eeeeee;
@@ -751,11 +622,17 @@
   text-align: right;
 }
 
+/* Main table area scrolls */
+
 .sku-table-wrap {
-  overflow: auto;
   flex: 1;
+  min-height: 0;
+  overflow: auto;
   border-bottom: 1px solid #dddddd;
+  -webkit-overflow-scrolling: touch;
 }
+
+/* Keep table wide and scrollable */
 
 .sku-cost-table {
   width: 100%;
@@ -823,6 +700,13 @@
 .sku-cost-table input:focus {
   border-color: #bf0000;
   box-shadow: 0 0 0 3px rgba(191, 0, 0, 0.08);
+}
+
+/* Pagination and footer stay visible */
+
+.sku-pagination-row,
+.sku-cost-footer {
+  flex-shrink: 0;
 }
 
 .sku-total-cell {
@@ -965,9 +849,10 @@
   }
 }
 
-/* Bulk Edit View */
+/* Bulk Edit Responsive */
 
 .bulk-edit-panel {
+  flex-shrink: 0;
   padding: 12px 10px;
   border-bottom: 1px solid #eeeeee;
 }
@@ -1075,14 +960,20 @@
 }
 
 .bulk-table-wrap {
-  overflow: auto;
   flex: 1;
+  min-height: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .bulk-edit-table {
   width: 100%;
   min-width: 900px;
   border-collapse: collapse;
+}
+
+.bulk-select-row {
+  flex-shrink: 0;
 }
 
 .bulk-edit-table th {
@@ -1141,24 +1032,6 @@
 .bulk-preview-muted {
   color: #999999 !important;
   font-weight: 600 !important;
-}
-
-@media (max-width: 1100px) {
-  .bulk-input-row {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .bulk-total-preview,
-  .bulk-selected-pill,
-  .bulk-apply-btn {
-    width: 100%;
-  }
-}
-
-@media (max-width: 640px) {
-  .bulk-input-row {
-    grid-template-columns: 1fr;
-  }
 }
 
 .sku-input-error,
@@ -1393,6 +1266,345 @@
   color: #666666;
   font-size: 12.5px;
   font-weight: 600;
+}
+
+/* Mobile modal */
+
+@media (max-width: 760px) {
+  .sku-cost-modal-overlay {
+    padding: 10px;
+    align-items: center;
+  }
+
+  .sku-cost-modal {
+    width: 100%;
+    max-width: 100%;
+    height: 92vh;
+    max-height: 92vh;
+    border-radius: 12px;
+  }
+
+  .sku-cost-header {
+    min-height: auto;
+    padding: 14px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .sku-cost-header h2 {
+    font-size: 20px;
+    white-space: normal;
+  }
+
+  .sku-cost-header-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .sku-outline-btn,
+  .sku-primary-small-btn {
+    width: 100%;
+    height: 38px;
+    font-size: 12px;
+  }
+
+  .sku-cost-toolbar {
+    padding: 12px 14px;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .sku-filter-check {
+    font-size: 13px;
+  }
+
+  .sku-warning-text {
+    text-align: left;
+    font-size: 13px;
+  }
+
+  .sku-saved-status {
+    text-align: left;
+    font-size: 12px;
+  }
+
+  .sku-table-wrap {
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+
+  .sku-cost-table {
+    min-width: 980px;
+  }
+
+  .sku-cost-table th,
+  .sku-cost-table td {
+    padding: 9px 10px;
+  }
+
+  .sku-cost-table th:first-child,
+  .sku-cost-table td:first-child {
+    width: 360px;
+    min-width: 360px;
+  }
+
+  .sku-product-cell a {
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .sku-product-cell strong {
+    font-size: 12px;
+    font-weight: 850;
+  }
+
+  .sku-pagination-row {
+    padding: 10px 14px;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .sku-pagination-row p {
+    font-size: 12.5px;
+  }
+
+  .sku-pagination {
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 2px;
+  }
+
+  .sku-pagination button {
+    min-width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  .sku-cost-footer {
+    padding: 12px 14px;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .sku-cost-alert,
+  .sku-cost-success {
+    width: 100%;
+    font-size: 12.5px;
+  }
+
+  .sku-continue-btn {
+    width: 100%;
+    height: 42px;
+  }
+}
+
+@media (max-width: 640px) {
+  .upload-modal-overlay {
+    padding: 14px;
+  }
+
+  .upload-error-modal,
+  .upload-success-modal {
+    width: 100%;
+    border-radius: 14px;
+    padding: 20px;
+  }
+
+  .upload-error-modal h2 {
+    font-size: 20px;
+  }
+
+  .upload-error-box {
+    padding: 16px;
+  }
+
+  .upload-error-message {
+    font-size: 15px;
+  }
+
+  .upload-error-detail {
+    font-size: 13px;
+  }
+
+  .success-title-row {
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .success-check {
+    width: 38px;
+    height: 38px;
+    font-size: 23px;
+  }
+
+  .success-title-row h2 {
+    font-size: 18px;
+  }
+
+  .success-month-box {
+    padding: 16px;
+  }
+
+  .success-month-box h3 {
+    font-size: 22px;
+  }
+
+  .success-note {
+    font-size: 13.5px;
+  }
+
+  .success-actions {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .upload-modal-outline-btn,
+  .upload-modal-primary-btn {
+    min-height: 42px;
+    font-size: 13.5px;
+  }
+}
+
+/* Responsive */
+
+@media (max-width: 980px) {
+  .generate-report-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .instruction-card {
+    max-width: 620px;
+  }
+}
+
+@media (max-width: 640px) {
+  .generate-report-heading {
+    margin-bottom: 26px;
+  }
+
+  .generate-report-heading h1 {
+    font-size: 24px;
+  }
+
+  .generate-report-heading p {
+    font-size: 13.5px;
+  }
+
+  .upload-box {
+    min-height: 230px;
+    padding: 24px 18px;
+  }
+
+  .upload-main-btn {
+    width: 100%;
+    min-height: 50px;
+    padding: 0 16px;
+    font-size: 13.5px;
+    text-align: center;
+  }
+
+  .instruction-step {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 22px 18px;
+  }
+
+  .step-number {
+    width: 34px;
+    height: 34px;
+  }
+
+  .date-range-boxes {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .date-arrow {
+    text-align: center;
+    transform: rotate(90deg);
+  }
+
+  .date-box {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .bulk-input-row {
+    grid-template-columns: repeat(3, minmax(140px, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .bulk-edit-panel {
+    padding: 12px 14px;
+    overflow-x: auto;
+  }
+
+  .bulk-search-input {
+    min-width: 100%;
+    height: 38px;
+    font-size: 13px;
+  }
+
+  .bulk-input-row {
+    min-width: 900px;
+    grid-template-columns: repeat(5, 130px) 110px 100px 90px;
+    gap: 8px;
+  }
+
+  .bulk-input-row input {
+    height: 36px;
+    font-size: 13px;
+  }
+
+  .bulk-total-preview {
+    font-size: 13px;
+  }
+
+  .bulk-selected-pill {
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .bulk-apply-btn {
+    height: 34px;
+    font-size: 12px;
+  }
+
+  .bulk-select-row {
+    padding: 12px 14px;
+  }
+
+  .bulk-table-wrap {
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+
+  .bulk-edit-table {
+    min-width: 900px;
+  }
+
+  .bulk-edit-table th,
+  .bulk-edit-table td {
+    padding: 9px 10px;
+  }
+
+  .bulk-product-cell span {
+    font-size: 12.5px;
+    font-weight: 500;
+  }
+
+  .bulk-product-cell strong {
+    font-size: 12px;
+    font-weight: 850;
+  }
 }
 
 @media (max-width: 640px) {
