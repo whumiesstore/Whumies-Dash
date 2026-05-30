@@ -7,6 +7,7 @@ import UploadOrdersReport from "./upload-orders-report/UploadOrdersReport";
 import SkuCostModal from "./sku-cost/SkuCostModal";
 import UploadPaymentsReport from "./upload-payments-report/UploadPaymentsReport";
 import SavingOverlay from "./shared/SavingOverlay";
+import ReportReady from "./report-ready/ReportReady";
 
 import "./generateReport.css";
 
@@ -134,6 +135,18 @@ function GenerateReportMain() {
           selectedMarketplace={selectedMarketplace}
           config={config}
           monthDetails={monthDetails}
+          onPaymentsUploaded={() => setStep("report-ready")}
+        />
+      )}
+
+      {step === "report-ready" && (
+        <ReportReady
+          firmName={firmName}
+          decodedFirmName={decodedFirmName}
+          selectedMarketplace={selectedMarketplace}
+          config={config}
+          monthDetails={monthDetails}
+          skuCount={sampleSkus.length}
         />
       )}
 

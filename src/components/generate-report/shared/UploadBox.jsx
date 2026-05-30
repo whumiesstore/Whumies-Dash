@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import ValidatingOrdersFile from "./ValidatingOrdersFile";
+import ValidatingFile from "./ValidatingFile.jsx";
 
 const MAX_FILE_SIZE_MB = 10;
 
@@ -21,6 +21,7 @@ function UploadBox({
   onUploadSuccess,
   onUploadError,
   showMonthInButton = true,
+  validatingMessage = "Validating file...",
 }) {
   const inputRef = useRef(null);
 
@@ -99,9 +100,8 @@ function UploadBox({
   };
 
   if (isValidating) {
-    return <ValidatingOrdersFile />;
+    return <ValidatingFile message={validatingMessage} />;
   }
-
   return (
     <div
       className={`upload-box ${isDragging ? "dragging" : ""}`}

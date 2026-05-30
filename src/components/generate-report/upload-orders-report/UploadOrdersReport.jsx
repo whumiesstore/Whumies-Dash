@@ -45,6 +45,7 @@ function UploadOrdersReport({
           uploadConfig={uploadConfig}
           monthDetails={monthDetails}
           showMonthInButton={true}
+          validatingMessage="Validating orders file..."
           onUploadSuccess={() => setShowSuccessModal(true)}
           onUploadError={(error) => setUploadError(error)}
         />

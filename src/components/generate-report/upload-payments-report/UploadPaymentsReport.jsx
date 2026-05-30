@@ -2,7 +2,6 @@ import { useState } from "react";
 import ReportBreadcrumb from "../shared/ReportBreadcrumb";
 import UploadBox from "../shared/UploadBox";
 import UploadErrorModal from "../shared/UploadErrorModal";
-import UploadSuccessModal from "../shared/UploadSuccessModal";
 
 function UploadPaymentsReport({
   firmName,
@@ -10,9 +9,9 @@ function UploadPaymentsReport({
   selectedMarketplace,
   config,
   monthDetails,
+  onPaymentsUploaded,
 }) {
   const [uploadError, setUploadError] = useState(null);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const paymentConfig = config.upload.payments;
 
@@ -48,7 +47,8 @@ function UploadPaymentsReport({
           }}
           monthDetails={monthDetails}
           showMonthInButton={false}
-          onUploadSuccess={() => setShowSuccessModal(true)}
+          validatingMessage="Validating payments file..."
+          onUploadSuccess={onPaymentsUploaded}
           onUploadError={(error) => setUploadError(error)}
         />
 
@@ -135,19 +135,6 @@ function UploadPaymentsReport({
           message={uploadError.message}
           detail={uploadError.detail}
           onClose={() => setUploadError(null)}
-        />
-      )}
-
-      {showSuccessModal && (
-        <UploadSuccessModal
-          monthDetails={monthDetails}
-          title="Payments File Processed Successfully!"
-          note="Next, we’ll calculate your marketplace fees and settlement data."
-          onReupload={() => setShowSuccessModal(false)}
-          onContinue={() => {
-            setShowSuccessModal(false);
-            console.log("Next final report step later");
-          }}
         />
       )}
     </div>
