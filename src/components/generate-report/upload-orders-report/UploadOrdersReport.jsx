@@ -1,85 +1,35 @@
 import { useState } from "react";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import ReportBreadcrumb from "../shared/ReportBreadcrumb";
+import UploadBox from "../shared/UploadBox";
+import UploadErrorModal from "../shared/UploadErrorModal";
+import UploadSuccessModal from "../shared/UploadSuccessModal";
 
-import { marketplaceConfig } from "../../config/MarketplaceConfig";
-import sampleSkus from "../../data/sampleSkus.json";
-
-import UploadBox from "./UploadBox";
-import UploadErrorModal from "./UploadErrorModal";
-import UploadSuccessModal from "./UploadSuccessModal";
-import SkuCostModal from "./sku-cost-modal/SkuCostModal";
-import "./uploadOrdersReport.css";
-
-function getMonthDetails(monthParam) {
-  const fallbackDate = new Date();
-
-  const [yearValue, monthValue] = monthParam
-    ? monthParam.split("-").map(Number)
-    : [fallbackDate.getFullYear(), fallbackDate.getMonth()];
-
-  const date = new Date(yearValue, monthValue - 1, 1);
-
-  const monthName = date.toLocaleString("en-US", { month: "long" });
-  const shortMonth = date.toLocaleString("en-US", { month: "short" });
-  const year = date.getFullYear();
-
-  const startDate = `01 ${shortMonth} ${year}`;
-  const endDate = new Date(year, date.getMonth() + 1, 0).toLocaleDateString(
-    "en-GB",
-    {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-    },
-  );
-
-  return {
-    monthName,
-    year,
-    displayMonth: `${monthName} ${year}`,
-    startDate,
-    endDate,
-  };
-}
-
-function UploadOrdersReportMain() {
-  const { firmName, marketplace } = useParams();
-  const [searchParams] = useSearchParams();
-
+function UploadOrdersReport({
+  firmName,
+  decodedFirmName,
+  selectedMarketplace,
+  config,
+  monthDetails,
+  onOrdersUploaded,
+}) {
   const [uploadError, setUploadError] = useState(null);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [showSkuCostModal, setShowSkuCostModal] = useState(false);
 
-  const decodedFirmName = decodeURIComponent(firmName || "");
-  const selectedMarketplace = marketplace?.toLowerCase() || "amazon";
-
-  const config =
-    marketplaceConfig[selectedMarketplace] || marketplaceConfig.amazon;
-
-  const uploadConfig = config.upload;
-
-  const monthParam = searchParams.get("month");
-  const monthDetails = getMonthDetails(monthParam);
+  const uploadConfig = config.upload.orders;
 
   return (
-    <div className="upload-orders-page">
-      <div className="upload-orders-breadcrumb">
-        <Link to="/dashboard">My Firms</Link>
-        <span>/</span>
-        <Link to={`/dashboard/${firmName}`}>{decodedFirmName}</Link>
-        <span>/</span>
-        <Link to={`/dashboard/${firmName}/${selectedMarketplace}`}>
-          {config.title}
-        </Link>
-        <span>/</span>
-        <strong style={{ color: config.color }}>
-          {monthDetails.displayMonth}
-        </strong>
-      </div>
+    <div className="generate-report-page">
+      <ReportBreadcrumb
+        firmName={firmName}
+        decodedFirmName={decodedFirmName}
+        selectedMarketplace={selectedMarketplace}
+        marketplaceTitle={config.title}
+        monthDetails={monthDetails}
+        color={config.color}
+      />
 
-      <section className="upload-orders-heading">
+      <section className="generate-report-heading">
         <h1>Upload Your {uploadConfig.reportName}</h1>
-
         <p>
           Follow the steps below to download your orders file from{" "}
           {config.title} {config.externalText} and upload it here.{" "}
@@ -89,11 +39,12 @@ function UploadOrdersReportMain() {
         </p>
       </section>
 
-      <section className="upload-orders-layout">
+      <section className="generate-report-layout">
         <UploadBox
           config={config}
           uploadConfig={uploadConfig}
           monthDetails={monthDetails}
+          showMonthInButton={true}
           onUploadSuccess={() => setShowSuccessModal(true)}
           onUploadError={(error) => setUploadError(error)}
         />
@@ -106,11 +57,10 @@ function UploadOrdersReportMain() {
               <h3>
                 <span>↗</span> {uploadConfig.portalStepTitle}
               </h3>
-
               <p>{uploadConfig.portalStepDescription}</p>
 
               <a
-                href={config.ordersReportUrl || config.externalUrl}
+                href={uploadConfig.reportUrl || config.externalUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="instruction-link"
@@ -172,17 +122,7 @@ function UploadOrdersReportMain() {
           onReupload={() => setShowSuccessModal(false)}
           onContinue={() => {
             setShowSuccessModal(false);
-            setShowSkuCostModal(true);
-          }}
-        />
-      )}
-
-      {showSkuCostModal && (
-        <SkuCostModal
-          skus={sampleSkus}
-          onClose={() => setShowSkuCostModal(false)}
-          onStartAgain={() => {
-            setShowSkuCostModal(false);
+            onOrdersUploaded();
           }}
         />
       )}
@@ -190,4 +130,4 @@ function UploadOrdersReportMain() {
   );
 }
 
-export default UploadOrdersReportMain;
+export default UploadOrdersReport;

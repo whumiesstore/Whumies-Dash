@@ -1,3 +1,4 @@
 1. Check pending for uploaded orders file must be of the same month as the report to be generated for.
 2. Handling of no sku found and. validation errors related to file structure, column names, column value types, etc. 
 3. Ocassional saving of product costs in sku modal. To be done in both sku cost modal and bulk edit too.
+4. Checks for payments report uploaded.

@@ -1,4 +1,4 @@
-.upload-orders-page {
+.generate-report-page {
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;
@@ -6,7 +6,7 @@
 
 /* Breadcrumb */
 
-.upload-orders-breadcrumb {
+.generate-report-breadcrumb {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -17,23 +17,23 @@
   margin-bottom: 30px;
 }
 
-.upload-orders-breadcrumb a {
+.generate-report-breadcrumb a {
   color: #8b8b8b;
   text-decoration: none;
   transition: 0.2s ease;
 }
 
-.upload-orders-breadcrumb a:hover {
+.generate-report-breadcrumb a:hover {
   color: #bf0000;
 }
 
 /* Heading */
 
-.upload-orders-heading {
+.generate-report-heading {
   margin-bottom: 34px;
 }
 
-.upload-orders-heading h1 {
+.generate-report-heading h1 {
   color: #111111;
   font-size: clamp(24px, 2.4vw, 32px);
   font-weight: 900;
@@ -41,7 +41,7 @@
   margin-bottom: 8px;
 }
 
-.upload-orders-heading p {
+.generate-report-heading p {
   color: #555555;
   font-size: 14px;
   font-weight: 600;
@@ -51,7 +51,7 @@
 
 /* Main Layout */
 
-.upload-orders-layout {
+.generate-report-layout {
   display: grid;
   grid-template-columns: 1fr 0.92fr;
   gap: 32px;
@@ -362,8 +362,6 @@
   }
 }
 
-/* Error modal */
-
 .upload-error-modal {
   padding: 24px;
 }
@@ -580,7 +578,7 @@
 /* Responsive */
 
 @media (max-width: 980px) {
-  .upload-orders-layout.upload-orders-layout {
+  .generate-report-layout {
     grid-template-columns: 1fr;
   }
 
@@ -590,15 +588,15 @@
 }
 
 @media (max-width: 640px) {
-  .upload-orders-heading {
+  .generate-report-heading {
     margin-bottom: 26px;
   }
 
-  .upload-orders-heading h1 {
+  .generate-report-heading h1 {
     font-size: 24px;
   }
 
-  .upload-orders-heading p {
+  .generate-report-heading p {
     font-size: 13.5px;
   }
 
@@ -795,7 +793,7 @@
   display: block;
   color: #111111;
   font-size: 12.5px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.55;
   text-decoration: underline;
 }
@@ -929,15 +927,24 @@
     max-height: 92vh;
   }
 
-  .sku-cost-header,
+  .sku-cost-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sku-cost-header-actions {
+    width: 100%;
+  }
+
+  .sku-outline-btn,
+  .sku-primary-small-btn {
+    flex: 1;
+  }
+
   .sku-cost-toolbar,
   .sku-pagination-row,
   .sku-cost-footer {
     grid-template-columns: 1fr;
-  }
-
-  .sku-cost-header {
-    align-items: flex-start;
   }
 
   .sku-cost-toolbar {
@@ -1193,4 +1200,78 @@
   font-size: 14px;
   font-weight: 700;
   text-align: center;
+}
+
+.sku-empty-state {
+  padding: 28px 16px;
+  color: #777777;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Upload Payments report */
+
+.extra-days-note {
+  background: #fff9ed;
+  border: 1px solid rgba(255, 152, 0, 0.35);
+  border-radius: 9px;
+  padding: 12px 14px;
+  margin: 12px 0 14px;
+}
+
+.extra-days-note strong {
+  display: block;
+  color: #8a5700;
+  font-size: 12.5px;
+  font-weight: 850;
+  margin-bottom: 6px;
+}
+
+.extra-days-note p {
+  color: #7a5200;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+/* Saving overlay */
+
+.saving-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 11000;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.saving-card {
+  width: min(100%, 360px);
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 28px 24px;
+  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.saving-card h3 {
+  color: #111111;
+  font-size: 18px;
+  font-weight: 850;
+}
+
+.saving-card p {
+  color: #666666;
+  font-size: 13px;
+  font-weight: 600;
 }

@@ -20,6 +20,7 @@ function UploadBox({
   monthDetails,
   onUploadSuccess,
   onUploadError,
+  showMonthInButton = true,
 }) {
   const inputRef = useRef(null);
 
@@ -32,7 +33,7 @@ function UploadBox({
       onUploadError({
         title: "No File Selected",
         message: "Please select a file before continuing.",
-        detail: `Upload a valid ${config.title} orders file.`,
+        detail: `Upload a valid ${config.title} ${uploadConfig.reportName.toLowerCase()}.`,
       });
       return;
     }
@@ -45,8 +46,8 @@ function UploadBox({
     if (!allowedExtensions.includes(fileExtension)) {
       onUploadError({
         title: "Invalid File Type",
-        message: `Invalid file type. Please upload a valid ${config.title} orders file (${uploadConfig.acceptedFileLabel} format only)`,
-        detail: `Please upload a valid ${config.title} orders file (${uploadConfig.acceptedFileLabel} format only)`,
+        message: `Invalid file type. Please upload a valid ${config.title} ${uploadConfig.reportName.toLowerCase()} (${uploadConfig.acceptedFileLabel} format only)`,
+        detail: `Please upload a valid ${config.title} ${uploadConfig.reportName.toLowerCase()} (${uploadConfig.acceptedFileLabel} format only)`,
       });
       return;
     }
@@ -122,7 +123,8 @@ function UploadBox({
 
       <label htmlFor="ordersFile" className="upload-main-btn">
         <span>☁</span>
-        {uploadConfig.uploadButtonText} — {monthDetails.displayMonth}
+        {uploadConfig.uploadButtonText}
+        {showMonthInButton && <> — {monthDetails.displayMonth}</>}
       </label>
 
       <p>{uploadConfig.dragDropText}</p>
