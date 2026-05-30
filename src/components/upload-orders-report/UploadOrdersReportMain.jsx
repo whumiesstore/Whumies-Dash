@@ -1,6 +1,14 @@
+import { useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
+
 import { marketplaceConfig } from "../../config/MarketplaceConfig";
-import "./generateReport.css";
+import sampleSkus from "../../data/sampleSkus.json";
+
+import UploadBox from "./UploadBox";
+import UploadErrorModal from "./UploadErrorModal";
+import UploadSuccessModal from "./UploadSuccessModal";
+import SkuCostModal from "./sku-cost-modal/SkuCostModal";
+import "./uploadOrdersReport.css";
 
 function getMonthDetails(monthParam) {
   const fallbackDate = new Date();
@@ -16,7 +24,6 @@ function getMonthDetails(monthParam) {
   const year = date.getFullYear();
 
   const startDate = `01 ${shortMonth} ${year}`;
-
   const endDate = new Date(year, date.getMonth() + 1, 0).toLocaleDateString(
     "en-GB",
     {
@@ -35,9 +42,13 @@ function getMonthDetails(monthParam) {
   };
 }
 
-function GenerateReportMain() {
+function UploadOrdersReportMain() {
   const { firmName, marketplace } = useParams();
   const [searchParams] = useSearchParams();
+
+  const [uploadError, setUploadError] = useState(null);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showSkuCostModal, setShowSkuCostModal] = useState(false);
 
   const decodedFirmName = decodeURIComponent(firmName || "");
   const selectedMarketplace = marketplace?.toLowerCase() || "amazon";
@@ -51,8 +62,8 @@ function GenerateReportMain() {
   const monthDetails = getMonthDetails(monthParam);
 
   return (
-    <div className="generate-report-page">
-      <div className="generate-breadcrumb">
+    <div className="upload-orders-page">
+      <div className="upload-orders-breadcrumb">
         <Link to="/dashboard">My Firms</Link>
         <span>/</span>
         <Link to={`/dashboard/${firmName}`}>{decodedFirmName}</Link>
@@ -66,7 +77,7 @@ function GenerateReportMain() {
         </strong>
       </div>
 
-      <section className="generate-heading">
+      <section className="upload-orders-heading">
         <h1>Upload Your {uploadConfig.reportName}</h1>
 
         <p>
@@ -78,23 +89,14 @@ function GenerateReportMain() {
         </p>
       </section>
 
-      <section className="generate-layout">
-        <div className="upload-box">
-          <input
-            id="ordersFile"
-            type="file"
-            accept={uploadConfig.acceptedFileTypes}
-            hidden
-          />
-
-          <label htmlFor="ordersFile" className="upload-main-btn">
-            <span>☁</span>
-            {uploadConfig.uploadButtonText} — {monthDetails.displayMonth}
-          </label>
-
-          <p>{uploadConfig.dragDropText}</p>
-          <small>{uploadConfig.acceptedText}</small>
-        </div>
+      <section className="upload-orders-layout">
+        <UploadBox
+          config={config}
+          uploadConfig={uploadConfig}
+          monthDetails={monthDetails}
+          onUploadSuccess={() => setShowSuccessModal(true)}
+          onUploadError={(error) => setUploadError(error)}
+        />
 
         <aside className="instruction-card">
           <div className="instruction-step">
@@ -154,8 +156,38 @@ function GenerateReportMain() {
           </div>
         </aside>
       </section>
+
+      {uploadError && (
+        <UploadErrorModal
+          title={uploadError.title}
+          message={uploadError.message}
+          detail={uploadError.detail}
+          onClose={() => setUploadError(null)}
+        />
+      )}
+
+      {showSuccessModal && (
+        <UploadSuccessModal
+          monthDetails={monthDetails}
+          onReupload={() => setShowSuccessModal(false)}
+          onContinue={() => {
+            setShowSuccessModal(false);
+            setShowSkuCostModal(true);
+          }}
+        />
+      )}
+
+      {showSkuCostModal && (
+        <SkuCostModal
+          skus={sampleSkus}
+          onClose={() => setShowSkuCostModal(false)}
+          onStartAgain={() => {
+            setShowSkuCostModal(false);
+          }}
+        />
+      )}
     </div>
   );
 }
 
-export default GenerateReportMain;
+export default UploadOrdersReportMain;

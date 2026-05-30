@@ -4,7 +4,7 @@ import Layout from "./components/layout/Layout";
 import Dashboard from "./pages/Dashboard";
 import FirmReports from "./pages/FirmReports";
 import MarketplaceReports from "./pages/MarketplaceReports";
-import GenerateReport from "./pages/GenerateReport.jsx";
+import UploadOrdersReport from "./pages/UploadOrdersReport.jsx";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
 
         <Route
           path="/dashboard/:firmName/:marketplace/generate-report"
-          element={<GenerateReport />}
+          element={<UploadOrdersReport />}
         />
 
         <Route
