@@ -8,23 +8,9 @@ import SkuCostModal from "./sku-cost/SkuCostModal";
 import UploadPaymentsReport from "./upload-payments-report/UploadPaymentsReport";
 import SavingOverlay from "./shared/SavingOverlay";
 import ReportReady from "./report-ready/ReportReady";
+import { formatShortMonthDay, formatFullDate } from "../../utils/formatters";
 
 import "./generateReport.css";
-
-function formatShortMonthDay(date) {
-  const month = date.toLocaleString("en-US", { month: "short" });
-  const day = date.getDate();
-
-  return `${month} ${day}`;
-}
-
-function formatFullDate(date) {
-  return date.toLocaleDateString("en-GB", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  });
-}
 
 function getMonthDetails(monthParam) {
   const today = new Date();
@@ -67,6 +53,7 @@ function getMonthDetails(monthParam) {
   const isPaymentRangePartial = idealPaymentEndDateObject > today;
 
   return {
+    monthNumber: date.getMonth() + 1,
     monthName,
     shortMonth,
     year,
