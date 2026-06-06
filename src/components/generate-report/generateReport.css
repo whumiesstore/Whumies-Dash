@@ -1268,6 +1268,46 @@
   font-weight: 600;
 }
 
+/* Generating report box */
+.generating-report-box {
+  width: 100%;
+  min-height: 260px;
+  border: 1.5px solid #e2e2e2;
+  border-radius: 14px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 34px;
+}
+
+.generating-report-box h2 {
+  color: #111111;
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: 750;
+  letter-spacing: -0.2px;
+  text-align: center;
+}
+
+.generating-report-box .orders-loader {
+  width: 30px;
+  height: 30px;
+  border-width: 3px;
+}
+
+@media (max-width: 640px) {
+  .generating-report-box h2 {
+    font-size: 17px;
+  }
+
+  .generating-report-box .orders-loader {
+    width: 28px;
+    height: 28px;
+  }
+}
+
 /* Mobile modal */
 
 @media (max-width: 760px) {

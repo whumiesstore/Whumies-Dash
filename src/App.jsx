@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import FirmReports from "./pages/FirmReports";
 import MarketplaceReports from "./pages/MarketplaceReports";
 import GenerateReport from "./pages/GenerateReport.jsx";
+import ReportDisplay from "./pages/ReportDisplay.jsx";
 
 function App() {
   return (
@@ -17,6 +18,11 @@ function App() {
         <Route
           path="/dashboard/:firmName/:marketplace/generate-report"
           element={<GenerateReport />}
+        />
+
+        <Route
+          path="/dashboard/:firmName/:marketplace/:year/:month"
+          element={<ReportDisplay />}
         />
 
         <Route
