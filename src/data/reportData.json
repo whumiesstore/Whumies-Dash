@@ -1,0 +1,15 @@
+{
+    "profitLoss": {
+        "title": "Profit and Loss Analysis",
+        "salesIncGst": 259834,
+        "refundsCancellationsFeesIncGst": 176541.22,
+        "refundsCancellationsFeesPercentage": 67.94,
+        "netSettlementReceivedIncGst": 83292.78,
+        "netSettlementPercentage": 32.06,
+        "otherCharges": -12032.45,
+        "purchaseCost": 67133,
+        "profit": -9582.67,
+        "roi": -52.61,
+        "status": "loss"
+    }
+}

@@ -30,5 +30,16 @@ export function formatFullDate(date) {
   });
 }
 
+export function formatCurrency(value) {
+  const absoluteValue = Math.abs(Number(value || 0));
+
+  const formatted = absoluteValue.toLocaleString("en-IN", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
+  return `${Number(value) < 0 ? "-" : ""}₹${formatted}`;
+}
+
 
 

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { marketplaceConfig } from "../../config/MarketplaceConfig";
 import ReportInitializer from "./ReportInitializer";
+import ProfitLossSection from "./sections/ProfitLossSection";
 import "./reportDisplay.css";
 
 function ReportDisplayMain() {
@@ -70,9 +71,9 @@ function ReportDisplayMain() {
         {isInitializing ? (
           <ReportInitializer onComplete={() => setIsInitializing(false)} />
         ) : (
-          <section className="report-display-card">
-            <div className="report-placeholder">Report here.</div>
-          </section>
+          <div className="report-sections">
+            <ProfitLossSection displayMonth={displayMonth} />
+          </div>
         )}
       </div>
     </div>

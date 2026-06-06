@@ -54,17 +54,17 @@
 
 .report-display-top h1 {
   color: #111111;
-  font-size: clamp(24px, 2.5vw, 32px);
-  font-weight: 900;
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 750;
   text-transform: uppercase;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.3px;
   margin-bottom: 8px;
 }
 
 .report-display-top p {
   color: #777777;
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 12.5px;
+  font-weight: 600;
 }
 
 .report-display-actions {
@@ -152,27 +152,6 @@
   .report-primary-btn {
     flex-shrink: 0;
   }
-}
-
-/* Report Placeholder */
-
-.report-display-card {
-  background: #ffffff;
-  border: 1px solid #eeeeee;
-  border-radius: 14px;
-  padding: 34px;
-  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.06);
-}
-
-.report-placeholder {
-  min-height: 260px;
-  border: 1.5px dashed #dddddd;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  color: #555555;
-  font-size: 16px;
-  font-weight: 750;
 }
 
 /* Report Initializer */
@@ -313,5 +292,202 @@
 
   .report-initializer-box p {
     font-size: 12.5px;
+  }
+}
+
+/* Report Sections */
+
+.report-sections {
+  display: grid;
+  gap: 28px;
+}
+
+/* Profit and Loss Section */
+
+.profit-loss-section {
+  width: 100%;
+}
+
+.profit-loss-section h2 {
+  color: #111111;
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 750;
+  letter-spacing: -0.3px;
+  margin-bottom: 18px;
+}
+
+.profit-loss-table {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 9px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.055);
+  overflow: hidden;
+}
+
+.profit-loss-row {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 18px;
+  border: none;
+  border-bottom: 1px solid #e9e9e9;
+  background: #ffffff;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 18px;
+  text-align: left;
+}
+
+.profit-loss-row:last-child {
+  border-bottom: none;
+}
+
+.profit-loss-row.clickable {
+  cursor: pointer;
+}
+
+.profit-loss-row.clickable:hover {
+  background: #fffafa;
+}
+
+.profit-loss-label {
+  color: #111111;
+  font-size: 15px;
+  font-weight: 550;
+  line-height: 1.35;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.profit-loss-label.strong,
+.profit-loss-value.strong {
+  font-weight: 700;
+}
+
+.profit-loss-label.orange {
+  color: #ff8a00;
+  font-weight: 700;
+}
+
+.profit-loss-value {
+  color: #111111;
+  font-size: 15px;
+  font-weight: 550;
+  white-space: nowrap;
+}
+
+.report-info-icon {
+  width: 16px;
+  height: 16px;
+  border: 1.4px solid #bfbfbf;
+  border-radius: 50%;
+  color: #9a9a9a;
+  display: inline-grid;
+  place-items: center;
+  font-size: 10.5px;
+  font-weight: 750;
+  flex-shrink: 0;
+}
+
+.profit-row {
+  min-height: 62px;
+}
+
+.profit-title {
+  font-size: 20px;
+  font-weight: 750;
+}
+
+.profit-result-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.profit-result-pill {
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  color: #111111;
+  font-size: 16px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.profit-result-pill span {
+  margin-left: 7px;
+  font-weight: 700;
+}
+
+.profit-positive {
+  background: #e5fae7;
+  color: #3caf4c;
+}
+
+.profit-negative {
+  background: #ffe5e5;
+  color: #ef3b35;
+}
+
+.loss-pill {
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: #ef3b35;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .profit-loss-section h2 {
+    font-size: 20px;
+    margin-bottom: 14px;
+  }
+
+  .profit-loss-row {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 7px;
+    padding: 13px 15px;
+  }
+
+  .profit-loss-label {
+    font-size: 14px;
+  }
+
+  .profit-loss-value {
+    font-size: 14px;
+    white-space: normal;
+  }
+
+  .profit-title {
+    font-size: 18px;
+  }
+
+  .profit-result-wrap {
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .profit-result-pill {
+    min-height: 38px;
+    font-size: 14.5px;
+    padding: 0 13px;
+    white-space: normal;
+  }
+
+  .loss-pill {
+    min-height: 32px;
+    font-size: 11.5px;
   }
 }
