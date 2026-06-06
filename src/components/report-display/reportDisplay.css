@@ -295,6 +295,86 @@
   }
 }
 
+/* Report Info Modal */
+
+.report-info-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 13000;
+  padding: 18px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.report-info-modal {
+  width: min(100%, 470px);
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 22px 62px rgba(0, 0, 0, 0.22);
+}
+
+.report-info-modal h3 {
+  color: #111111;
+  font-size: 18px;
+  font-weight: 750;
+  letter-spacing: -0.2px;
+  margin-bottom: 18px;
+}
+
+.report-info-modal p {
+  color: #555555;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+
+.report-info-modal button {
+  min-height: 38px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 8px;
+  background: #bf0000;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 750;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  float: right;
+  box-shadow: 0 8px 18px rgba(191, 0, 0, 0.2);
+}
+
+.report-info-modal button:hover {
+  background: #970000;
+}
+
+@media (max-width: 640px) {
+  .report-info-modal {
+    width: 100%;
+    padding: 22px 18px;
+  }
+
+  .report-info-modal h3 {
+    font-size: 16px;
+  }
+
+  .report-info-modal p {
+    font-size: 13px;
+  }
+
+  .report-info-modal button {
+    width: 100%;
+    float: none;
+  }
+}
+
 /* Report Sections */
 
 .report-sections {
@@ -389,6 +469,7 @@
   font-size: 10.5px;
   font-weight: 750;
   flex-shrink: 0;
+  cursor: pointer;
 }
 
 .profit-row {
