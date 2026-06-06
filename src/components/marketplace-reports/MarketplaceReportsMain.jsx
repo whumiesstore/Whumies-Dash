@@ -1,24 +1,78 @@
+import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+
+import WhyLockedModal from "./WhyLockedModal";
+import {
+  formatMonthYear,
+  formatLongMonthYear,
+  formatMonthDay,
+} from "../../utils/formatters";
 import { marketplaceConfig } from "../../config/MarketplaceConfig";
 import "./marketplaceReports.css";
+import LockIcon from "../ui/icons/LockIcon";
+
+function getDaysRemaining(targetDate, today) {
+  const oneDay = 1000 * 60 * 60 * 24;
+
+  const start = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate(),
+  );
+  const end = new Date(
+    targetDate.getFullYear(),
+    targetDate.getMonth(),
+    targetDate.getDate(),
+  );
+
+  return Math.max(0, Math.ceil((end - start) / oneDay));
+}
 
 function getReportMonths() {
   const today = new Date();
 
   const currentYear = today.getFullYear();
-  const currentMonth = today.getMonth(); // Jan = 0
+  const currentMonth = today.getMonth();
 
-  const startDate = new Date(currentYear - 2, 3, 1); // April two years back
-  const endDate = new Date(currentYear, currentMonth - 1, 1); // last completed month
+  const startDate = new Date(currentYear - 2, 3, 1); // Apr, 2 years back
+
+  const latestPossibleReportMonth = new Date(currentYear, currentMonth - 1, 1);
+  const latestPossibleUnlockDate = new Date(
+    latestPossibleReportMonth.getFullYear(),
+    latestPossibleReportMonth.getMonth() + 1,
+    20,
+  );
+
+  let lockedMonth = null;
+  let endDate;
+
+  if (today >= latestPossibleUnlockDate) {
+    endDate = latestPossibleReportMonth;
+  } else {
+    lockedMonth = {
+      label: formatMonthYear(latestPossibleReportMonth),
+      displayMonth: formatLongMonthYear(latestPossibleReportMonth),
+      unlockDate: latestPossibleUnlockDate,
+      unlockDateLabel: formatMonthDay(latestPossibleUnlockDate),
+      daysRemaining: getDaysRemaining(latestPossibleUnlockDate, today),
+      month: latestPossibleReportMonth.getMonth(),
+      year: latestPossibleReportMonth.getFullYear(),
+    };
+
+    endDate = new Date(
+      latestPossibleReportMonth.getFullYear(),
+      latestPossibleReportMonth.getMonth() - 1,
+      1,
+    );
+  }
 
   const months = [];
   const cursor = new Date(endDate);
 
   while (cursor >= startDate) {
     months.push({
-      label: cursor
-        .toLocaleString("en-US", { month: "short", year: "numeric" })
-        .toUpperCase(),
+      label: formatMonthYear(cursor),
+      displayMonth: formatLongMonthYear(cursor),
       month: cursor.getMonth(),
       year: cursor.getFullYear(),
     });
@@ -26,12 +80,17 @@ function getReportMonths() {
     cursor.setMonth(cursor.getMonth() - 1);
   }
 
-  return months;
+  return {
+    availableMonths: months,
+    lockedMonth,
+  };
 }
 
 function MarketplaceReportsMain() {
   const navigate = useNavigate();
   const { firmName, marketplace } = useParams();
+
+  const [showWhyLockedModal, setShowWhyLockedModal] = useState(false);
 
   const decodedFirmName = decodeURIComponent(firmName || "");
   const selectedMarketplace = marketplace?.toLowerCase() || "amazon";
@@ -39,7 +98,7 @@ function MarketplaceReportsMain() {
   const config =
     marketplaceConfig[selectedMarketplace] || marketplaceConfig.amazon;
 
-  const reportMonths = getReportMonths();
+  const { availableMonths, lockedMonth } = getReportMonths();
 
   const openGenerateReportPage = (item) => {
     const monthValue = `${item.year}-${String(item.month + 1).padStart(2, "0")}`;
@@ -91,6 +150,29 @@ function MarketplaceReportsMain() {
         </div>
       </div>
 
+      {lockedMonth && (
+        <div className="locked-report-banner">
+          <div className="locked-report-left">
+            <span className="lock-icon">
+              <LockIcon />
+            </span>
+
+            <strong>
+              {lockedMonth.label} report can be generated after{" "}
+              {lockedMonth.unlockDateLabel}
+            </strong>
+
+            <button type="button" onClick={() => setShowWhyLockedModal(true)}>
+              Ask Why?
+            </button>
+          </div>
+
+          <span className="days-remaining">
+            {lockedMonth.daysRemaining} days remaining
+          </span>
+        </div>
+      )}
+
       <div className="monthly-report-table-wrap">
         <table className="monthly-report-table">
           <thead>
@@ -108,7 +190,7 @@ function MarketplaceReportsMain() {
           </thead>
 
           <tbody>
-            {reportMonths.map((item) => (
+            {availableMonths.map((item) => (
               <tr key={`${item.month}-${item.year}`}>
                 <td>{item.label}</td>
                 <td>—</td>
@@ -133,6 +215,13 @@ function MarketplaceReportsMain() {
           </tbody>
         </table>
       </div>
+
+      {showWhyLockedModal && (
+        <WhyLockedModal
+          lockedMonth={lockedMonth}
+          onClose={() => setShowWhyLockedModal(false)}
+        />
+      )}
     </div>
   );
 }

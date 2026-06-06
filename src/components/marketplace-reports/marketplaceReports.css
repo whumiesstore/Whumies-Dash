@@ -147,6 +147,158 @@
   filter: brightness(0.92);
 }
 
+.locked-report-banner {
+  width: 100%;
+  min-height: 54px;
+  margin-bottom: 14px;
+  padding: 12px 16px;
+  border: 1px solid #dbe3ee;
+  border-radius: 10px;
+  background: #fbfdff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.locked-report-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.lock-icon {
+  color: #6b7c93;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.locked-report-left strong {
+  color: #17233c;
+  font-size: 14px;
+  font-weight: 850;
+}
+
+.locked-report-left button {
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 7px;
+  border: 1.4px solid #bf0000;
+  background: #ffffff;
+  color: #bf0000;
+  font-size: 12px;
+  font-weight: 850;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.locked-report-left button:hover {
+  background: #fff5f5;
+}
+
+.days-remaining {
+  color: #17233c;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Why locked modal */
+
+.why-locked-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 12000;
+  padding: 18px;
+  background: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.why-locked-modal {
+  width: min(100%, 840px);
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 26px 30px 22px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.25);
+}
+
+.why-locked-modal h2 {
+  color: #111111;
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 18px;
+}
+
+.why-locked-subtitle {
+  color: #111111;
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.why-locked-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-bottom: 18px;
+}
+
+.why-locked-card {
+  padding: 10px 16px;
+  border-right: 1px solid #dfe5ee;
+}
+
+.why-locked-card:last-child {
+  border-right: none;
+}
+
+.why-locked-card h3 {
+  color: #17233c;
+  font-size: 14px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.why-locked-card p {
+  color: #526173;
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.6;
+}
+
+.why-locked-card strong {
+  color: #415064;
+  font-weight: 900;
+}
+
+.why-locked-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.why-locked-actions button {
+  min-height: 38px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 9px;
+  background: #bf0000;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(191, 0, 0, 0.2);
+}
+
+.why-locked-actions button:hover {
+  background: #970000;
+}
+
 @media (max-width: 760px) {
   .marketplace-report-top {
     flex-direction: column;
@@ -165,5 +317,42 @@
 
   .marketplace-report-top h1 {
     font-size: 26px;
+  }
+
+  .locked-report-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .locked-report-left {
+    flex-wrap: wrap;
+  }
+
+  .days-remaining {
+    font-size: 12.5px;
+  }
+
+  .why-locked-modal {
+    max-height: 90vh;
+    overflow: auto;
+    padding: 22px 18px;
+  }
+
+  .why-locked-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-locked-card {
+    border-right: none;
+    border-bottom: 1px solid #dfe5ee;
+    padding: 14px 0;
+  }
+
+  .why-locked-card:last-child {
+    border-bottom: none;
+  }
+
+  .why-locked-actions button {
+    width: 100%;
   }
 }
