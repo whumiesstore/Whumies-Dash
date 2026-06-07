@@ -2,10 +2,21 @@ function copyText(value) {
   navigator.clipboard?.writeText(value);
 }
 
+function getAmazonProductUrl(asin) {
+  return `https://www.amazon.in/dp/${asin}`;
+}
+
 function SkuProductCell({ product }) {
   return (
     <div className="sku-product-detail-cell">
-      <strong>{product.productName}</strong>
+      <a
+        href={getAmazonProductUrl(product.asin)}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="sku-product-name-link"
+      >
+        {product.productName}
+      </a>
 
       <div className="sku-product-meta">
         <span>SKU: {product.sku}</span>
