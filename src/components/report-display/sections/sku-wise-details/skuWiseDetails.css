@@ -1,0 +1,348 @@
+.sku-wise-section {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.sku-wise-divider {
+  width: 100%;
+  height: 1px;
+  background: #eeeeee;
+  margin-bottom: 18px;
+}
+
+.sku-wise-header {
+  margin-bottom: 22px;
+}
+
+.sku-wise-header h2 {
+  color: #bf0000;
+  font-size: clamp(20px, 2.1vw, 26px);
+  font-weight: 750;
+  letter-spacing: -0.3px;
+  margin-bottom: 6px;
+}
+
+.sku-wise-header p {
+  color: #777777;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.sku-wise-header strong {
+  color: #777777;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.sku-wise-tabs-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border-bottom: 1px solid #dddddd;
+  margin-bottom: 14px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sku-wise-tabs {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  min-width: max-content;
+}
+
+.sku-wise-tabs button {
+  min-height: 42px;
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: #777777;
+  font-size: 12.5px;
+  font-weight: 750;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.sku-wise-tabs button.active {
+  color: #bf0000;
+  border-bottom-color: #bf0000;
+}
+
+.sku-wise-filters {
+  width: 100%;
+  margin-bottom: 12px;
+  display: grid;
+  grid-template-columns: 1fr 160px auto;
+  gap: 12px;
+  align-items: end;
+  justify-content: end;
+}
+
+.sku-filter-field {
+  position: relative;
+  display: block;
+}
+
+.sku-filter-field span {
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  z-index: 1;
+  background: #ffffff;
+  color: #111111;
+  padding: 0 5px;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.sku-filter-field input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #cfcfcf;
+  border-radius: 5px;
+  padding: 0 12px;
+  color: #111111;
+  font-size: 14px;
+  font-weight: 600;
+  outline: none;
+}
+
+.sku-filter-field input:focus {
+  border-color: #bf0000;
+  box-shadow: 0 0 0 3px rgba(191, 0, 0, 0.08);
+}
+
+.sku-currency-input {
+  position: relative;
+}
+
+.sku-currency-input b {
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #777777;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.sku-currency-input input {
+  padding-left: 28px;
+  padding-right: 34px;
+}
+
+.sku-currency-input button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  color: #777777;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.sku-download-btn {
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 6px;
+  border: 1.4px solid rgba(191, 0, 0, 0.45);
+  background: #ffffff;
+  color: #111111;
+  font-size: 12px;
+  font-weight: 750;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.sku-download-btn:hover {
+  background: #fff7f7;
+  color: #bf0000;
+}
+
+.sku-wise-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  max-height: 520px;
+  overflow: auto;
+  border: 1px solid #e1e1e1;
+  border-radius: 7px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.055);
+  -webkit-overflow-scrolling: touch;
+}
+
+.sku-wise-table {
+  width: 100%;
+  min-width: 920px;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #ffffff;
+}
+
+.sku-wise-table thead {
+  background: #bf0000;
+}
+
+.sku-wise-table th {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: #bf0000;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 750;
+  text-align: left;
+  padding: 12px 14px;
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.sku-wise-table th:not(:first-child),
+.sku-wise-table td:not(:first-child) {
+  text-align: center;
+}
+
+.sku-wise-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #eeeeee;
+  color: #111111;
+  font-size: 12.5px;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+.sku-wise-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.sku-product-detail-cell {
+  max-width: 360px;
+}
+
+.sku-product-detail-cell > strong {
+  display: block;
+  color: #111111;
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.sku-product-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  color: #777777;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.sku-product-meta b {
+  color: #bf0000;
+  font-weight: 700;
+}
+
+.sku-product-meta button {
+  border: none;
+  background: transparent;
+  color: #777777;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.sku-profit-badge,
+.sku-loss-badge {
+  min-height: 22px;
+  padding: 0 7px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 3px;
+  color: #ffffff;
+  font-size: 10.5px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.sku-profit-badge {
+  background: #47a957;
+}
+
+.sku-loss-badge {
+  background: #ef3b35;
+}
+
+.sku-view-btn {
+  height: 30px;
+  padding: 0 11px;
+  border-radius: 5px;
+  border: 1.3px solid rgba(191, 0, 0, 0.45);
+  background: #ffffff;
+  color: #bf0000;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.sku-view-btn:hover {
+  background: #fff7f7;
+}
+
+.sku-wise-empty {
+  padding: 26px 16px;
+  color: #777777;
+  font-size: 13px;
+  font-weight: 650;
+  text-align: center;
+}
+
+/* Responsive */
+
+@media (max-width: 760px) {
+  .sku-wise-header h2 {
+    font-size: 22px;
+  }
+
+  .sku-wise-tabs {
+    gap: 18px;
+  }
+
+  .sku-wise-tabs button {
+    font-size: 12px;
+  }
+
+  .sku-wise-filters {
+    grid-template-columns: minmax(210px, 1fr) minmax(150px, 180px) auto;
+    overflow-x: auto;
+    padding: 8px 0 4px;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .sku-wise-table-wrap {
+    max-height: 480px;
+  }
+
+  .sku-wise-table {
+    min-width: 760px;
+  }
+
+  .sku-wise-table th,
+  .sku-wise-table td {
+    padding: 11px 12px;
+  }
+
+  .sku-product-detail-cell {
+    max-width: 260px;
+  }
+
+  .sku-product-detail-cell > strong {
+    font-size: 12.5px;
+  }
+}

@@ -4,8 +4,10 @@ import { marketplaceConfig } from "../../config/MarketplaceConfig";
 import ReportInitializer from "./ReportInitializer";
 import ProfitLossSection from "./sections/ProfitLossSection";
 import OrderSummarySection from "./sections/OrderSummarySection";
-import "./reportDisplay.css";
 import FulfillmentDetailsSection from "./sections/FulfillmentDetailsSection";
+import SkuWiseDetailsSection from "./sections/sku-wise-details/SkuWiseDetailsSection";
+
+import "./reportDisplay.css";
 
 function ReportDisplayMain() {
   const { firmName, marketplace, year, month } = useParams();
@@ -77,6 +79,7 @@ function ReportDisplayMain() {
             <ProfitLossSection displayMonth={displayMonth} />
             <OrderSummarySection />
             <FulfillmentDetailsSection />
+            <SkuWiseDetailsSection />
           </div>
         )}
       </div>
