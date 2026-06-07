@@ -6,6 +6,7 @@ import ProfitLossSection from "./sections/ProfitLossSection";
 import OrderSummarySection from "./sections/OrderSummarySection";
 import FulfillmentDetailsSection from "./sections/FulfillmentDetailsSection";
 import SkuWiseDetailsSection from "./sections/sku-wise-details/SkuWiseDetailsSection";
+import OrderWiseDetailsSection from "./sections/order-wise-details/OrderWiseDetailsSection";
 
 import "./reportDisplay.css";
 
@@ -80,6 +81,7 @@ function ReportDisplayMain() {
             <OrderSummarySection />
             <FulfillmentDetailsSection />
             <SkuWiseDetailsSection />
+            <OrderWiseDetailsSection />
           </div>
         )}
       </div>

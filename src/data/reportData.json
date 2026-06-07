@@ -269,5 +269,195 @@
                 "profitType": "lossMaking"
             }
         ]
+    },
+    "orderWiseDetails": {
+        "title": "Order Wise Profits",
+        "summary": {
+            "totalProfit": 180151.55,
+            "totalUnits": 1292,
+            "totalSettlement": 250084.75,
+            "averageProfit": 139.44
+        },
+        "tabs": [
+            {
+                "key": "all",
+                "label": "ALL"
+            },
+            {
+                "key": "cancelled",
+                "label": "CANCELLED"
+            },
+            {
+                "key": "claimed",
+                "label": "CLAIMED"
+            },
+            {
+                "key": "delivered",
+                "label": "DELIVERED"
+            },
+            {
+                "key": "rto",
+                "label": "RTO"
+            },
+            {
+                "key": "returned",
+                "label": "RETURNED"
+            }
+        ],
+        "orders": [
+            {
+                "orderId": "405-1152",
+                "sku": "JT-WT-01",
+                "units": 0,
+                "status": "cancelled",
+                "settlement": 0,
+                "purchase": 0,
+                "profit": 0
+            },
+            {
+                "orderId": "407-2017",
+                "sku": "JT-WT-02",
+                "units": 1,
+                "status": "delivered",
+                "settlement": 317.66,
+                "purchase": 71.8,
+                "profit": 245.86
+            },
+            {
+                "orderId": "405-7059",
+                "sku": "JT-WT-3",
+                "units": 1,
+                "status": "delivered",
+                "settlement": 301.21,
+                "purchase": 71.8,
+                "profit": 229.41
+            },
+            {
+                "orderId": "402-0434",
+                "sku": "JT-WT-4",
+                "units": 1,
+                "status": "returned",
+                "settlement": -125.46,
+                "purchase": 0,
+                "profit": -125.46
+            },
+            {
+                "orderId": "403-9620",
+                "sku": "JT-WT-5",
+                "units": 1,
+                "status": "delivered",
+                "settlement": 307.34,
+                "purchase": 71.8,
+                "profit": 235.54
+            },
+            {
+                "orderId": "403-7699",
+                "sku": "JT-WT-6",
+                "units": 1,
+                "status": "delivered",
+                "settlement": 299.33,
+                "purchase": 71.8,
+                "profit": 227.53
+            },
+            {
+                "orderId": "407-2600",
+                "sku": "JT-WT-7",
+                "units": 1,
+                "status": "delivered",
+                "settlement": 185.31,
+                "purchase": 71.8,
+                "profit": 113.51
+            },
+            {
+                "orderId": "408-6273",
+                "sku": "JT-WT-8",
+                "units": 1,
+                "status": "returned",
+                "settlement": -133.71,
+                "purchase": 0,
+                "profit": -133.71
+            },
+            {
+                "orderId": "402-7883",
+                "sku": "JT-WT-9",
+                "units": 1,
+                "status": "delivered",
+                "settlement": 309.49,
+                "purchase": 71.8,
+                "profit": 237.69
+            },
+            {
+                "orderId": "403-8452",
+                "sku": "JT-WT-10",
+                "units": 1,
+                "status": "delivered",
+                "settlement": 309.7,
+                "purchase": 71.8,
+                "profit": 237.9
+            },
+            {
+                "orderId": "402-3284",
+                "sku": "JT-WT-01",
+                "units": 1,
+                "status": "delivered",
+                "settlement": 290.27,
+                "purchase": 71.8,
+                "profit": 218.47
+            },
+            {
+                "orderId": "402-1780",
+                "sku": "JT-WT-02",
+                "units": 1,
+                "status": "delivered",
+                "settlement": 287.9,
+                "purchase": 71.8,
+                "profit": 216.1
+            },
+            {
+                "orderId": "404-4290",
+                "sku": "JT-WT-3",
+                "units": 1,
+                "status": "delivered",
+                "settlement": 307.34,
+                "purchase": 71.8,
+                "profit": 235.54
+            },
+            {
+                "orderId": "404-1023",
+                "sku": "JT-WT-4",
+                "units": 1,
+                "status": "delivered",
+                "settlement": 279.02,
+                "purchase": 71.8,
+                "profit": 207.22
+            },
+            {
+                "orderId": "406-7645",
+                "sku": "JT-WT-5",
+                "units": 1,
+                "status": "delivered",
+                "settlement": 414.72,
+                "purchase": 71.8,
+                "profit": 342.92
+            },
+            {
+                "orderId": "405-3331",
+                "sku": "JT-WT-6",
+                "units": 1,
+                "status": "rto",
+                "settlement": -1.84,
+                "purchase": 0,
+                "profit": -1.84
+            },
+            {
+                "orderId": "407-8890",
+                "sku": "JT-WT-7",
+                "units": 1,
+                "status": "claimed",
+                "settlement": 0,
+                "purchase": 71.8,
+                "profit": -71.8
+            }
+        ]
     }
 }
