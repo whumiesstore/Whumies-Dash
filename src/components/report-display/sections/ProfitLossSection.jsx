@@ -51,6 +51,9 @@ function ProfitLossSection({ displayMonth }) {
   const data = reportData.profitLoss;
   const isProfit = Number(data.profit) >= 0;
   const [activeInfo, setActiveInfo] = useState(null);
+  const [isOtherChargesOpen, setIsOtherChargesOpen] = useState(false);
+
+  const otherChargesBreakdown = data.otherChargesBreakdown || [];
 
   return (
     <>
@@ -95,15 +98,39 @@ function ProfitLossSection({ displayMonth }) {
             </div>
           </div>
 
-          <button type="button" className="profit-loss-row clickable">
+          <button
+            type="button"
+            className="profit-loss-row clickable"
+            onClick={() => setIsOtherChargesOpen((prev) => !prev)}
+          >
             <div className="profit-loss-label orange">
-              Other Charges (Click to view breakdown)
+              Other Charges (
+              {isOtherChargesOpen
+                ? "Click to hide breakdown"
+                : "Click to view breakdown"}
+              )
             </div>
 
             <div className="profit-loss-value">
               {formatCurrency(data.otherCharges)}
             </div>
           </button>
+
+          {isOtherChargesOpen &&
+            otherChargesBreakdown.map((charge, index) => (
+              <div
+                className="profit-loss-row other-charge-row"
+                key={`${charge.name}-${index}`}
+              >
+                <div className="profit-loss-label other-charge-label">
+                  {charge.name}
+                </div>
+
+                <div className="profit-loss-value">
+                  {formatCurrency(charge.amount)}
+                </div>
+              </div>
+            ))}
 
           <div className="profit-loss-row">
             <div className="profit-loss-label strong">

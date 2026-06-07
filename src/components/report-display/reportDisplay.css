@@ -562,6 +562,27 @@
   white-space: nowrap;
 }
 
+.other-charge-row {
+  background: #fffdf9;
+}
+
+.other-charge-label {
+  color: #222222;
+  font-weight: 500;
+  padding-left: 8px;
+}
+
+.other-charge-label::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ffb761;
+  display: inline-block;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
 @media (max-width: 480px) {
   .profit-loss-row {
     min-width: 360px;

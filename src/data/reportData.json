@@ -1,15 +1,41 @@
 {
     "profitLoss": {
         "title": "Profit and Loss Analysis",
-        "salesIncGst": 259834,
-        "refundsCancellationsFeesIncGst": 176541.22,
-        "refundsCancellationsFeesPercentage": 67.94,
-        "netSettlementReceivedIncGst": 83292.78,
-        "netSettlementPercentage": 32.06,
-        "otherCharges": -12032.45,
+        "salesIncGst": 396159,
+        "refundsCancellationsFeesIncGst": 146074.25,
+        "refundsCancellationsFeesPercentage": 36.87,
+        "netSettlementReceivedIncGst": 250084.75,
+        "netSettlementPercentage": 63.13,
+        "otherCharges": -150257.9,
+        "otherChargesBreakdown": [
+            {
+                "name": "Cost of Advertising",
+                "amount": -51256.16
+            },
+            {
+                "name": "FBA Inbound Pickup Service",
+                "amount": -30756.74
+            },
+            {
+                "name": "FBA Removal Order: Return Fee",
+                "amount": -436.6
+            },
+            {
+                "name": "FBA storage fee",
+                "amount": -37243.41
+            },
+            {
+                "name": "FBA Long-Term Storage Fee",
+                "amount": -30607.47
+            },
+            {
+                "name": "Adjustment",
+                "amount": 42.48
+            }
+        ],
         "purchaseCost": 67133,
-        "profit": -9582.67,
-        "roi": -52.61,
-        "status": "loss"
+        "profit": 32693.85,
+        "roi": 48.7,
+        "status": "profit"
     }
 }
