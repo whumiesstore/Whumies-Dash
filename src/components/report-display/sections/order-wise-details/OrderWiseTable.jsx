@@ -1,9 +1,5 @@
 import { formatCurrency } from "../../../../utils/formatters";
-import CopyIcon from "../../../ui/icons/CopyIcon";
-
-function copyText(value) {
-  navigator.clipboard?.writeText(value);
-}
+import OrderCell from "./OrderCell";
 
 const statusLabels = {
   cancelled: "Cancelled",
@@ -41,16 +37,10 @@ function OrderWiseTable({ orders, onViewOrder }) {
             orders.map((order) => (
               <tr key={`${order.orderId}-${order.sku}`}>
                 <td>
-                  <span className="order-id-cell">
-                    {order.orderId}
-                    <button
-                      type="button"
-                      onClick={() => copyText(order.orderId)}
-                      aria-label="Copy order id"
-                    >
-                      <CopyIcon fill="#777777" width={13} height={13} />
-                    </button>
-                  </span>
+                  <OrderCell
+                    key={`${order.orderId}-${order.sku}`}
+                    order={order}
+                  />
                 </td>
 
                 <td>{order.sku}</td>
