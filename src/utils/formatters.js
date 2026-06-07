@@ -41,3 +41,6 @@ export function formatCurrency(value) {
   return `${Number(value) < 0 ? "-" : ""}₹${formatted}`;
 }
 
+export function formatOrders(value) {
+  return `${Number(value || 0).toLocaleString("en-IN")} orders`;
+}

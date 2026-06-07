@@ -37,5 +37,34 @@
         "profit": 32693.85,
         "roi": 48.7,
         "status": "profit"
+    },
+    "orderSummary": {
+        "overallOrders": 1039,
+        "delivered": {
+            "total": 988,
+            "breakdown": [
+                {
+                    "label": "Not-Returned",
+                    "orders": 816
+                },
+                {
+                    "label": "Returned(Claimed)",
+                    "orders": 35
+                },
+                {
+                    "label": "Returned",
+                    "orders": 137
+                }
+            ]
+        },
+        "undelivered": {
+            "total": 51,
+            "breakdown": [
+                {
+                    "label": "Courier Return",
+                    "orders": 51
+                }
+            ]
+        }
     }
 }

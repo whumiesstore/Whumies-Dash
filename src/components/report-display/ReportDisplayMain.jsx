@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { marketplaceConfig } from "../../config/MarketplaceConfig";
 import ReportInitializer from "./ReportInitializer";
 import ProfitLossSection from "./sections/ProfitLossSection";
+import OrderSummarySection from "./sections/OrderSummarySection";
 import "./reportDisplay.css";
 
 function ReportDisplayMain() {
@@ -73,6 +74,7 @@ function ReportDisplayMain() {
         ) : (
           <div className="report-sections">
             <ProfitLossSection displayMonth={displayMonth} />
+            <OrderSummarySection />
           </div>
         )}
       </div>
