@@ -94,7 +94,80 @@
                 "settlement": 74000,
                 "purchaseCost": 54095.07,
                 "profit": 19904.93,
-                "profitType": "highProfit"
+                "profitType": "highProfit",
+                "details": {
+                    "statusRows": [
+                        {
+                            "type": "section",
+                            "label": "Reached Customer (114 units)"
+                        },
+                        {
+                            "type": "status",
+                            "label": "Delivered",
+                            "description": "Sold & kept — not returned",
+                            "units": 100,
+                            "settlement": 29779.8,
+                            "statusType": "success"
+                        },
+                        {
+                            "type": "status",
+                            "label": "Delivered → Returned",
+                            "description": "Reached customer, then returned — counted separately from Delivered",
+                            "units": 14,
+                            "settlement": -1522.04,
+                            "statusType": "danger"
+                        },
+                        {
+                            "type": "section",
+                            "label": "Never Reached Customer (6 units)"
+                        },
+                        {
+                            "type": "status",
+                            "label": "Courier Return (RTO)",
+                            "description": "Never reached the customer",
+                            "units": 6,
+                            "settlement": -1.84,
+                            "statusType": "warning"
+                        }
+                    ],
+                    "costBreakdown": {
+                        "note": "Breakdown of units that contribute to the purchase cost calculation",
+                        "rows": [
+                            {
+                                "category": "Delivered",
+                                "units": 100,
+                                "settlement": 29779.8,
+                                "tone": "green"
+                            },
+                            {
+                                "category": "Returned Claimed (SAFE-T)",
+                                "units": 1,
+                                "settlement": 0,
+                                "tone": "blue"
+                            }
+                        ],
+                        "total": {
+                            "category": "Cost-bearing Units",
+                            "units": 101,
+                            "settlement": 27156.73
+                        },
+                        "costFormula": {
+                            "costPerUnit": 71.8,
+                            "units": 101,
+                            "total": 7251.8
+                        }
+                    },
+                    "profit": 19904.93,
+                    "costFooter": {
+                        "product": 50,
+                        "productGstPercent": 18,
+                        "productGst": 9,
+                        "packing": 10,
+                        "packingGstPercent": 18,
+                        "packingGst": 1.8,
+                        "other": 1
+                    }
+                }
             },
             {
                 "productName": "JUNIOR TURTLE | Wooden Alphabet Puzzle Board for Kids",

@@ -1,0 +1,509 @@
+.sku-view-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 14000;
+  padding: 18px;
+  background: rgba(0, 0, 0, 0.46);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sku-view-modal {
+  width: min(100%, 760px);
+  height: auto;
+  max-height: 90vh;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  display: flex;
+  flex-direction: column;
+}
+
+.sku-view-header {
+  flex-shrink: 0;
+  min-height: 58px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #eeeeee;
+  background: #ffffff;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
+  align-items: start;
+}
+
+.sku-view-header h2 {
+  color: #111111;
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.45;
+}
+
+.sku-view-header button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: #999999;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.sku-view-body {
+  padding: 18px 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Status table */
+
+.sku-status-card,
+.sku-cost-breakdown-card,
+.sku-modal-profit-card,
+.sku-modal-cost-footer {
+  width: 100%;
+  border: 1px solid #e1e1e1;
+  border-radius: 7px;
+  background: #ffffff;
+}
+
+.sku-cost-table-wrap {
+  width: 100%;
+  border: 1px solid #e1e1e1;
+  border-radius: 7px;
+}
+
+.sku-status-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.sku-status-table th,
+.sku-status-table td {
+  padding: 11px 12px;
+  border-bottom: 1px solid #eeeeee;
+  color: #111111;
+  font-size: 12.5px;
+  font-weight: 600;
+  vertical-align: top;
+}
+
+.sku-status-table th {
+  background: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  text-align: left;
+}
+
+.sku-status-table th:nth-child(1),
+.sku-status-table td:nth-child(1) {
+  width: 58%;
+  text-align: left;
+}
+
+.sku-status-table th:nth-child(2),
+.sku-status-table td:nth-child(2) {
+  width: 15%;
+  text-align: right;
+}
+
+.sku-status-table th:nth-child(3),
+.sku-status-table td:nth-child(3) {
+  width: 27%;
+  text-align: right;
+}
+
+.sku-status-table tr:last-child td {
+  border-bottom: none;
+}
+
+.sku-status-section-row td {
+  background: #f5f5f5;
+  color: #777777;
+  font-size: 11.5px;
+  font-weight: 750;
+  text-align: left !important;
+}
+
+.sku-status-table td span {
+  display: block;
+  color: #777777;
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 3px;
+}
+
+.sku-status-name {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 850;
+  line-height: 1.35;
+}
+
+.sku-status-name.success {
+  color: #49b95b;
+}
+
+.sku-status-name.danger {
+  color: #ef3b35;
+}
+
+.sku-status-name.warning {
+  color: #ff8a00;
+}
+
+/* Cost breakdown */
+
+.sku-cost-breakdown-card {
+  padding: 16px;
+}
+
+.sku-cost-breakdown-card > p {
+  color: #777777;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.sku-cost-breakdown-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.sku-cost-breakdown-table th,
+.sku-cost-breakdown-table td {
+  padding: 11px 12px;
+  border-bottom: 1px solid #eeeeee;
+  color: #111111;
+  font-size: 12.5px;
+  font-weight: 600;
+  vertical-align: top;
+}
+
+.sku-status-table th,
+.sku-status-table td,
+.sku-cost-breakdown-table th,
+.sku-cost-breakdown-table td {
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+.sku-status-table th:nth-child(2),
+.sku-status-table td:nth-child(2),
+.sku-status-table th:nth-child(3),
+.sku-status-table td:nth-child(3),
+.sku-cost-breakdown-table th:nth-child(2),
+.sku-cost-breakdown-table td:nth-child(2),
+.sku-cost-breakdown-table th:nth-child(3),
+.sku-cost-breakdown-table td:nth-child(3) {
+  white-space: nowrap;
+}
+
+.sku-cost-breakdown-table th {
+  background: #f6f6f6;
+  font-size: 12px;
+  font-weight: 800;
+  text-align: left;
+}
+
+.sku-cost-breakdown-table th:nth-child(1),
+.sku-cost-breakdown-table td:nth-child(1) {
+  width: 48%;
+  text-align: left;
+}
+
+.sku-cost-breakdown-table th:nth-child(2),
+.sku-cost-breakdown-table td:nth-child(2) {
+  width: 18%;
+  text-align: right;
+}
+
+.sku-cost-breakdown-table th:nth-child(3),
+.sku-cost-breakdown-table td:nth-child(3) {
+  width: 34%;
+  text-align: right;
+}
+
+.sku-cost-breakdown-table tr:last-child td {
+  border-bottom: none;
+}
+
+.sku-cost-breakdown-table td:first-child {
+  font-weight: 750;
+}
+
+.tone-green {
+  color: #49b95b !important;
+  font-weight: 850 !important;
+}
+
+.tone-blue {
+  color: #0b83d5 !important;
+  font-weight: 850 !important;
+}
+
+.cost-bearing-row {
+  background: #eeeeee;
+}
+
+.cost-bearing-row td {
+  font-weight: 850;
+}
+
+.cost-bearing-row td:nth-child(2) {
+  color: #bf0000;
+}
+
+.cost-bearing-row td:nth-child(3) {
+  color: #49b95b;
+}
+
+/* Formula */
+
+.sku-cost-formula {
+  margin-top: 14px;
+  min-height: 52px;
+  padding: 12px 14px;
+  border: 1px solid #bfd8f5;
+  border-radius: 7px;
+  background: #eef6ff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: #777777;
+  font-size: 12.5px;
+  font-weight: 650;
+}
+
+.sku-cost-formula strong {
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: #bf0000;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.sku-cost-formula b {
+  color: #bf0000;
+  font-size: 15px;
+  font-weight: 850;
+}
+
+/* Profit and footer */
+
+.sku-modal-profit-card {
+  min-height: 52px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sku-modal-profit-card strong {
+  color: #111111;
+  font-size: 14px;
+  font-weight: 850;
+}
+
+.sku-modal-profit-card b {
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.sku-modal-profit-card.positive {
+  background: #f4fbf5;
+}
+
+.sku-modal-profit-card.positive b {
+  color: #49b95b;
+}
+
+.sku-modal-profit-card.negative {
+  background: #fff1f1;
+}
+
+.sku-modal-profit-card.negative b {
+  color: #ef3b35;
+}
+
+.sku-modal-cost-footer {
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 12px;
+  color: #666666;
+  font-size: 11.5px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.sku-modal-cost-footer span:not(:last-child) {
+  border-right: 1px solid #e1e1e1;
+}
+
+/* Mobile */
+
+@media (max-width: 760px) {
+  .sku-view-overlay {
+    padding: 0;
+    align-items: center;
+  }
+
+  .sku-view-modal {
+    width: calc(100% - 32px);
+    max-height: 88vh;
+    border-radius: 8px;
+  }
+
+  .sku-view-header {
+    padding: 14px 16px;
+  }
+
+  .sku-view-header h2 {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .sku-view-body {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .sku-status-table th,
+  .sku-status-table td,
+  .sku-cost-breakdown-table th,
+  .sku-cost-breakdown-table td {
+    padding: 11px 10px;
+    font-size: 12.5px;
+  }
+
+  .sku-status-table th {
+    font-size: 12px;
+  }
+
+  .sku-status-name {
+    font-size: 12.5px;
+  }
+
+  .sku-status-table td span {
+    font-size: 11.5px;
+    line-height: 1.5;
+  }
+
+  .sku-cost-breakdown-card {
+    padding: 14px;
+  }
+
+  .sku-cost-formula {
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .sku-cost-formula b {
+    display: block;
+    width: 100%;
+    font-size: 17px;
+  }
+
+  .sku-modal-profit-card {
+    min-height: 54px;
+  }
+
+  .sku-modal-profit-card b {
+    font-size: 18px;
+  }
+
+  .sku-modal-cost-footer {
+    text-align: left;
+    flex-direction: column;
+  }
+
+  .sku-modal-cost-footer span:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid #e1e1e1;
+    padding-bottom: 8px;
+  }
+}
+/* Extra small screens: make status and breakdown tables horizontally scrollable */
+@media (max-width: 480px) {
+  .sku-view-modal {
+    width: calc(100% - 18px);
+    max-height: 90vh;
+  }
+
+  .sku-view-body {
+    padding: 12px;
+  }
+
+  /* Status table scroll container */
+  .sku-status-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    min-height: fit-content;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sku-status-table {
+    width: 560px;
+    min-width: 560px;
+    max-width: none;
+    table-layout: fixed;
+  }
+
+  .sku-cost-breakdown-card {
+    min-width: 0;
+  }
+
+  .sku-cost-table-wrap {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sku-cost-breakdown-table {
+    width: 520px;
+    min-width: 520px;
+    max-width: none;
+    table-layout: fixed;
+  }
+
+  .sku-status-table th,
+  .sku-status-table td,
+  .sku-cost-breakdown-table th,
+  .sku-cost-breakdown-table td {
+    padding: 10px 11px;
+    font-size: 12px;
+  }
+
+  .sku-status-table td span {
+    font-size: 11px;
+  }
+
+  .sku-status-name {
+    font-size: 12px;
+  }
+}
