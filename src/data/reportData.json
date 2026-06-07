@@ -66,5 +66,18 @@
                 }
             ]
         }
+    },
+    "fulfillmentDetails": {
+        "title": "Fulfillment Details",
+        "items": [
+            {
+                "label": "FBA Orders",
+                "value": 815
+            },
+            {
+                "label": "Easy Ship Orders",
+                "value": 1
+            }
+        ]
     }
 }

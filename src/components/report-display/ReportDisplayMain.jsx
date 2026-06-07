@@ -5,6 +5,7 @@ import ReportInitializer from "./ReportInitializer";
 import ProfitLossSection from "./sections/ProfitLossSection";
 import OrderSummarySection from "./sections/OrderSummarySection";
 import "./reportDisplay.css";
+import FulfillmentDetailsSection from "./sections/FulfillmentDetailsSection";
 
 function ReportDisplayMain() {
   const { firmName, marketplace, year, month } = useParams();
@@ -75,6 +76,7 @@ function ReportDisplayMain() {
           <div className="report-sections">
             <ProfitLossSection displayMonth={displayMonth} />
             <OrderSummarySection />
+            <FulfillmentDetailsSection />
           </div>
         )}
       </div>
