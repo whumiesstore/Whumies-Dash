@@ -278,6 +278,32 @@
   padding: 0;
 }
 
+.sku-profit-cell {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 42px;
+}
+
+.sku-profit-value {
+  display: block;
+  color: #111111;
+  font-size: 12.5px;
+  font-weight: 750;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.sku-profit-value.positive {
+  color: #111111;
+}
+
+.sku-profit-value.negative {
+  color: #ef3b35;
+}
+
 .sku-profit-badge,
 .sku-loss-badge {
   min-height: 22px;

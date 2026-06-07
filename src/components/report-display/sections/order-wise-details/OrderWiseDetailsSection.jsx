@@ -57,6 +57,29 @@ function OrderWiseDetailsSection() {
     });
   }, [orders, activeTab, orderQuery, skuQuery, settlementFilter]);
 
+  const filteredSummary = useMemo(() => {
+    const totalProfit = filteredOrders.reduce((total, order) => {
+      return total + Number(order.profit || 0);
+    }, 0);
+
+    const totalUnits = filteredOrders.reduce((total, order) => {
+      return total + Number(order.units || 0);
+    }, 0);
+
+    const totalSettlement = filteredOrders.reduce((total, order) => {
+      return total + Number(order.settlement || 0);
+    }, 0);
+
+    const averageProfit = totalUnits > 0 ? totalProfit / totalUnits : 0;
+
+    return {
+      totalProfit,
+      totalUnits,
+      totalSettlement,
+      averageProfit,
+    };
+  }, [filteredOrders]);
+
   const totalPages = Math.max(1, Math.ceil(filteredOrders.length / PAGE_SIZE));
 
   const paginatedOrders = filteredOrders.slice(
@@ -121,7 +144,7 @@ function OrderWiseDetailsSection() {
         onDownloadCsv={handleDownloadCsv}
       />
 
-      <OrderWiseStats summary={data.summary} />
+      <OrderWiseStats summary={filteredSummary} />
 
       <OrderWiseTable orders={paginatedOrders} onViewOrder={handleViewOrder} />
 

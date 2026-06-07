@@ -26,7 +26,7 @@ function OrderWiseTable({ orders, onViewOrder }) {
             <th>Settlement</th>
             <th>Purchase</th>
             <th>Profit</th>
-            <th>View</th>
+            <th></th>
           </tr>
         </thead>
 

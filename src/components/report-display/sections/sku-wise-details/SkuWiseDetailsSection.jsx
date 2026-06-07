@@ -63,6 +63,12 @@ function SkuWiseDetailsSection() {
     });
   }, [products, activeTab, searchValue, maxSettlement]);
 
+  const filteredTotalProfit = useMemo(() => {
+    return filteredProducts.reduce((total, product) => {
+      return total + Number(product.profit || 0);
+    }, 0);
+  }, [filteredProducts]);
+
   const handleDownloadCsv = () => {
     const activeTabLabel =
       tabsWithCounts.find((tab) => tab.key === activeTab)?.label || "ALL";
@@ -92,7 +98,7 @@ function SkuWiseDetailsSection() {
       <SkuWiseHeader
         title={data.title}
         subtitle={data.subtitle}
-        totalProfit={formatCurrency(data.totalProfit)}
+        totalProfit={formatCurrency(filteredTotalProfit)}
       />
 
       <SkuWiseTabs

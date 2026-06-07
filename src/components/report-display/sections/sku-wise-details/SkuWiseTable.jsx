@@ -37,15 +37,27 @@ function SkuWiseTable({ products, onViewSku }) {
                 <td>{formatCurrency(product.purchaseCost)}</td>
 
                 <td>
-                  <span
-                    className={
-                      Number(product.profit || 0) >= 0
-                        ? "sku-profit-badge"
-                        : "sku-loss-badge"
-                    }
-                  >
-                    {Number(product.profit || 0) >= 0 ? "Profit" : "Loss"}
-                  </span>
+                  <div className="sku-profit-cell">
+                    <strong
+                      className={
+                        Number(product.profit || 0) >= 0
+                          ? "sku-profit-value positive"
+                          : "sku-profit-value negative"
+                      }
+                    >
+                      {formatCurrency(product.profit)}
+                    </strong>
+
+                    <span
+                      className={
+                        Number(product.profit || 0) >= 0
+                          ? "sku-profit-badge"
+                          : "sku-loss-badge"
+                      }
+                    >
+                      {Number(product.profit || 0) >= 0 ? "Profit" : "Loss"}
+                    </span>
+                  </div>
                 </td>
 
                 <td>
