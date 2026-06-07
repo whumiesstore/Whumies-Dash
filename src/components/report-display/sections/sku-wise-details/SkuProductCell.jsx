@@ -1,12 +1,28 @@
-function copyText(value) {
-  navigator.clipboard?.writeText(value);
-}
+import { useState } from "react";
+import CopyIcon from "../../../ui/icons/CopyIcon";
+import CheckIcon from "../../../ui/icons/CheckIcon";
 
 function getAmazonProductUrl(asin) {
   return `https://www.amazon.in/dp/${asin}`;
 }
 
 function SkuProductCell({ product }) {
+  const [copiedType, setCopiedType] = useState(null);
+
+  const copyText = async (value, type) => {
+    try {
+      await navigator.clipboard.writeText(value);
+
+      setCopiedType(type);
+
+      setTimeout(() => {
+        setCopiedType(null);
+      }, 1200);
+    } catch (error) {
+      console.error("Copy failed:", error);
+    }
+  };
+
   return (
     <div className="sku-product-detail-cell">
       <a
@@ -20,8 +36,18 @@ function SkuProductCell({ product }) {
 
       <div className="sku-product-meta">
         <span>SKU: {product.sku}</span>
-        <button type="button" onClick={() => copyText(product.sku)}>
-          ⧉
+
+        <button
+          type="button"
+          className="sku-copy-btn"
+          onClick={() => copyText(product.sku, "sku")}
+          aria-label="Copy SKU"
+        >
+          {copiedType === "sku" ? (
+            <CheckIcon fill="#2f8f46" width={16} height={16} />
+          ) : (
+            <CopyIcon fill="#777777" width={15} height={15} />
+          )}
         </button>
 
         <i>|</i>
@@ -29,8 +55,18 @@ function SkuProductCell({ product }) {
         <span>
           ASIN: <b>{product.asin}</b>
         </span>
-        <button type="button" onClick={() => copyText(product.asin)}>
-          ⧉
+
+        <button
+          type="button"
+          className="sku-copy-btn"
+          onClick={() => copyText(product.asin, "asin")}
+          aria-label="Copy ASIN"
+        >
+          {copiedType === "asin" ? (
+            <CheckIcon fill="#2f8f46" width={16} height={16} />
+          ) : (
+            <CopyIcon fill="#777777" width={15} height={15} />
+          )}
         </button>
       </div>
     </div>
