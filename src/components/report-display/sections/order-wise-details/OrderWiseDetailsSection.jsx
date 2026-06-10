@@ -6,6 +6,7 @@ import OrderWiseFilters from "./OrderWiseFilters";
 import OrderWiseStats from "./OrderWiseStats";
 import OrderWiseTable from "./OrderWiseTable";
 import OrderWisePagination from "./OrderWisePagination";
+import OrderViewModal from "./order-view-modal/OrderViewModal";
 import "./orderWiseDetails.css";
 
 const PAGE_SIZE = 15;
@@ -18,6 +19,7 @@ function OrderWiseDetailsSection() {
   const [skuQuery, setSkuQuery] = useState("all");
   const [settlementFilter, setSettlementFilter] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedOrder, setSelectedOrder] = useState(null);
 
   const orders = data.orders || [];
 
@@ -112,7 +114,7 @@ function OrderWiseDetailsSection() {
   };
 
   const handleViewOrder = (order) => {
-    console.log("View order later", order);
+    setSelectedOrder(order);
   };
 
   return (
@@ -155,6 +157,13 @@ function OrderWiseDetailsSection() {
         pageSize={PAGE_SIZE}
         onPageChange={setCurrentPage}
       />
+
+      {selectedOrder && (
+        <OrderViewModal
+          order={selectedOrder}
+          onClose={() => setSelectedOrder(null)}
+        />
+      )}
     </section>
   );
 }
