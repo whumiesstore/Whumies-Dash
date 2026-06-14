@@ -1700,5 +1700,410 @@
                 ]
             }
         ]
+    },
+    "stateWiseBreakdown": {
+        "title": "STATE-WISE BREAKDOWN",
+        "states": [
+            {
+                "state": "KARNATAKA",
+                "postalCodes": [
+                    {
+                        "postal": "560076",
+                        "total": 16,
+                        "del": 9,
+                        "clm": 2,
+                        "ret": 4,
+                        "rto": 1,
+                        "can": 0
+                    },
+                    {
+                        "postal": "560037",
+                        "total": 13,
+                        "del": 9,
+                        "clm": 0,
+                        "ret": 3,
+                        "rto": 0,
+                        "can": 1
+                    },
+                    {
+                        "postal": "560087",
+                        "total": 13,
+                        "del": 11,
+                        "clm": 0,
+                        "ret": 1,
+                        "rto": 1,
+                        "can": 0
+                    },
+                    {
+                        "postal": "560043",
+                        "total": 12,
+                        "del": 11,
+                        "clm": 1,
+                        "ret": 0,
+                        "rto": 0,
+                        "can": 0
+                    },
+                    {
+                        "postal": "560035",
+                        "total": 11,
+                        "del": 7,
+                        "clm": 0,
+                        "ret": 2,
+                        "rto": 1,
+                        "can": 1
+                    },
+                    {
+                        "postal": "560066",
+                        "total": 11,
+                        "del": 7,
+                        "clm": 1,
+                        "ret": 2,
+                        "rto": 0,
+                        "can": 1
+                    },
+                    {
+                        "postal": "560067",
+                        "total": 11,
+                        "del": 8,
+                        "clm": 1,
+                        "ret": 1,
+                        "rto": 0,
+                        "can": 1
+                    },
+                    {
+                        "postal": "560068",
+                        "total": 11,
+                        "del": 7,
+                        "clm": 1,
+                        "ret": 0,
+                        "rto": 3,
+                        "can": 0
+                    },
+                    {
+                        "postal": "560100",
+                        "total": 11,
+                        "del": 7,
+                        "clm": 1,
+                        "ret": 2,
+                        "rto": 1,
+                        "can": 0
+                    },
+                    {
+                        "postal": "560064",
+                        "total": 9,
+                        "del": 6,
+                        "clm": 0,
+                        "ret": 1,
+                        "rto": 1,
+                        "can": 1
+                    },
+                    {
+                        "postal": "560103",
+                        "total": 9,
+                        "del": 5,
+                        "clm": 1,
+                        "ret": 2,
+                        "rto": 0,
+                        "can": 1
+                    },
+                    {
+                        "postal": "560098",
+                        "total": 6,
+                        "del": 5,
+                        "clm": 0,
+                        "ret": 1,
+                        "rto": 0,
+                        "can": 0
+                    }
+                ]
+            },
+            {
+                "state": "MAHARASHTRA",
+                "postalCodes": [
+                    {
+                        "postal": "400001",
+                        "total": 24,
+                        "del": 18,
+                        "clm": 0,
+                        "ret": 3,
+                        "rto": 1,
+                        "can": 2
+                    },
+                    {
+                        "postal": "400063",
+                        "total": 19,
+                        "del": 14,
+                        "clm": 1,
+                        "ret": 2,
+                        "rto": 1,
+                        "can": 1
+                    },
+                    {
+                        "postal": "411001",
+                        "total": 18,
+                        "del": 15,
+                        "clm": 0,
+                        "ret": 1,
+                        "rto": 1,
+                        "can": 1
+                    },
+                    {
+                        "postal": "411057",
+                        "total": 16,
+                        "del": 12,
+                        "clm": 0,
+                        "ret": 2,
+                        "rto": 1,
+                        "can": 1
+                    },
+                    {
+                        "postal": "400706",
+                        "total": 14,
+                        "del": 11,
+                        "clm": 1,
+                        "ret": 1,
+                        "rto": 0,
+                        "can": 1
+                    },
+                    {
+                        "postal": "421301",
+                        "total": 11,
+                        "del": 8,
+                        "clm": 0,
+                        "ret": 2,
+                        "rto": 0,
+                        "can": 1
+                    }
+                ]
+            },
+            {
+                "state": "TAMIL NADU",
+                "postalCodes": [
+                    {
+                        "postal": "600001",
+                        "total": 21,
+                        "del": 17,
+                        "clm": 1,
+                        "ret": 1,
+                        "rto": 1,
+                        "can": 1
+                    },
+                    {
+                        "postal": "600042",
+                        "total": 18,
+                        "del": 14,
+                        "clm": 0,
+                        "ret": 2,
+                        "rto": 1,
+                        "can": 1
+                    },
+                    {
+                        "postal": "641001",
+                        "total": 17,
+                        "del": 13,
+                        "clm": 2,
+                        "ret": 1,
+                        "rto": 0,
+                        "can": 1
+                    },
+                    {
+                        "postal": "625001",
+                        "total": 12,
+                        "del": 9,
+                        "clm": 1,
+                        "ret": 1,
+                        "rto": 1,
+                        "can": 0
+                    },
+                    {
+                        "postal": "620001",
+                        "total": 10,
+                        "del": 8,
+                        "clm": 0,
+                        "ret": 1,
+                        "rto": 0,
+                        "can": 1
+                    }
+                ]
+            },
+            {
+                "state": "UTTAR PRADESH",
+                "postalCodes": [
+                    {
+                        "postal": "201301",
+                        "total": 18,
+                        "del": 12,
+                        "clm": 1,
+                        "ret": 2,
+                        "rto": 1,
+                        "can": 2
+                    },
+                    {
+                        "postal": "226001",
+                        "total": 16,
+                        "del": 11,
+                        "clm": 1,
+                        "ret": 1,
+                        "rto": 1,
+                        "can": 2
+                    },
+                    {
+                        "postal": "208001",
+                        "total": 13,
+                        "del": 9,
+                        "clm": 0,
+                        "ret": 1,
+                        "rto": 1,
+                        "can": 2
+                    },
+                    {
+                        "postal": "282001",
+                        "total": 11,
+                        "del": 8,
+                        "clm": 1,
+                        "ret": 1,
+                        "rto": 0,
+                        "can": 1
+                    }
+                ]
+            },
+            {
+                "state": "TELANGANA",
+                "postalCodes": [
+                    {
+                        "postal": "500001",
+                        "total": 20,
+                        "del": 13,
+                        "clm": 0,
+                        "ret": 3,
+                        "rto": 2,
+                        "can": 2
+                    },
+                    {
+                        "postal": "500081",
+                        "total": 16,
+                        "del": 11,
+                        "clm": 1,
+                        "ret": 2,
+                        "rto": 1,
+                        "can": 1
+                    },
+                    {
+                        "postal": "500032",
+                        "total": 14,
+                        "del": 10,
+                        "clm": 0,
+                        "ret": 2,
+                        "rto": 1,
+                        "can": 1
+                    },
+                    {
+                        "postal": "500072",
+                        "total": 10,
+                        "del": 7,
+                        "clm": 1,
+                        "ret": 1,
+                        "rto": 1,
+                        "can": 0
+                    }
+                ]
+            },
+            {
+                "state": "DELHI",
+                "postalCodes": [
+                    {
+                        "postal": "110001",
+                        "total": 14,
+                        "del": 8,
+                        "clm": 1,
+                        "ret": 3,
+                        "rto": 0,
+                        "can": 2
+                    },
+                    {
+                        "postal": "110034",
+                        "total": 12,
+                        "del": 7,
+                        "clm": 0,
+                        "ret": 4,
+                        "rto": 0,
+                        "can": 1
+                    },
+                    {
+                        "postal": "110092",
+                        "total": 9,
+                        "del": 6,
+                        "clm": 0,
+                        "ret": 2,
+                        "rto": 0,
+                        "can": 1
+                    }
+                ]
+            },
+            {
+                "state": "KERALA",
+                "postalCodes": [
+                    {
+                        "postal": "682001",
+                        "total": 11,
+                        "del": 9,
+                        "clm": 0,
+                        "ret": 0,
+                        "rto": 0,
+                        "can": 2
+                    },
+                    {
+                        "postal": "695001",
+                        "total": 10,
+                        "del": 8,
+                        "clm": 1,
+                        "ret": 0,
+                        "rto": 1,
+                        "can": 0
+                    },
+                    {
+                        "postal": "673001",
+                        "total": 8,
+                        "del": 7,
+                        "clm": 0,
+                        "ret": 0,
+                        "rto": 0,
+                        "can": 1
+                    }
+                ]
+            },
+            {
+                "state": "HARYANA",
+                "postalCodes": [
+                    {
+                        "postal": "122001",
+                        "total": 12,
+                        "del": 7,
+                        "clm": 1,
+                        "ret": 3,
+                        "rto": 1,
+                        "can": 0
+                    },
+                    {
+                        "postal": "121001",
+                        "total": 9,
+                        "del": 6,
+                        "clm": 0,
+                        "ret": 2,
+                        "rto": 1,
+                        "can": 0
+                    },
+                    {
+                        "postal": "132001",
+                        "total": 7,
+                        "del": 5,
+                        "clm": 0,
+                        "ret": 1,
+                        "rto": 1,
+                        "can": 0
+                    }
+                ]
+            }
+        ]
     }
 }

@@ -9,6 +9,7 @@ import SkuWiseDetailsSection from "./sections/sku-wise-details/SkuWiseDetailsSec
 import OrderWiseDetailsSection from "./sections/order-wise-details/OrderWiseDetailsSection";
 import MultiOrdersSection from "./sections/multi-orders/MultiOrdersSection";
 import SkuStateBreakdownSection from "./sections/sku-state-breakdown/SkuStateBreakdownSection";
+import StateWiseBreakdownSection from "./sections/state-wise-breakdown/StateWiseBreakdownSection";
 
 import "./reportDisplay.css";
 
@@ -86,6 +87,7 @@ function ReportDisplayMain() {
             <OrderWiseDetailsSection />
             <MultiOrdersSection />
             <SkuStateBreakdownSection />
+            <StateWiseBreakdownSection />
           </div>
         )}
       </div>

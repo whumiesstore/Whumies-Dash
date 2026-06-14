@@ -1,0 +1,299 @@
+.state-wise-section {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.state-wise-top {
+  margin-bottom: 14px;
+}
+
+.state-wise-top h2 {
+  color: #777777;
+  font-size: 15px;
+  font-weight: 850;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+.state-wise-table-wrap {
+  width: 100%;
+  max-height: 560px;
+  overflow: auto;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  background: #ffffff;
+  -webkit-overflow-scrolling: touch;
+}
+
+.state-wise-table {
+  width: 100%;
+  min-width: 980px;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.state-wise-table th {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  background: #fafafa;
+  border-bottom: 1px solid #dddddd;
+  color: #777777;
+  font-size: 12px;
+  font-weight: 850;
+  text-align: center;
+  padding: 15px 14px;
+}
+
+.state-wise-state-th {
+  text-align: left !important;
+  padding-left: 48px !important;
+}
+
+.state-wise-table td {
+  border-bottom: 1px solid #e8e8e8;
+  color: #111111;
+  font-size: 12.5px;
+  font-weight: 750;
+  text-align: center;
+  padding: 15px 14px;
+  vertical-align: middle;
+}
+
+.state-wise-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Sort button */
+
+.state-wise-sort-btn {
+  position: relative;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.state-wise-sort-btn .sort-arrow {
+  display: none;
+  position: absolute;
+  right: 100%;
+  margin-right: 6px;
+  color: #777777;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.state-wise-sort-btn:hover .sort-arrow,
+.state-wise-sort-btn.active .sort-arrow {
+  display: inline-flex;
+}
+
+.state-wise-sort-btn.active {
+  color: #111111;
+}
+
+/* Main state row */
+
+.state-wise-state-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.state-wise-expand-btn {
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #777777;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-grid;
+  place-items: center;
+}
+
+.state-wise-expand-btn:hover,
+.state-wise-expand-btn.open {
+  background: #f1f1f1;
+}
+
+.state-wise-state-cell strong {
+  color: #111111;
+  font-size: 12.5px;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.count-total {
+  color: #111111 !important;
+  font-weight: 900 !important;
+}
+
+.count-del {
+  color: #40ad50 !important;
+}
+
+.count-clm {
+  color: #0b83d5 !important;
+}
+
+.count-ret {
+  color: #ff3b30 !important;
+}
+
+.count-rto {
+  color: #ff8a00 !important;
+}
+
+.count-can {
+  color: #999999 !important;
+}
+
+/* Ret percent */
+
+.state-ret-percent-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  min-width: 118px;
+}
+
+.state-ret-track {
+  width: 54px;
+  height: 5px;
+  border-radius: 999px;
+  background: #eeeeee;
+  overflow: hidden;
+}
+
+.state-ret-track i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.state-ret-percent-wrap strong {
+  min-width: 44px;
+  text-align: right;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.state-ret-percent-wrap.success strong {
+  color: #40ad50;
+}
+
+.state-ret-percent-wrap.success .state-ret-track i {
+  background: #40ad50;
+}
+
+.state-ret-percent-wrap.warning strong {
+  color: #ff8a00;
+}
+
+.state-ret-percent-wrap.warning .state-ret-track i {
+  background: #ff8a00;
+}
+
+.state-ret-percent-wrap.danger strong {
+  color: #ff3b30;
+}
+
+.state-ret-percent-wrap.danger .state-ret-track i {
+  background: #ff3b30;
+}
+
+/* Nested postal table */
+
+.state-wise-nested-row td {
+  padding: 0;
+  background: #ffffff;
+}
+
+.state-wise-nested-table-wrap {
+  padding: 20px 56px;
+  overflow-x: auto;
+}
+
+.state-wise-nested-table {
+  width: 100%;
+  min-width: 820px;
+  border-collapse: collapse;
+}
+
+.state-wise-nested-table th {
+  position: static;
+  background: transparent;
+  border-bottom: none;
+  color: #777777;
+  padding: 10px 12px;
+  font-size: 11.5px;
+  text-align: center;
+}
+
+.state-wise-nested-table th:first-child,
+.state-wise-nested-table td:first-child {
+  text-align: left;
+}
+
+.state-wise-nested-table td {
+  border-bottom: none;
+  padding: 9px 12px;
+  background: transparent;
+  font-size: 12px;
+}
+
+.state-wise-nested-table tbody tr:hover {
+  background: #eeeeee;
+}
+
+.state-wise-nested-table td:first-child {
+  font-weight: 850;
+}
+
+.state-wise-empty {
+  padding: 30px 18px;
+  color: #777777;
+  font-size: 13px;
+  font-weight: 650;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .state-wise-table-wrap {
+    max-height: 520px;
+  }
+
+  .state-wise-table {
+    min-width: 900px;
+  }
+
+  .state-wise-nested-table-wrap {
+    padding: 16px;
+  }
+
+  .state-wise-nested-table {
+    min-width: 780px;
+  }
+}
+
+@media (max-width: 480px) {
+  .state-wise-table-wrap {
+    max-height: 480px;
+  }
+
+  .state-wise-table {
+    min-width: 860px;
+  }
+}
