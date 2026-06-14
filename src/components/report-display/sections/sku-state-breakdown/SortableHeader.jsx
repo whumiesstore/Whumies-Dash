@@ -11,7 +11,7 @@ function SortableHeader({ column, sortConfig, onSort }) {
         onClick={() => onSort(column.key)}
       >
         <span className="sort-arrow">{arrow}</span>
-        {column.label}
+        <span>{column.label}</span>
       </button>
     </th>
   );

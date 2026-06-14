@@ -113,6 +113,7 @@
 /* Sort button */
 
 .sku-state-sort-btn {
+  position: relative;
   border: none;
   background: transparent;
   color: inherit;
@@ -121,21 +122,22 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
 }
 
 .sku-state-sort-btn .sort-arrow {
-  width: 16px;
+  display: none;
+  position: absolute;
+  right: 100%;
+  margin-right: 6px;
   color: #777777;
-  opacity: 0;
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 600;
   line-height: 1;
 }
 
 .sku-state-sort-btn:hover .sort-arrow,
 .sku-state-sort-btn.active .sort-arrow {
-  opacity: 1;
+  display: inline-flex;
 }
 
 .sku-state-sort-btn.active {
