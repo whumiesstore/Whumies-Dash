@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import RetPercentBar from "./RetPercentBar";
+import AngleRightIcon from "../../../ui/icons/AngleRightIcon";
 
 function formatNumber(value) {
   if (value === 0 || value === null || value === undefined) return "-";
@@ -34,7 +35,7 @@ function StateWiseRow({ row }) {
               onClick={() => setIsOpen((prev) => !prev)}
               aria-label="Expand postal breakdown"
             >
-              {isOpen ? "⌄" : "›"}
+              <AngleRightIcon fill="#777777" width={13} height={13} />
             </button>
 
             <strong>{row.state}</strong>

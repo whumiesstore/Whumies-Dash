@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import RetPercentBar from "./RetPercentBar";
+import AngleRightIcon from "../../../ui/icons/AngleRightIcon";
 
 function formatNumber(value) {
   if (value === 0 || value === null || value === undefined) return "-";
@@ -27,11 +28,11 @@ function SkuStateRow({ row }) {
           <div className="sku-state-product-cell">
             <button
               type="button"
-              className="sku-state-expand-btn"
+              className={`sku-state-expand-btn ${isOpen ? "open" : ""}`}
               onClick={() => setIsOpen((prev) => !prev)}
               aria-label="Expand state breakdown"
             >
-              {isOpen ? "⌄" : "›"}
+              <AngleRightIcon fill="#777777" width={13} height={13} />
             </button>
 
             <div className="sku-state-product-info">
