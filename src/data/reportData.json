@@ -1107,5 +1107,598 @@
                 ]
             }
         ]
+    },
+    "multiOrders": {
+        "title": "Multi Orders",
+        "subtitle": "Orders with multiple SKUs in the same order ID",
+        "orders": [
+            {
+                "orderId": "171-1514831-6509934",
+                "payment": 1841.86,
+                "skus": [
+                    {
+                        "sku": "JT-WT-02",
+                        "units": 1,
+                        "asin": "B0D8TNLZ12"
+                    },
+                    {
+                        "sku": "JT-WT-3",
+                        "units": 1,
+                        "asin": "B0D8TNLZ13"
+                    },
+                    {
+                        "sku": "JT-WT-4",
+                        "units": 1,
+                        "asin": "B0D8TNLZ14"
+                    },
+                    {
+                        "sku": "JT-WT-5",
+                        "units": 1,
+                        "asin": "B0D8TNLZ15"
+                    },
+                    {
+                        "sku": "JT-WT-6",
+                        "units": 1,
+                        "asin": "B0D8TNLZ16"
+                    },
+                    {
+                        "sku": "JT-WT-7",
+                        "units": 1,
+                        "asin": "B0D8TNLZ17"
+                    }
+                ]
+            },
+            {
+                "orderId": "408-7342042-2351539",
+                "payment": 1623.59,
+                "skus": [
+                    {
+                        "sku": "JT-WT-02",
+                        "units": 1,
+                        "asin": "B0D8TNLZ12"
+                    },
+                    {
+                        "sku": "JT-WT-3",
+                        "units": 2,
+                        "asin": "B0D8TNLZ13"
+                    },
+                    {
+                        "sku": "JT-WT-4",
+                        "units": 1,
+                        "asin": "B0D8TNLZ14"
+                    },
+                    {
+                        "sku": "JT-WT-5",
+                        "units": 1,
+                        "asin": "B0D8TNLZ15"
+                    }
+                ]
+            },
+            {
+                "orderId": "407-8259376-2287514",
+                "payment": 1522.59,
+                "skus": [
+                    {
+                        "sku": "JT-WT-01",
+                        "units": 1,
+                        "asin": "B0D8TNLZ11"
+                    },
+                    {
+                        "sku": "JT-WT-02",
+                        "units": 1,
+                        "asin": "B0D8TNLZ12"
+                    },
+                    {
+                        "sku": "JT-WT-3",
+                        "units": 1,
+                        "asin": "B0D8TNLZ13"
+                    },
+                    {
+                        "sku": "JT-WT-4",
+                        "units": 1,
+                        "asin": "B0D8TNLZ14"
+                    },
+                    {
+                        "sku": "JT-WT-5",
+                        "units": 1,
+                        "asin": "B0D8TNLZ15"
+                    }
+                ]
+            },
+            {
+                "orderId": "403-5529841-1018827",
+                "payment": 1098.49,
+                "skus": [
+                    {
+                        "sku": "JT-WT-9",
+                        "units": 1,
+                        "asin": "B0D8TNLZ19"
+                    },
+                    {
+                        "sku": "JT-WT-10",
+                        "units": 1,
+                        "asin": "B0D8TNLZ20"
+                    },
+                    {
+                        "sku": "JT-WT-01",
+                        "units": 2,
+                        "asin": "B0D8TNLZ11"
+                    }
+                ]
+            },
+            {
+                "orderId": "404-9156203-7720491",
+                "payment": 1349.25,
+                "skus": [
+                    {
+                        "sku": "JT-WT-6",
+                        "units": 1,
+                        "asin": "B0D8TNLZ16"
+                    },
+                    {
+                        "sku": "JT-WT-7",
+                        "units": 1,
+                        "asin": "B0D8TNLZ17"
+                    },
+                    {
+                        "sku": "JT-WT-8",
+                        "units": 1,
+                        "asin": "B0D8TNLZ18"
+                    },
+                    {
+                        "sku": "JT-WT-9",
+                        "units": 1,
+                        "asin": "B0D8TNLZ19"
+                    }
+                ]
+            },
+            {
+                "orderId": "406-7294180-8823165",
+                "payment": 2104.76,
+                "skus": [
+                    {
+                        "sku": "JT-WT-01",
+                        "units": 1,
+                        "asin": "B0D8TNLZ11"
+                    },
+                    {
+                        "sku": "JT-WT-02",
+                        "units": 2,
+                        "asin": "B0D8TNLZ12"
+                    },
+                    {
+                        "sku": "JT-WT-3",
+                        "units": 1,
+                        "asin": "B0D8TNLZ13"
+                    },
+                    {
+                        "sku": "JT-WT-4",
+                        "units": 1,
+                        "asin": "B0D8TNLZ14"
+                    },
+                    {
+                        "sku": "JT-WT-5",
+                        "units": 1,
+                        "asin": "B0D8TNLZ15"
+                    },
+                    {
+                        "sku": "JT-WT-8",
+                        "units": 1,
+                        "asin": "B0D8TNLZ18"
+                    }
+                ]
+            },
+            {
+                "orderId": "402-1185039-4412708",
+                "payment": 876.35,
+                "skus": [
+                    {
+                        "sku": "JT-WT-5",
+                        "units": 1,
+                        "asin": "B0D8TNLZ15"
+                    },
+                    {
+                        "sku": "JT-WT-6",
+                        "units": 1,
+                        "asin": "B0D8TNLZ16"
+                    },
+                    {
+                        "sku": "JT-WT-7",
+                        "units": 1,
+                        "asin": "B0D8TNLZ17"
+                    }
+                ]
+            }
+        ]
+    },
+    "skuStateBreakdown": {
+        "title": "SKU-WISE STATE BREAKDOWN",
+        "subtitle": "Which states each SKU was ordered from — click a row to expand",
+        "skus": [
+            {
+                "sku": "JT-WT-01",
+                "productName": "JUNIOR TURTLE | Wooden Shape Sorter Toy for Kids Learning",
+                "states": [
+                    {
+                        "state": "KARNATAKA",
+                        "total": 35,
+                        "del": 27,
+                        "clm": 0,
+                        "ret": 4,
+                        "rto": 2,
+                        "can": 2
+                    },
+                    {
+                        "state": "TAMIL NADU",
+                        "total": 19,
+                        "del": 15,
+                        "clm": 0,
+                        "ret": 1,
+                        "rto": 0,
+                        "can": 3
+                    },
+                    {
+                        "state": "MAHARASHTRA",
+                        "total": 16,
+                        "del": 10,
+                        "clm": 0,
+                        "ret": 4,
+                        "rto": 1,
+                        "can": 1
+                    },
+                    {
+                        "state": "UTTAR PRADESH",
+                        "total": 13,
+                        "del": 11,
+                        "clm": 0,
+                        "ret": 1,
+                        "rto": 0,
+                        "can": 1
+                    },
+                    {
+                        "state": "TELANGANA",
+                        "total": 11,
+                        "del": 9,
+                        "clm": 0,
+                        "ret": 2,
+                        "rto": 0,
+                        "can": 0
+                    },
+                    {
+                        "state": "DELHI",
+                        "total": 6,
+                        "del": 5,
+                        "clm": 0,
+                        "ret": 1,
+                        "rto": 0,
+                        "can": 0
+                    },
+                    {
+                        "state": "HARYANA",
+                        "total": 4,
+                        "del": 2,
+                        "clm": 1,
+                        "ret": 0,
+                        "rto": 1,
+                        "can": 0
+                    },
+                    {
+                        "state": "PUNJAB",
+                        "total": 4,
+                        "del": 4,
+                        "clm": 0,
+                        "ret": 0,
+                        "rto": 0,
+                        "can": 0
+                    },
+                    {
+                        "state": "KERALA",
+                        "total": 4,
+                        "del": 4,
+                        "clm": 0,
+                        "ret": 0,
+                        "rto": 0,
+                        "can": 0
+                    },
+                    {
+                        "state": "GOA",
+                        "total": 4,
+                        "del": 4,
+                        "clm": 0,
+                        "ret": 0,
+                        "rto": 0,
+                        "can": 0
+                    },
+                    {
+                        "state": "ANDHRA PRADESH",
+                        "total": 3,
+                        "del": 2,
+                        "clm": 0,
+                        "ret": 0,
+                        "rto": 0,
+                        "can": 1
+                    },
+                    {
+                        "state": "GUJARAT",
+                        "total": 3,
+                        "del": 2,
+                        "clm": 0,
+                        "ret": 1,
+                        "rto": 0,
+                        "can": 0
+                    },
+                    {
+                        "state": "UTTARAKHAND",
+                        "total": 1,
+                        "del": 1,
+                        "clm": 0,
+                        "ret": 0,
+                        "rto": 0,
+                        "can": 0
+                    },
+                    {
+                        "state": "ODISHA",
+                        "total": 1,
+                        "del": 1,
+                        "clm": 0,
+                        "ret": 0,
+                        "rto": 0,
+                        "can": 0
+                    },
+                    {
+                        "state": "RAJASTHAN",
+                        "total": 1,
+                        "del": 1,
+                        "clm": 0,
+                        "ret": 0,
+                        "rto": 0,
+                        "can": 0
+                    }
+                ]
+            },
+            {
+                "sku": "JT-WT-02",
+                "productName": "JUNIOR TURTLE | Wooden Alphabet Puzzle Board for Kids",
+                "states": [
+                    {
+                        "state": "KARNATAKA",
+                        "total": 30,
+                        "del": 21,
+                        "clm": 1,
+                        "ret": 4,
+                        "rto": 2,
+                        "can": 2
+                    },
+                    {
+                        "state": "TAMIL NADU",
+                        "total": 20,
+                        "del": 16,
+                        "clm": 0,
+                        "ret": 2,
+                        "rto": 1,
+                        "can": 1
+                    },
+                    {
+                        "state": "MAHARASHTRA",
+                        "total": 18,
+                        "del": 13,
+                        "clm": 1,
+                        "ret": 2,
+                        "rto": 1,
+                        "can": 1
+                    },
+                    {
+                        "state": "DELHI",
+                        "total": 14,
+                        "del": 11,
+                        "clm": 0,
+                        "ret": 1,
+                        "rto": 1,
+                        "can": 1
+                    },
+                    {
+                        "state": "TELANGANA",
+                        "total": 12,
+                        "del": 10,
+                        "clm": 0,
+                        "ret": 1,
+                        "rto": 0,
+                        "can": 1
+                    },
+                    {
+                        "state": "KERALA",
+                        "total": 10,
+                        "del": 8,
+                        "clm": 1,
+                        "ret": 1,
+                        "rto": 0,
+                        "can": 0
+                    },
+                    {
+                        "state": "GUJARAT",
+                        "total": 9,
+                        "del": 7,
+                        "clm": 1,
+                        "ret": 1,
+                        "rto": 0,
+                        "can": 0
+                    },
+                    {
+                        "state": "PUNJAB",
+                        "total": 8,
+                        "del": 6,
+                        "clm": 1,
+                        "ret": 1,
+                        "rto": 0,
+                        "can": 0
+                    },
+                    {
+                        "state": "ASSAM",
+                        "total": 5,
+                        "del": 3,
+                        "clm": 0,
+                        "ret": 0,
+                        "rto": 1,
+                        "can": 1
+                    },
+                    {
+                        "state": "GOA",
+                        "total": 4,
+                        "del": 1,
+                        "clm": 0,
+                        "ret": 0,
+                        "rto": 0,
+                        "can": 3
+                    }
+                ]
+            },
+            {
+                "sku": "JT-WT-3",
+                "productName": "JUNIOR TURTLE | Wooden Number Puzzle Toy for Preschool Kids",
+                "states": [
+                    {
+                        "state": "KARNATAKA",
+                        "total": 28,
+                        "del": 20,
+                        "clm": 2,
+                        "ret": 3,
+                        "rto": 1,
+                        "can": 2
+                    },
+                    {
+                        "state": "MAHARASHTRA",
+                        "total": 21,
+                        "del": 13,
+                        "clm": 1,
+                        "ret": 4,
+                        "rto": 2,
+                        "can": 1
+                    },
+                    {
+                        "state": "TAMIL NADU",
+                        "total": 16,
+                        "del": 12,
+                        "clm": 1,
+                        "ret": 2,
+                        "rto": 0,
+                        "can": 1
+                    },
+                    {
+                        "state": "UTTAR PRADESH",
+                        "total": 15,
+                        "del": 10,
+                        "clm": 0,
+                        "ret": 2,
+                        "rto": 1,
+                        "can": 2
+                    },
+                    {
+                        "state": "DELHI",
+                        "total": 14,
+                        "del": 9,
+                        "clm": 0,
+                        "ret": 2,
+                        "rto": 1,
+                        "can": 2
+                    },
+                    {
+                        "state": "TELANGANA",
+                        "total": 11,
+                        "del": 8,
+                        "clm": 1,
+                        "ret": 1,
+                        "rto": 1,
+                        "can": 0
+                    },
+                    {
+                        "state": "HARYANA",
+                        "total": 8,
+                        "del": 6,
+                        "clm": 0,
+                        "ret": 1,
+                        "rto": 1,
+                        "can": 0
+                    },
+                    {
+                        "state": "KERALA",
+                        "total": 7,
+                        "del": 5,
+                        "clm": 1,
+                        "ret": 0,
+                        "rto": 0,
+                        "can": 1
+                    }
+                ]
+            },
+            {
+                "sku": "JT-WT-4",
+                "productName": "JUNIOR TURTLE | Wooden Pull Along Elephant Toy for Toddlers",
+                "states": [
+                    {
+                        "state": "KARNATAKA",
+                        "total": 32,
+                        "del": 24,
+                        "clm": 1,
+                        "ret": 3,
+                        "rto": 1,
+                        "can": 3
+                    },
+                    {
+                        "state": "TAMIL NADU",
+                        "total": 22,
+                        "del": 16,
+                        "clm": 1,
+                        "ret": 2,
+                        "rto": 1,
+                        "can": 2
+                    },
+                    {
+                        "state": "MAHARASHTRA",
+                        "total": 18,
+                        "del": 12,
+                        "clm": 1,
+                        "ret": 3,
+                        "rto": 1,
+                        "can": 1
+                    },
+                    {
+                        "state": "DELHI",
+                        "total": 13,
+                        "del": 9,
+                        "clm": 0,
+                        "ret": 1,
+                        "rto": 1,
+                        "can": 2
+                    },
+                    {
+                        "state": "GUJARAT",
+                        "total": 12,
+                        "del": 8,
+                        "clm": 1,
+                        "ret": 2,
+                        "rto": 0,
+                        "can": 1
+                    },
+                    {
+                        "state": "KERALA",
+                        "total": 10,
+                        "del": 7,
+                        "clm": 1,
+                        "ret": 1,
+                        "rto": 1,
+                        "can": 0
+                    },
+                    {
+                        "state": "TELANGANA",
+                        "total": 9,
+                        "del": 6,
+                        "clm": 0,
+                        "ret": 1,
+                        "rto": 0,
+                        "can": 2
+                    }
+                ]
+            }
+        ]
     }
 }

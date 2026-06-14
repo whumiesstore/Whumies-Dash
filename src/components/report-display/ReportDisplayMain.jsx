@@ -7,6 +7,7 @@ import OrderSummarySection from "./sections/OrderSummarySection";
 import FulfillmentDetailsSection from "./sections/FulfillmentDetailsSection";
 import SkuWiseDetailsSection from "./sections/sku-wise-details/SkuWiseDetailsSection";
 import OrderWiseDetailsSection from "./sections/order-wise-details/OrderWiseDetailsSection";
+import MultiOrdersSection from "./sections/multi-orders/MultiOrdersSection";
 
 import "./reportDisplay.css";
 
@@ -82,6 +83,7 @@ function ReportDisplayMain() {
             <FulfillmentDetailsSection />
             <SkuWiseDetailsSection />
             <OrderWiseDetailsSection />
+            <MultiOrdersSection />
           </div>
         )}
       </div>
