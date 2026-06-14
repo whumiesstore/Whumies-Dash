@@ -1,0 +1,379 @@
+.sku-state-section {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.sku-state-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 18px;
+}
+
+.sku-state-top h2 {
+  color: #777777;
+  font-size: 18px;
+  font-weight: 850;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.sku-state-top p {
+  color: #777777;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.sku-state-search {
+  width: min(100%, 270px);
+  height: 48px;
+  border: 1px solid #cccccc;
+  border-radius: 7px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  flex-shrink: 0;
+}
+
+.sku-state-search span {
+  color: #999999;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.sku-state-search input {
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #111111;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.sku-state-search input::placeholder {
+  color: #999999;
+}
+
+/* Table wrapper */
+
+.sku-state-table-wrap {
+  width: 100%;
+  max-height: 720px;
+  overflow: auto;
+  border: 1px solid #dddddd;
+  border-radius: 9px;
+  background: #ffffff;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sku-state-table {
+  width: 100%;
+  min-width: 1040px;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.sku-state-table th {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  background: #fafafa;
+  border-bottom: 1px solid #dddddd;
+  color: #777777;
+  font-size: 13px;
+  font-weight: 850;
+  text-align: center;
+  padding: 18px 16px;
+}
+
+.sku-state-product-th {
+  text-align: left !important;
+  padding-left: 50px !important;
+}
+
+.sku-state-table td {
+  border-bottom: 1px solid #e5e5e5;
+  color: #111111;
+  font-size: 13px;
+  font-weight: 750;
+  text-align: center;
+  padding: 18px 16px;
+  vertical-align: middle;
+}
+
+.sku-state-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Sort button */
+
+.sku-state-sort-btn {
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.sku-state-sort-btn .sort-arrow {
+  width: 16px;
+  color: #777777;
+  opacity: 0;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.sku-state-sort-btn:hover .sort-arrow,
+.sku-state-sort-btn.active .sort-arrow {
+  opacity: 1;
+}
+
+.sku-state-sort-btn.active {
+  color: #111111;
+}
+
+/* Product cell */
+
+.sku-state-product-cell {
+  display: grid;
+  grid-template-columns: 26px minmax(210px, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.sku-state-expand-btn {
+  width: 22px;
+  height: 22px;
+  border: none;
+  background: transparent;
+  color: #777777;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.sku-state-product-info {
+  min-width: 0;
+}
+
+.sku-state-product-info strong {
+  display: block;
+  color: #111111;
+  font-size: 13px;
+  font-weight: 850;
+  margin-bottom: 6px;
+}
+
+.sku-state-product-info span {
+  display: block;
+  max-width: 270px;
+  color: #777777;
+  font-size: 12.5px;
+  font-weight: 650;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sku-state-count-pill {
+  min-height: 22px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: #f1f1f1;
+  color: #777777;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.count-total {
+  color: #111111 !important;
+  font-weight: 900 !important;
+}
+
+.count-del {
+  color: #40ad50 !important;
+}
+
+.count-clm {
+  color: #0b83d5 !important;
+}
+
+.count-ret {
+  color: #ff3b30 !important;
+}
+
+.count-rto {
+  color: #ff8a00 !important;
+}
+
+.count-can {
+  color: #999999 !important;
+}
+
+/* Return percent */
+
+.ret-percent-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  min-width: 118px;
+}
+
+.ret-track {
+  width: 54px;
+  height: 5px;
+  border-radius: 999px;
+  background: #eeeeee;
+  overflow: hidden;
+}
+
+.ret-track i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.ret-percent-wrap strong {
+  min-width: 44px;
+  text-align: right;
+  font-size: 12.5px;
+  font-weight: 850;
+}
+
+.ret-percent-wrap.success strong {
+  color: #40ad50;
+}
+
+.ret-percent-wrap.success .ret-track i {
+  background: #40ad50;
+}
+
+.ret-percent-wrap.warning strong {
+  color: #ff8a00;
+}
+
+.ret-percent-wrap.warning .ret-track i {
+  background: #ff8a00;
+}
+
+.ret-percent-wrap.danger strong {
+  color: #ff3b30;
+}
+
+.ret-percent-wrap.danger .ret-track i {
+  background: #ff3b30;
+}
+
+/* Nested table */
+
+.sku-state-nested-row td {
+  padding: 0;
+  background: #fafafa;
+}
+
+.sku-state-nested-table-wrap {
+  padding: 20px 48px 22px 70px;
+  overflow-x: auto;
+}
+
+.sku-state-nested-table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+}
+
+.sku-state-nested-table th {
+  position: static;
+  background: transparent;
+  border-bottom: none;
+  color: #777777;
+  padding: 10px 12px;
+  font-size: 12.5px;
+  text-align: center;
+}
+
+.sku-state-nested-table th:first-child,
+.sku-state-nested-table td:first-child {
+  text-align: left;
+}
+
+.sku-state-nested-table td {
+  border-bottom: none;
+  padding: 10px 12px;
+  background: transparent;
+  font-size: 13px;
+}
+
+.sku-state-nested-table tbody tr:hover {
+  background: #eeeeee;
+}
+
+.sku-state-nested-table td:first-child {
+  font-weight: 850;
+}
+
+.sku-state-empty {
+  padding: 32px 18px;
+  color: #777777;
+  font-size: 13px;
+  font-weight: 650;
+  text-align: center;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .sku-state-top {
+    flex-direction: column;
+  }
+
+  .sku-state-search {
+    width: 100%;
+  }
+
+  .sku-state-table-wrap {
+    max-height: 620px;
+  }
+
+  .sku-state-table {
+    min-width: 980px;
+  }
+}
+
+@media (max-width: 560px) {
+  .sku-state-top h2 {
+    font-size: 16px;
+  }
+
+  .sku-state-top p {
+    font-size: 12.5px;
+  }
+
+  .sku-state-table {
+    min-width: 940px;
+  }
+
+  .sku-state-nested-table-wrap {
+    padding: 16px;
+  }
+
+  .sku-state-nested-table {
+    min-width: 820px;
+  }
+}
