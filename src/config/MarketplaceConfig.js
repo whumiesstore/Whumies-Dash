@@ -86,6 +86,34 @@ export const marketplaceConfig = {
                 parserType: "amazon-payments-report-csv",
             }
         },
+
+        profitLossSectionInfo: {
+            sales: {
+                title: "Sales (Inc GST)",
+                description:
+                    "Total amount you earned from all Amazon orders including GST. This is the gross revenue before any deductions from Amazon.",
+            },
+            refundsFees: {
+                title: "Refunds, Cancellations, and Fees (Inc GST)",
+                description:
+                    "Total amount deducted from your sales which includes refunds, cancellations, commissions, referral fees, and other charges. These are taken out by Amazon before settlement.",
+            },
+            netSettlement: {
+                title: "Net Settlement Received (Inc GST)",
+                description:
+                    "Total amount Amazon settles to you after deducting refunds, fees, and charges from your total sales. This includes GST.",
+            },
+            purchaseCost: {
+                title: "Purchase Cost",
+                description:
+                    "Total cost of all products you bought to fulfill Amazon orders. If you included GST in your purchase price, this reflects the total with GST. If not, you'll pay GST separately from your profit.",
+            },
+            profit: {
+                title: "Profit",
+                description:
+                    "This profit doesn't include GST. Here's how GST works: When you buy from suppliers, you pay GST. When customers buy from you, they pay GST included in price. You can use the GST you paid suppliers as a credit. Platforms also give you credit for GST on shipping and ads. But after using all these credits, some GST still remains that you have to pay to the government from this profit.",
+            }
+        }
     },
 
     flipkart: {
@@ -229,5 +257,38 @@ export const marketplaceConfig = {
                 parserType: "flipkart-ads-report-csv",
             },
         },
+
+        profitLossSectionInfo: {
+            sales: {
+                title: "Sale",
+                description:
+                    "Total income from your sales including all payments, offers, commissions, and adjustments. This is the gross amount before any deductions.",
+            },
+            otherCharges: {
+                title: "Other Charges",
+                description:
+                    "All charges deducted by Flipkart including marketplace fees, taxes, protection fund, refunds, and cancellations. These are costs associated with selling on the platform.",
+            },
+            netSettlement: {
+                title: "Net Settlement",
+                description:
+                    "Total amount Flipkart settles to you after deducting all charges, fees, and taxes from your sales. This is the net amount credited to your account.",
+            },
+            adSpend: {
+                title: "Ad Spend",
+                description:
+                    "Total amount you spent on Flipkart ads to promote your products. When you create campaigns and run ads, you pay for clicks or impressions. All these costs are deducted from your settlement.",
+            },
+            purchasePrice: {
+                title: "Purchase Price",
+                description:
+                    "Total cost of all products you bought to fulfill Flipkart orders. If you included GST in your purchase price, this reflects the total with GST. If not, you'll pay GST separately from your profit.",
+            },
+            profit: {
+                title: "Profit",
+                description:
+                    "This profit doesn't include GST. Here's how GST works: When you buy from suppliers, you pay GST. When customers buy from you, they pay GST included in price. You can use the GST you paid suppliers as a credit. Platforms also give you credit for GST on shipping and ads. But after using all these credits, some GST still remains that you have to pay to the government from this profit.",
+            },
+        }
     },
 };

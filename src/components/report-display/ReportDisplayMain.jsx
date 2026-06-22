@@ -80,7 +80,10 @@ function ReportDisplayMain() {
           <ReportInitializer onComplete={() => setIsInitializing(false)} />
         ) : (
           <div className="report-sections">
-            <ProfitLossSection displayMonth={displayMonth} />
+            <ProfitLossSection
+              displayMonth={displayMonth}
+              selectedMarketplace={selectedMarketplace}
+            />
             <OrderSummarySection />
             <FulfillmentDetailsSection />
             <SkuWiseDetailsSection />

@@ -1,0 +1,48 @@
+{
+    "profitLoss": {
+        "title": "Profit Analysis",
+        "salesIncGst": 697585.19,
+        "salesBreakdown": [
+            {
+                "name": "Sale Amount (Including Cancellations and Returns)",
+                "amount": 634290
+            },
+            {
+                "name": "Offer Amount",
+                "amount": 61544
+            },
+            {
+                "name": "Customer Add-ons",
+                "amount": 263
+            },
+            {
+                "name": "Protection Fund (SPF)",
+                "amount": 1488.19
+            }
+        ],
+        "otherCharges": -253104.32,
+        "otherChargesBreakdown": [
+            {
+                "name": "My Share (Seller Coupon Share)",
+                "amount": -802.8
+            },
+            {
+                "name": "Marketplace Fee (Fixed Fee + Shipping Fee)",
+                "amount": -43289.68
+            },
+            {
+                "name": "Taxes",
+                "amount": -10685.38
+            },
+            {
+                "name": "Refund (Cancellations and Returns)",
+                "amount": -198326.46
+            }
+        ],
+        "netSettlement": 444480.46,
+        "adSpend": 43497,
+        "purchasePrice": -239119.32,
+        "profit": 161864.14,
+        "roi": 67.7
+    }
+}

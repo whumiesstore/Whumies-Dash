@@ -583,6 +583,66 @@
   flex-shrink: 0;
 }
 
+.inc-gst-text {
+  color: #777777;
+  font-size: 11.5px;
+  font-weight: 650;
+}
+
+.row-value-with-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-expand-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #777777;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.2s ease, transform 0.4s ease;
+  transform: rotate(90deg);
+}
+
+.section-expand-btn svg {
+  display: block;
+  transform: rotate(0deg);
+  transform-origin: center;
+  transition: transform 0.18s ease;
+}
+
+.section-expand-btn:hover,
+.section-expand-btn.open {
+  background: #f1f1f1;
+}
+
+.section-expand-btn.open svg {
+  transform: rotate(180deg);
+}
+
+.breakdown-row {
+  background: #fafafa;
+  min-height: 38px;
+}
+
+.breakdown-label {
+  color: #666666;
+  font-size: 13px;
+  font-weight: 550;
+  padding-left: 28px;
+}
+
+.breakdown-label::before {
+  content: none;
+}
+
 @media (max-width: 480px) {
   .profit-loss-row {
     min-width: 360px;
