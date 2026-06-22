@@ -42,5 +42,5 @@ export function formatCurrency(value) {
 }
 
 export function formatOrders(value) {
-  return `${Number(value || 0).toLocaleString("en-IN")} orders`;
+  return `${Number(value || 0).toLocaleString("en-IN")}`;
 }

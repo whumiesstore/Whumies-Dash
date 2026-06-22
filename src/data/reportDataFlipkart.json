@@ -44,5 +44,51 @@
         "purchasePrice": -239119.32,
         "profit": 161864.14,
         "roi": 67.7
+    },
+    "orderSummary": {
+        "overallOrders": 4557,
+        "overallUnits": 4590,
+        "delivered": {
+            "total": 3581,
+            "units": 3599,
+            "breakdown": [
+                {
+                    "label": "Not-Returned",
+                    "orders": 3172,
+                    "units": 3180
+                },
+                {
+                    "label": "Returned",
+                    "orders": 126,
+                    "units": 135
+                },
+                {
+                    "label": "Return Requested",
+                    "orders": 283,
+                    "units": 284
+                }
+            ]
+        },
+        "undelivered": {
+            "total": 976,
+            "units": 991,
+            "breakdown": [
+                {
+                    "label": "Courier Return",
+                    "orders": 604,
+                    "units": 611
+                },
+                {
+                    "label": "Cancelled",
+                    "orders": 323,
+                    "units": 331
+                },
+                {
+                    "label": "Ready To Ship",
+                    "orders": 32,
+                    "units": 32
+                }
+            ]
+        }
     }
 }

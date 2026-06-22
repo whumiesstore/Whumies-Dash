@@ -85,12 +85,12 @@ function ReportDisplayMain() {
               selectedMarketplace={selectedMarketplace}
             />
             <OrderSummarySection />
-            <FulfillmentDetailsSection />
+            {selectedMarketplace === "amazon" && <FulfillmentDetailsSection />}
             <SkuWiseDetailsSection />
             <OrderWiseDetailsSection />
-            <MultiOrdersSection />
-            <SkuStateBreakdownSection />
-            <StateWiseBreakdownSection />
+            {selectedMarketplace === "amazon" && <MultiOrdersSection />}
+            {selectedMarketplace === "amazon" && <SkuStateBreakdownSection />}
+            {selectedMarketplace === "amazon" && <StateWiseBreakdownSection />}
           </div>
         )}
       </div>

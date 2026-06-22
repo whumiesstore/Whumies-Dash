@@ -39,30 +39,47 @@
         "status": "profit"
     },
     "orderSummary": {
-        "overallOrders": 1039,
+        "overallOrders": 4557,
+        "overallUnits": 4590,
         "delivered": {
-            "total": 988,
+            "total": 3581,
+            "units": 3599,
             "breakdown": [
                 {
                     "label": "Not-Returned",
-                    "orders": 816
-                },
-                {
-                    "label": "Returned(Claimed)",
-                    "orders": 35
+                    "orders": 3172,
+                    "units": 3180
                 },
                 {
                     "label": "Returned",
-                    "orders": 137
+                    "orders": 126,
+                    "units": 135
+                },
+                {
+                    "label": "Return Requested",
+                    "orders": 283,
+                    "units": 284
                 }
             ]
         },
         "undelivered": {
-            "total": 51,
+            "total": 976,
+            "units": 991,
             "breakdown": [
                 {
                     "label": "Courier Return",
-                    "orders": 51
+                    "orders": 604,
+                    "units": 611
+                },
+                {
+                    "label": "Cancelled",
+                    "orders": 323,
+                    "units": 331
+                },
+                {
+                    "label": "Ready To Ship",
+                    "orders": 32,
+                    "units": 32
                 }
             ]
         }
