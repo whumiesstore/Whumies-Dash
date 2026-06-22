@@ -11,7 +11,7 @@ function SkuWiseFilters({
 
   return (
     <div className="sku-wise-filters">
-      <label className="sku-filter-field sku-search-field">
+      <label className="sku-wise-field">
         <span>SKU Search</span>
         <input
           type="text"
@@ -22,7 +22,7 @@ function SkuWiseFilters({
       </label>
 
       <label
-        className={`sku-filter-field sku-settlement-floating-field ${settlementFilter || isSettlementFocused ? "has-value" : ""}`}
+        className={`sku-wise-floating-field ${settlementFilter || isSettlementFocused ? "has-value" : ""}`}
       >
         <span>Settlement &le;</span>
         <input
@@ -42,7 +42,7 @@ function SkuWiseFilters({
 
       <button
         type="button"
-        className="sku-download-btn"
+        className="sku-wise-download-btn"
         onClick={onDownloadCsv}
       >
         ⬇ Download CSV
