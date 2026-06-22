@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import {
   getFirstValidationMessage,
   validateCostRow,
-} from "../../../utils/costValidation";
+} from "../../../../utils/costValidation";
 
 function getAmazonProductLink(asin) {
   return `https://www.amazon.in/dp/${asin}`;
@@ -10,6 +10,7 @@ function getAmazonProductLink(asin) {
 
 function SkuCostTableView({
   skus,
+  selectedMarketplace,
   costData,
   updateCost,
   getTotalCost,
@@ -117,13 +118,19 @@ function SkuCostTableView({
                   className={hasRowError ? "sku-row-error" : ""}
                 >
                   <td className="sku-product-cell">
-                    <a
-                      href={getAmazonProductLink(item.asin)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {item.productName}
-                    </a>
+                    {selectedMarketplace === "amazon" ? (
+                      <a
+                        href={getAmazonProductLink(item.asin)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {item.productName}
+                      </a>
+                    ) : (
+                      <span className="sku-product-name-plain">
+                        {item.productName}
+                      </span>
+                    )}
 
                     <strong>{item.sku}</strong>
 

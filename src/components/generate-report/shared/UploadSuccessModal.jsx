@@ -1,10 +1,16 @@
-function UploadSuccessModal({ monthDetails, onReupload, onContinue }) {
+function UploadSuccessModal({
+  monthDetails,
+  title = "File Processed Successfully!",
+  note = "Please verify this month before continuing.",
+  onReupload,
+  onContinue,
+}) {
   return (
     <div className="upload-modal-overlay">
       <div className="upload-success-modal">
         <div className="success-title-row">
           <div className="success-check">✓</div>
-          <h2>Orders File Processed Successfully!</h2>
+          <h2>{title}</h2>
         </div>
 
         <div className="success-month-box">
@@ -12,9 +18,7 @@ function UploadSuccessModal({ monthDetails, onReupload, onContinue }) {
           <h3>{monthDetails.displayMonth}</h3>
         </div>
 
-        <p className="success-note">
-          Please verify this month. Next, you’ll enter product costs.
-        </p>
+        <p className="success-note">{note}</p>
 
         <div className="success-actions">
           <button

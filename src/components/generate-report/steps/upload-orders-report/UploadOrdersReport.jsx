@@ -1,8 +1,8 @@
 import { useState } from "react";
-import ReportBreadcrumb from "../shared/ReportBreadcrumb";
-import UploadBox from "../shared/UploadBox";
-import UploadErrorModal from "../shared/UploadErrorModal";
-import UploadSuccessModal from "../shared/UploadSuccessModal";
+import ReportBreadcrumb from "../../shared/ReportBreadcrumb";
+import UploadBox from "../../shared/UploadBox";
+import UploadErrorModal from "../../shared/UploadErrorModal";
+import UploadSuccessModal from "../../shared/UploadSuccessModal";
 
 function UploadOrdersReport({
   firmName,
@@ -10,12 +10,11 @@ function UploadOrdersReport({
   selectedMarketplace,
   config,
   monthDetails,
+  uploadConfig,
   onOrdersUploaded,
 }) {
   const [uploadError, setUploadError] = useState(null);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-
-  const uploadConfig = config.upload.orders;
 
   return (
     <div className="generate-report-page">
@@ -29,10 +28,10 @@ function UploadOrdersReport({
       />
 
       <section className="generate-report-heading">
-        <h1>Upload Your {uploadConfig.reportName}</h1>
+        <h1>{uploadConfig.heading}</h1>
+
         <p>
-          Follow the steps below to download your orders file from{" "}
-          {config.title} {config.externalText} and upload it here.{" "}
+          {uploadConfig.description}{" "}
           <strong style={{ color: config.color }}>
             ({monthDetails.displayMonth})
           </strong>
@@ -58,6 +57,7 @@ function UploadOrdersReport({
               <h3>
                 <span>↗</span> {uploadConfig.portalStepTitle}
               </h3>
+
               <p>{uploadConfig.portalStepDescription}</p>
 
               <a
@@ -120,6 +120,13 @@ function UploadOrdersReport({
       {showSuccessModal && (
         <UploadSuccessModal
           monthDetails={monthDetails}
+          title={
+            uploadConfig.successTitle || "Orders File Processed Successfully!"
+          }
+          note={
+            uploadConfig.successNote ||
+            "Please verify this month before continuing."
+          }
           onReupload={() => setShowSuccessModal(false)}
           onContinue={() => {
             setShowSuccessModal(false);

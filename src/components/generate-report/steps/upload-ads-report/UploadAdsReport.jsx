@@ -3,23 +3,20 @@ import ReportBreadcrumb from "../../shared/ReportBreadcrumb";
 import UploadBox from "../../shared/UploadBox";
 import UploadErrorModal from "../../shared/UploadErrorModal";
 
-function UploadPaymentsReport({
+function UploadAdsReport({
   firmName,
   decodedFirmName,
   selectedMarketplace,
   config,
   monthDetails,
-  uploadConfig,
   reportMonthDetails,
-  onPaymentsUploaded,
+  uploadConfig,
+  onAdsUploaded,
+  onSkipAds,
 }) {
   const [uploadError, setUploadError] = useState(null);
 
   const displayMonthDetails = reportMonthDetails || monthDetails;
-
-  const uploadButtonText =
-    uploadConfig.customUploadButtonText ||
-    `${uploadConfig.uploadButtonText} — ${displayMonthDetails.displayMonth}`;
 
   return (
     <div className="generate-report-page">
@@ -33,7 +30,12 @@ function UploadPaymentsReport({
       />
 
       <section className="generate-report-heading">
-        <h1>{uploadConfig.heading}</h1>
+        <h1>
+          {uploadConfig.heading}{" "}
+          <span className="optional-heading-text">
+            {uploadConfig.optionalText}
+          </span>
+        </h1>
 
         <p>
           {uploadConfig.description}{" "}
@@ -44,20 +46,33 @@ function UploadPaymentsReport({
       </section>
 
       <section className="generate-report-layout">
-        <UploadBox
-          config={config}
-          uploadConfig={{
-            ...uploadConfig,
-            uploadButtonText,
-          }}
-          monthDetails={displayMonthDetails}
-          showMonthInButton={false}
-          validatingMessage={`Validating ${
-            uploadConfig.validatingLabel || "payments file"
-          }...`}
-          onUploadSuccess={onPaymentsUploaded}
-          onUploadError={(error) => setUploadError(error)}
-        />
+        <div className="ads-upload-left">
+          <UploadBox
+            config={config}
+            uploadConfig={{
+              ...uploadConfig,
+              uploadButtonText:
+                uploadConfig.uploadButtonText ||
+                `Upload Ads Report — ${displayMonthDetails.displayMonth}`,
+            }}
+            monthDetails={displayMonthDetails}
+            showMonthInButton={false}
+            validatingMessage={`Validating ${
+              uploadConfig.validatingLabel || "ads report"
+            }...`}
+            onUploadSuccess={onAdsUploaded}
+            onUploadError={(error) => setUploadError(error)}
+          />
+
+          <button
+            type="button"
+            className="skip-ads-report-btn"
+            onClick={onSkipAds}
+          >
+            {uploadConfig.skipButtonText ||
+              "⊘ I don't run ads — skip this step"}
+          </button>
+        </div>
 
         <aside className="instruction-card">
           <div className="instruction-step">
@@ -89,7 +104,8 @@ function UploadPaymentsReport({
             <div className="step-content">
               <h3>
                 <span>▣</span>{" "}
-                {uploadConfig.dateStepTitle || "Set the Date Range"}
+                {uploadConfig.dateStepTitle ||
+                  "Set the Date Range — Analysis Month"}
               </h3>
 
               <p>{uploadConfig.dateStepDescription}</p>
@@ -104,29 +120,26 @@ function UploadPaymentsReport({
 
                 <div className="date-box">
                   <span>End Date</span>
-                  <strong>
-                    {uploadConfig.usePaymentEndDate
-                      ? monthDetails.paymentEndDate
-                      : displayMonthDetails.endDate}
-                  </strong>
+                  <strong>{displayMonthDetails.endDate}</strong>
                 </div>
               </div>
 
-              {uploadConfig.extraNote && (
-                <div className="extra-days-note">
-                  <strong>ⓘ {uploadConfig.extraNoteTitle}</strong>
-                  <p>{uploadConfig.extraNote}</p>
-                </div>
-              )}
-
               <div className="month-pill">
-                {uploadConfig.monthPillPrefix}:{" "}
-                {uploadConfig.usePaymentPeriod
-                  ? monthDetails.paymentPeriod
-                  : displayMonthDetails.displayMonth}
+                {uploadConfig.monthPillPrefix || "Ads Report"}:{" "}
+                {displayMonthDetails.displayMonth}
               </div>
             </div>
           </div>
+
+          {uploadConfig.footerNote && (
+            <>
+              <div className="instruction-divider" />
+
+              <div className="instruction-footer-note">
+                {uploadConfig.footerNote}
+              </div>
+            </>
+          )}
         </aside>
       </section>
 
@@ -142,4 +155,4 @@ function UploadPaymentsReport({
   );
 }
 
-export default UploadPaymentsReport;
+export default UploadAdsReport;

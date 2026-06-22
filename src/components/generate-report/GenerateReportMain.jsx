@@ -3,11 +3,13 @@ import { useParams, useSearchParams } from "react-router-dom";
 import { marketplaceConfig } from "../../config/MarketplaceConfig";
 import sampleSkus from "../../data/sampleSkus.json";
 
-import UploadOrdersReport from "./upload-orders-report/UploadOrdersReport";
-import SkuCostModal from "./sku-cost/SkuCostModal";
-import UploadPaymentsReport from "./upload-payments-report/UploadPaymentsReport";
+import UploadOrdersReport from "./steps/upload-orders-report/UploadOrdersReport";
+import SkuCostModal from "./steps/sku-cost/SkuCostModal";
+import UploadPaymentsReport from "./steps/upload-payments-report/UploadPaymentsReport";
+import UploadAdsReport from "./steps/upload-ads-report/UploadAdsReport";
 import SavingOverlay from "./shared/SavingOverlay";
-import ReportReady from "./report-ready/ReportReady";
+import ReportReady from "./steps/report-ready/ReportReady";
+
 import { formatShortMonthDay, formatFullDate } from "../../utils/formatters";
 
 import "./generateReport.css";
@@ -28,15 +30,23 @@ function getMonthDetails(monthParam) {
   const startDateObject = new Date(year, date.getMonth(), 1);
   const endDateObject = new Date(year, date.getMonth() + 1, 0);
 
-  const startDate = formatFullDate(startDateObject);
-  const endDate = formatFullDate(endDateObject);
+  const nextMonthStartObject = new Date(year, date.getMonth() + 1, 1);
+  const nextMonthEndObject = new Date(year, date.getMonth() + 1, 20);
+
+  const nextMonthName = nextMonthStartObject.toLocaleString("en-US", {
+    month: "long",
+  });
+
+  const nextShortMonth = nextMonthStartObject.toLocaleString("en-US", {
+    month: "short",
+  });
+
+  const nextYear = nextMonthStartObject.getFullYear();
 
   const idealPaymentEndDateObject = new Date(year, date.getMonth() + 1, 20);
 
   const paymentEndDateObject =
     idealPaymentEndDateObject > today ? today : idealPaymentEndDateObject;
-
-  const paymentEndDate = formatFullDate(paymentEndDateObject);
 
   const paymentUploadLabel = `Upload from ${formatShortMonthDay(
     startDateObject,
@@ -59,13 +69,27 @@ function getMonthDetails(monthParam) {
     year,
     displayMonth: `${monthName} ${year}`,
 
-    startDate,
-    endDate,
+    startDate: formatFullDate(startDateObject),
+    endDate: formatFullDate(endDateObject),
 
-    paymentEndDate,
+    startDateObject,
+    endDateObject,
+
+    paymentEndDate: formatFullDate(paymentEndDateObject),
     paymentUploadLabel,
     paymentPeriod,
     isPaymentRangePartial,
+
+    nextMonth: {
+      monthName: nextMonthName,
+      shortMonth: nextShortMonth,
+      year: nextYear,
+      displayMonth: `${nextMonthName} ${nextYear}`,
+      startDate: formatFullDate(nextMonthStartObject),
+      endDate: formatFullDate(nextMonthEndObject),
+      startDateObject: nextMonthStartObject,
+      endDateObject: nextMonthEndObject,
+    },
   };
 }
 
@@ -73,21 +97,64 @@ function GenerateReportMain() {
   const { firmName, marketplace } = useParams();
   const [searchParams] = useSearchParams();
 
-  const [step, setStep] = useState("upload-orders");
-  const [showSkuCostModal, setShowSkuCostModal] = useState(false);
-  const [isSavingCosts, setIsSavingCosts] = useState(false);
-
   const decodedFirmName = decodeURIComponent(firmName || "");
   const selectedMarketplace = marketplace?.toLowerCase() || "amazon";
 
   const config =
     marketplaceConfig[selectedMarketplace] || marketplaceConfig.amazon;
 
+  const flow = config.flow || marketplaceConfig.amazon.flow;
+
+  const [step, setStep] = useState(flow[0] || "upload-orders-report");
+  const [showSkuCostModal, setShowSkuCostModal] = useState(false);
+  const [isSavingCosts, setIsSavingCosts] = useState(false);
+  const [adsReportStatus, setAdsReportStatus] = useState("not-started");
+
   const monthParam = searchParams.get("month");
   const monthDetails = getMonthDetails(monthParam);
 
+  const goToStep = (nextStep) => {
+    if (!nextStep) return;
+
+    if (nextStep === "sku-cost") {
+      setShowSkuCostModal(true);
+      return;
+    }
+
+    setStep(nextStep);
+  };
+
+  const goToNextStep = (currentStep = step) => {
+    const currentIndex = flow.indexOf(currentStep);
+    const nextStep = flow[currentIndex + 1];
+
+    goToStep(nextStep);
+  };
+
   const handleOrdersUploaded = () => {
-    setShowSkuCostModal(true);
+    goToNextStep("upload-orders-report");
+  };
+
+  const handleAmazonPaymentsUploaded = () => {
+    goToNextStep("upload-amazon-payments-report");
+  };
+
+  const handleFlipkartPayments1Uploaded = () => {
+    goToNextStep("upload-flipkart-payments-report-1");
+  };
+
+  const handleFlipkartPayments2Uploaded = () => {
+    goToNextStep("upload-flipkart-payments-report-2");
+  };
+
+  const handleFlipkartAdsUploaded = () => {
+    setAdsReportStatus("uploaded");
+    goToNextStep("upload-flipkart-ads-report");
+  };
+
+  const handleFlipkartAdsSkipped = () => {
+    setAdsReportStatus("skipped");
+    goToNextStep("upload-flipkart-ads-report");
   };
 
   const handleSkuCostsComplete = () => {
@@ -98,31 +165,81 @@ function GenerateReportMain() {
     setTimeout(() => {
       setIsSavingCosts(false);
       setShowSkuCostModal(false);
-      setStep("upload-payments");
+      goToNextStep("sku-cost");
     }, 1200);
+  };
+
+  const handleStartAgain = () => {
+    setShowSkuCostModal(false);
+    setIsSavingCosts(false);
+    setAdsReportStatus("not-started");
+    setStep(flow[0] || "upload-orders-report");
   };
 
   return (
     <>
-      {step === "upload-orders" && (
+      {step === "upload-orders-report" && (
         <UploadOrdersReport
           firmName={firmName}
           decodedFirmName={decodedFirmName}
           selectedMarketplace={selectedMarketplace}
           config={config}
           monthDetails={monthDetails}
+          uploadConfig={config.upload.orders}
           onOrdersUploaded={handleOrdersUploaded}
         />
       )}
 
-      {step === "upload-payments" && (
+      {step === "upload-amazon-payments-report" && (
         <UploadPaymentsReport
           firmName={firmName}
           decodedFirmName={decodedFirmName}
           selectedMarketplace={selectedMarketplace}
           config={config}
           monthDetails={monthDetails}
-          onPaymentsUploaded={() => setStep("report-ready")}
+          uploadConfig={config.upload.payments}
+          reportMonthDetails={monthDetails}
+          onPaymentsUploaded={handleAmazonPaymentsUploaded}
+        />
+      )}
+
+      {step === "upload-flipkart-payments-report-1" && (
+        <UploadPaymentsReport
+          firmName={firmName}
+          decodedFirmName={decodedFirmName}
+          selectedMarketplace={selectedMarketplace}
+          config={config}
+          monthDetails={monthDetails}
+          uploadConfig={config.upload.payments1}
+          reportMonthDetails={monthDetails}
+          onPaymentsUploaded={handleFlipkartPayments1Uploaded}
+        />
+      )}
+
+      {step === "upload-flipkart-payments-report-2" && (
+        <UploadPaymentsReport
+          firmName={firmName}
+          decodedFirmName={decodedFirmName}
+          selectedMarketplace={selectedMarketplace}
+          config={config}
+          monthDetails={monthDetails}
+          uploadConfig={config.upload.payments2}
+          reportMonthDetails={monthDetails.nextMonth}
+          onPaymentsUploaded={handleFlipkartPayments2Uploaded}
+        />
+      )}
+
+      {step === "upload-flipkart-ads-report" && (
+        <UploadAdsReport
+          firmName={firmName}
+          decodedFirmName={decodedFirmName}
+          selectedMarketplace={selectedMarketplace}
+          config={config}
+          monthDetails={monthDetails}
+          uploadConfig={config.upload.ads}
+          reportMonthDetails={monthDetails}
+          onAdsUploaded={handleFlipkartAdsUploaded}
+          onSkipAds={handleFlipkartAdsSkipped}
         />
       )}
 
@@ -133,18 +250,18 @@ function GenerateReportMain() {
           selectedMarketplace={selectedMarketplace}
           config={config}
           monthDetails={monthDetails}
+          nextMonthDetails={monthDetails.nextMonth}
           skuCount={sampleSkus.length}
+          adsReportStatus={adsReportStatus}
         />
       )}
 
       {showSkuCostModal && (
         <SkuCostModal
           skus={sampleSkus}
+          selectedMarketplace={selectedMarketplace}
           onClose={handleSkuCostsComplete}
-          onStartAgain={() => {
-            setShowSkuCostModal(false);
-            setStep("upload-orders");
-          }}
+          onStartAgain={handleStartAgain}
         />
       )}
 

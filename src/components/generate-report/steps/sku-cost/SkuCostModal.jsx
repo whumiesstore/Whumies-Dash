@@ -7,11 +7,16 @@ import {
   hasProductCost,
   hasRowErrors,
   sanitizeNumberInput,
-} from "../../../utils/costValidation";
+} from "../../../../utils/costValidation";
 
 const ITEMS_PER_PAGE = 25;
 
-function SkuCostModal({ skus = [], onClose, onStartAgain }) {
+function SkuCostModal({
+  skus = [],
+  selectedMarketplace,
+  onClose,
+  onStartAgain,
+}) {
   const [mode, setMode] = useState("cost");
   const [currentPage, setCurrentPage] = useState(1);
   const [showOnlyWithoutCost, setShowOnlyWithoutCost] = useState(false);
@@ -104,6 +109,7 @@ function SkuCostModal({ skus = [], onClose, onStartAgain }) {
       {mode === "cost" ? (
         <SkuCostTableView
           skus={skus}
+          selectedMarketplace={selectedMarketplace}
           costData={costData}
           updateCost={updateCost}
           getTotalCost={getTotalCost}

@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ReportBreadcrumb from "../shared/ReportBreadcrumb";
+import ReportBreadcrumb from "../../shared/ReportBreadcrumb";
 import GeneratingProfitReport from "./GeneratingProfitReport";
 
 function ReportReady({
@@ -9,10 +9,64 @@ function ReportReady({
   selectedMarketplace,
   config,
   monthDetails,
+  nextMonthDetails,
   skuCount = 0,
+  adsReportStatus = "not-started",
 }) {
   const navigate = useNavigate();
   const [isGeneratingReport, setIsGeneratingReport] = useState(false);
+
+  const isFlipkart = selectedMarketplace === "flipkart";
+
+  const checklist = useMemo(() => {
+    if (isFlipkart) {
+      return [
+        {
+          label: "Orders report uploaded",
+          value: monthDetails.displayMonth,
+        },
+        {
+          label: "Payment report 1 uploaded",
+          value: monthDetails.displayMonth,
+        },
+        {
+          label: "Payment report 2 uploaded",
+          value: nextMonthDetails?.displayMonth,
+        },
+        ...(adsReportStatus === "uploaded"
+          ? [
+              {
+                label: "Ads report uploaded",
+                value: monthDetails.displayMonth,
+              },
+            ]
+          : []),
+        {
+          label: `SKU pricing mapped for ${skuCount} products`,
+        },
+      ];
+    }
+
+    return [
+      {
+        label: "Orders report uploaded",
+        value: monthDetails.displayMonth,
+      },
+      {
+        label: "Payments report uploaded",
+        value: monthDetails.displayMonth,
+      },
+      {
+        label: `SKU pricing mapped for ${skuCount} products`,
+      },
+    ];
+  }, [
+    isFlipkart,
+    monthDetails.displayMonth,
+    nextMonthDetails?.displayMonth,
+    adsReportStatus,
+    skuCount,
+  ]);
 
   const handleGenerateProfitReport = () => {
     setIsGeneratingReport(true);
@@ -53,29 +107,24 @@ function ReportReady({
           <div className="checks-completed-pill">✓ All checks completed</div>
 
           <div className="report-ready-checklist">
-            <div className="report-ready-row">
-              <div>
-                <span className="ready-check">✓</span>
-                <strong>Orders report uploaded</strong>
-              </div>
-              <span>{monthDetails.displayMonth}</span>
-            </div>
+            {checklist.map((item) => (
+              <div className="report-ready-row" key={item.label}>
+                <div>
+                  <span className="ready-check">✓</span>
+                  <strong>{item.label}</strong>
+                </div>
 
-            <div className="report-ready-row">
-              <div>
-                <span className="ready-check">✓</span>
-                <strong>Payments report uploaded</strong>
+                {item.value && <span>{item.value}</span>}
               </div>
-              <span>{monthDetails.displayMonth}</span>
-            </div>
-
-            <div className="report-ready-row">
-              <div>
-                <span className="ready-check">✓</span>
-                <strong>SKU pricing mapped for {skuCount} products</strong>
-              </div>
-            </div>
+            ))}
           </div>
+
+          {isFlipkart && adsReportStatus === "skipped" && (
+            <div className="report-ready-info-note">
+              Ads report was skipped. Ad spend will not be deducted from this
+              report.
+            </div>
+          )}
 
           <button
             type="button"
