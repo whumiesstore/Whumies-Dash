@@ -53,7 +53,7 @@ function OrderWiseDetailsSection() {
 
       const maxSettlement = Number(settlementFilter || 0);
       const matchesSettlement =
-        !maxSettlement || Number(order.settlement || 0) < maxSettlement;
+        !maxSettlement || Number(order.settlement || 0) <= maxSettlement;
 
       return matchesTab && matchesOrder && matchesSku && matchesSettlement;
     });
@@ -98,15 +98,17 @@ function OrderWiseDetailsSection() {
     const activeTabLabel =
       tabsWithCounts.find((tab) => tab.key === activeTab)?.label || "ALL";
 
+    const safeTabName = activeTabLabel.toLowerCase().replace(/\s+/g, "-");
+
     downloadCsv({
-      fileName: `order-wise-profits-${activeTabLabel.toLowerCase()}.csv`,
+      fileName: `order-wise-profits-${safeTabName}.csv`,
       columns: [
         { label: "Order Id", value: "orderId" },
         { label: "SKU", value: "sku" },
         { label: "Units", value: "units" },
         { label: "Status", value: "status" },
         { label: "Settlement", value: "settlement" },
-        { label: "Purchase", value: "purchase" },
+        { label: "Purchase Cost", value: "purchaseCost" },
         { label: "Profit", value: "profit" },
       ],
       rows: filteredOrders,

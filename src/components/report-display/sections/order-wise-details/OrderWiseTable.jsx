@@ -53,7 +53,7 @@ function OrderWiseTable({ orders, onViewOrder }) {
                 </td>
 
                 <td>{formatCurrency(order.settlement)}</td>
-                <td>{formatCurrency(order.purchase)}</td>
+                <td>{formatCurrency(order.purchaseCost)}</td>
                 <td>{formatCurrency(order.profit)}</td>
 
                 <td>

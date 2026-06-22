@@ -1,46 +1,43 @@
+import { useState } from "react";
+
 function SkuWiseFilters({
-  searchValue,
-  maxSettlement,
-  onSearchChange,
-  onMaxSettlementChange,
+  skuQuery,
+  settlementFilter,
+  onSkuQueryChange,
+  onSettlementFilterChange,
   onDownloadCsv,
 }) {
+  const [isSettlementFocused, setIsSettlementFocused] = useState(false);
+
   return (
     <div className="sku-wise-filters">
       <label className="sku-filter-field sku-search-field">
         <span>SKU Search</span>
         <input
           type="text"
-          value={searchValue}
+          value={skuQuery}
           placeholder="All"
-          onChange={(e) => onSearchChange(e.target.value)}
+          onChange={(e) => onSkuQueryChange(e.target.value)}
         />
       </label>
 
-      <label className="sku-filter-field sku-settlement-field">
-        <span>Max Settlement</span>
-        <div className="sku-currency-input">
-          <b>₹</b>
-          <input
-            type="text"
-            inputMode="decimal"
-            value={maxSettlement}
-            placeholder=""
-            onChange={(e) =>
-              onMaxSettlementChange(e.target.value.replace(/[^\d.]/g, ""))
-            }
-          />
-
-          {maxSettlement && (
-            <button
-              type="button"
-              onClick={() => onMaxSettlementChange("")}
-              aria-label="Clear max settlement"
-            >
-              ×
-            </button>
-          )}
-        </div>
+      <label
+        className={`sku-filter-field sku-settlement-floating-field ${settlementFilter || isSettlementFocused ? "has-value" : ""}`}
+      >
+        <span>Settlement &le;</span>
+        <input
+          type="number"
+          inputMode="decimal"
+          value={settlementFilter}
+          placeholder={
+            settlementFilter || isSettlementFocused ? "" : "Settlement ≤"
+          }
+          onFocus={() => setIsSettlementFocused(true)}
+          onBlur={() => setIsSettlementFocused(false)}
+          onChange={(e) =>
+            onSettlementFilterChange(e.target.value.replace(/[^\d.]/g, ""))
+          }
+        />
       </label>
 
       <button

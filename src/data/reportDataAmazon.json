@@ -100,7 +100,28 @@
     "skuWiseDetails": {
         "title": "SKU Wise Details",
         "subtitle": "Tap a SKU to see settlement, cost, and profit details.",
-        "totalProfit": 180151.55,
+        "tabs": [
+            {
+                "key": "all",
+                "label": "ALL"
+            },
+            {
+                "key": "highProfit",
+                "label": "HIGH PROFIT"
+            },
+            {
+                "key": "mediumProfit",
+                "label": "MEDIUM PROFIT"
+            },
+            {
+                "key": "lowProfit",
+                "label": "LOW PROFIT"
+            },
+            {
+                "key": "lossMaking",
+                "label": "LOSS MAKING"
+            }
+        ],
         "products": [
             {
                 "productName": "JUNIOR TURTLE | Wooden Shape Sorter Toy for Kids Learning",
@@ -148,7 +169,7 @@
                         }
                     ],
                     "costBreakdown": {
-                        "note": "Breakdown of units that contribute to the purchase cost calculation",
+                        "note": "Breakdown of units that contribute to the purchaseCost cost calculation",
                         "rows": [
                             {
                                 "category": "Delivered",
@@ -331,7 +352,7 @@
                 "orderDate": "28 Feb 2026",
                 "status": "cancelled",
                 "settlement": 0,
-                "purchase": 0,
+                "purchaseCost": 0,
                 "profit": 0,
                 "paymentEntries": []
             },
@@ -344,7 +365,7 @@
                 "orderDate": "28 Feb 2026",
                 "status": "delivered",
                 "settlement": 317.66,
-                "purchase": 71.8,
+                "purchaseCost": 71.8,
                 "profit": 245.86,
                 "paymentEntries": [
                     {
@@ -392,7 +413,7 @@
                 "orderDate": "28 Feb 2026",
                 "status": "delivered",
                 "settlement": 301.21,
-                "purchase": 71.8,
+                "purchaseCost": 71.8,
                 "profit": 229.41,
                 "paymentEntries": [
                     {
@@ -444,7 +465,7 @@
                 "orderDate": "28 Feb 2026",
                 "status": "returned",
                 "settlement": -125.46,
-                "purchase": 0,
+                "purchaseCost": 0,
                 "profit": -125.46,
                 "paymentEntries": [
                     {
@@ -518,7 +539,7 @@
                 "orderDate": "28 Feb 2026",
                 "status": "delivered",
                 "settlement": 307.34,
-                "purchase": 71.8,
+                "purchaseCost": 71.8,
                 "profit": 235.54,
                 "paymentEntries": [
                     {
@@ -566,7 +587,7 @@
                 "orderDate": "28 Feb 2026",
                 "status": "delivered",
                 "settlement": 299.33,
-                "purchase": 71.8,
+                "purchaseCost": 71.8,
                 "profit": 227.53,
                 "paymentEntries": [
                     {
@@ -618,7 +639,7 @@
                 "orderDate": "28 Feb 2026",
                 "status": "delivered",
                 "settlement": 185.31,
-                "purchase": 71.8,
+                "purchaseCost": 71.8,
                 "profit": 113.51,
                 "paymentEntries": [
                     {
@@ -666,7 +687,7 @@
                 "orderDate": "28 Feb 2026",
                 "status": "returned",
                 "settlement": -133.71,
-                "purchase": 0,
+                "purchaseCost": 0,
                 "profit": -133.71,
                 "paymentEntries": [
                     {
@@ -714,7 +735,7 @@
                 "orderDate": "28 Feb 2026",
                 "status": "delivered",
                 "settlement": 309.49,
-                "purchase": 71.8,
+                "purchaseCost": 71.8,
                 "profit": 237.69,
                 "paymentEntries": [
                     {
@@ -762,7 +783,7 @@
                 "orderDate": "28 Feb 2026",
                 "status": "delivered",
                 "settlement": 309.7,
-                "purchase": 71.8,
+                "purchaseCost": 71.8,
                 "profit": 237.9,
                 "paymentEntries": [
                     {
@@ -810,7 +831,7 @@
                 "orderDate": "28 Feb 2026",
                 "status": "delivered",
                 "settlement": 290.27,
-                "purchase": 71.8,
+                "purchaseCost": 71.8,
                 "profit": 218.47,
                 "paymentEntries": [
                     {
@@ -862,7 +883,7 @@
                 "orderDate": "28 Feb 2026",
                 "status": "delivered",
                 "settlement": 287.9,
-                "purchase": 71.8,
+                "purchaseCost": 71.8,
                 "profit": 216.1,
                 "paymentEntries": [
                     {
@@ -914,7 +935,7 @@
                 "orderDate": "28 Feb 2026",
                 "status": "delivered",
                 "settlement": 307.34,
-                "purchase": 71.8,
+                "purchaseCost": 71.8,
                 "profit": 235.54,
                 "paymentEntries": [
                     {
@@ -962,7 +983,7 @@
                 "orderDate": "28 Feb 2026",
                 "status": "delivered",
                 "settlement": 279.02,
-                "purchase": 71.8,
+                "purchaseCost": 71.8,
                 "profit": 207.22,
                 "paymentEntries": [
                     {
@@ -1010,7 +1031,7 @@
                 "orderDate": "28 Feb 2026",
                 "status": "delivered",
                 "settlement": 414.72,
-                "purchase": 71.8,
+                "purchaseCost": 71.8,
                 "profit": 342.92,
                 "paymentEntries": [
                     {
@@ -1062,7 +1083,7 @@
                 "orderDate": "28 Feb 2026",
                 "status": "rto",
                 "settlement": -1.84,
-                "purchase": 0,
+                "purchaseCost": 0,
                 "profit": -1.84,
                 "paymentEntries": [
                     {
@@ -1098,7 +1119,7 @@
                 "orderDate": "27 Feb 2026",
                 "status": "claimed",
                 "settlement": 0,
-                "purchase": 71.8,
+                "purchaseCost": 71.8,
                 "profit": -71.8,
                 "paymentEntries": [
                     {

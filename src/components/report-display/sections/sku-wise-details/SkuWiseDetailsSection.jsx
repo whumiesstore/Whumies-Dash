@@ -1,34 +1,29 @@
 import { useMemo, useState } from "react";
 import reportData from "../../../../data/reportDataAmazon.json";
-import { formatCurrency } from "../../../../utils/formatters";
 import { downloadCsv } from "../../../../utils/downloadCsv";
-import SkuWiseHeader from "./SkuWiseHeader";
 import SkuWiseTabs from "./SkuWiseTabs";
 import SkuWiseFilters from "./SkuWiseFilters";
+import SkuWiseStats from "./SkuWiseStats";
 import SkuWiseTable from "./SkuWiseTable";
+import SkuWisePagination from "./SkuWisePagination";
 import SkuViewModal from "./sku-view-modal/SkuViewModal";
 import "./skuWiseDetails.css";
 
-const baseTabs = [
-  { key: "all", label: "ALL" },
-  { key: "highProfit", label: "HIGH PROFIT" },
-  { key: "mediumProfit", label: "MEDIUM PROFIT" },
-  { key: "lowProfit", label: "LOW PROFIT" },
-  { key: "lossMaking", label: "LOSS MAKING" },
-];
+const PAGE_SIZE = 15;
 
 function SkuWiseDetailsSection() {
   const data = reportData.skuWiseDetails;
 
   const [activeTab, setActiveTab] = useState("all");
-  const [searchValue, setSearchValue] = useState("all");
-  const [maxSettlement, setMaxSettlement] = useState("");
+  const [skuQuery, setSkuQuery] = useState("all");
+  const [settlementFilter, setSettlementFilter] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const products = data.products || [];
 
   const tabsWithCounts = useMemo(() => {
-    return baseTabs.map((tab) => {
+    return data.tabs.map((tab) => {
       if (tab.key === "all") {
         return { ...tab, count: products.length };
       }
@@ -38,36 +33,64 @@ function SkuWiseDetailsSection() {
         count: products.filter((item) => item.profitType === tab.key).length,
       };
     });
-  }, [products]);
+  }, [data.tabs, products]);
 
   const filteredProducts = useMemo(() => {
     return products.filter((item) => {
       const matchesTab = activeTab === "all" || item.profitType === activeTab;
 
-      const query = searchValue.trim().toLowerCase();
+      const normalizedSkuQuery = skuQuery.trim().toLowerCase();
 
-      const matchesSearch =
-        query === "" ||
-        query === "all" ||
-        item.productName.toLowerCase().includes(query) ||
-        item.sku.toLowerCase().includes(query) ||
-        item.asin.toLowerCase().includes(query);
+      const matchesSku =
+        !normalizedSkuQuery ||
+        normalizedSkuQuery === "all" ||
+        item.productName.toLowerCase().includes(normalizedSkuQuery) ||
+        item.sku.toLowerCase().includes(normalizedSkuQuery) ||
+        item.asin.toLowerCase().includes(normalizedSkuQuery);
 
-      const maxSettlementValue = Number(maxSettlement || 0);
-
+      const maxSettlement = Number(settlementFilter || 0);
       const matchesSettlement =
-        !maxSettlementValue ||
-        Number(item.settlement || 0) <= maxSettlementValue;
+        !maxSettlement || Number(item.settlement || 0) <= maxSettlement;
 
-      return matchesTab && matchesSearch && matchesSettlement;
+      return matchesTab && matchesSku && matchesSettlement;
     });
-  }, [products, activeTab, searchValue, maxSettlement]);
+  }, [products, activeTab, skuQuery, settlementFilter]);
 
-  const filteredTotalProfit = useMemo(() => {
-    return filteredProducts.reduce((total, product) => {
+  const filteredSummary = useMemo(() => {
+    const totalProfit = filteredProducts.reduce((total, product) => {
       return total + Number(product.profit || 0);
     }, 0);
+
+    const totalUnits = filteredProducts.length;
+
+    const totalSettlement = filteredProducts.reduce((total, product) => {
+      return total + Number(product.settlement || 0);
+    }, 0);
+
+    const averageProfit = totalUnits > 0 ? totalProfit / totalUnits : 0;
+
+    return {
+      totalProfit,
+      totalUnits,
+      totalSettlement,
+      averageProfit,
+    };
   }, [filteredProducts]);
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredProducts.length / PAGE_SIZE),
+  );
+
+  const paginatedProducts = filteredProducts.slice(
+    (currentPage - 1) * PAGE_SIZE,
+    currentPage * PAGE_SIZE,
+  );
+
+  const handleTabChange = (tabKey) => {
+    setActiveTab(tabKey);
+    setCurrentPage(1);
+  };
 
   const handleDownloadCsv = () => {
     const activeTabLabel =
@@ -91,33 +114,52 @@ function SkuWiseDetailsSection() {
     });
   };
 
+  const handleViewProduct = (product) => {
+    setSelectedProduct(product);
+  };
+
   return (
     <section className="sku-wise-section">
       <div className="sku-wise-divider" />
 
-      <SkuWiseHeader
-        title={data.title}
-        subtitle={data.subtitle}
-        totalProfit={formatCurrency(filteredTotalProfit)}
-      />
+      <div className="sku-wise-header">
+        <h2>{data.title}</h2>
+        <p>{data.subtitle}</p>
+      </div>
 
       <SkuWiseTabs
         tabs={tabsWithCounts}
         activeTab={activeTab}
-        onChange={setActiveTab}
+        onChange={handleTabChange}
       />
 
       <SkuWiseFilters
-        searchValue={searchValue}
-        maxSettlement={maxSettlement}
-        onSearchChange={setSearchValue}
-        onMaxSettlementChange={setMaxSettlement}
+        skuQuery={skuQuery}
+        settlementFilter={settlementFilter}
+        onSkuQueryChange={(value) => {
+          setSkuQuery(value);
+          setCurrentPage(1);
+        }}
+        onSettlementFilterChange={(value) => {
+          setSettlementFilter(value);
+          setCurrentPage(1);
+        }}
         onDownloadCsv={handleDownloadCsv}
       />
 
+      <SkuWiseStats summary={filteredSummary} />
+
       <SkuWiseTable
-        products={filteredProducts}
-        onViewSku={(product) => setSelectedProduct(product)}
+        products={paginatedProducts}
+        onViewSku={handleViewProduct}
+      />
+
+      <SkuWisePagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        totalItems={filteredProducts.length}
+        pageSize={PAGE_SIZE}
+        onPageChange={setCurrentPage}
       />
 
       {selectedProduct && (

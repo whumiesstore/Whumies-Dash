@@ -36,14 +36,14 @@ function OrderWiseFilters({
           settlementFilter || isSettlementFocused ? "has-value" : ""
         }`}
       >
-        <span>Settlement &lt;</span>
+        <span>Settlement &le;</span>
 
         <input
           type="number"
           inputMode="decimal"
           value={settlementFilter}
           placeholder={
-            settlementFilter || isSettlementFocused ? "" : "Settlement <"
+            settlementFilter || isSettlementFocused ? "" : "Settlement ≤"
           }
           onFocus={() => setIsSettlementFocused(true)}
           onBlur={() => setIsSettlementFocused(false)}

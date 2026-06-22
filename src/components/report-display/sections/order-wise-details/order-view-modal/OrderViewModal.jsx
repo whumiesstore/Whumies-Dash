@@ -31,7 +31,7 @@ function OrderViewModal({ order, onClose }) {
     order.status === "rto" ||
     order.status === "cancelled"
       ? 0
-      : Number(order.purchase || 0);
+      : Number(order.purchaseCost || 0);
 
   const settlement = Number(order.settlement || 0);
   const profit = settlement - purchaseCost;
