@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import reportData from "../../../../data/ReportData.json";
+import reportData from "../../../../data/reportDataAmazon.json";
 import { downloadCsv } from "../../../../utils/downloadCsv";
 import OrderWiseTabs from "./OrderWiseTabs";
 import OrderWiseFilters from "./OrderWiseFilters";

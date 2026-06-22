@@ -1,4 +1,4 @@
-import reportData from "../../../data/ReportData.json";
+import reportData from "../../../data/reportDataAmazon.json";
 
 function FulfillmentDetailsSection() {
   const data = reportData.fulfillmentDetails;
