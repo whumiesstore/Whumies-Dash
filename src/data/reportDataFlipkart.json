@@ -90,5 +90,1054 @@
                 }
             ]
         }
+    },
+    "skuWiseDetails": {
+        "title": "SKU Wise Details",
+        "subtitle": "Tap a SKU to see settlement, cost, and profit details.",
+        "tabs": [
+            {
+                "key": "all",
+                "label": "ALL"
+            },
+            {
+                "key": "highProfit",
+                "label": "HIGH PROFIT"
+            },
+            {
+                "key": "mediumProfit",
+                "label": "MEDIUM PROFIT"
+            },
+            {
+                "key": "lowProfit",
+                "label": "LOW PROFIT"
+            },
+            {
+                "key": "lossMaking",
+                "label": "LOSS MAKING"
+            }
+        ],
+        "products": [
+            {
+                "productName": "JUNIOR TURTLE | Wooden Shape Sorter Toy for Kids Learning",
+                "sku": "JT-WT-01",
+                "fsn": "KECD8TNLZ1I",
+                "units": 120,
+                "returns": 12.3,
+                "settlement": 74000,
+                "purchaseCost": 54095.07,
+                "profit": 19904.93,
+                "profitType": "highProfit",
+                "details": {
+                    "statusRows": [
+                        {
+                            "type": "section",
+                            "label": "Reached Customer (114 units)"
+                        },
+                        {
+                            "type": "status",
+                            "label": "Delivered",
+                            "description": "Sold & kept — not returned",
+                            "units": 100,
+                            "settlement": 29779.8,
+                            "statusType": "success"
+                        },
+                        {
+                            "type": "status",
+                            "label": "Delivered → Returned",
+                            "description": "Reached customer, then returned — counted separately from Delivered",
+                            "units": 14,
+                            "settlement": -1522.04,
+                            "statusType": "danger"
+                        },
+                        {
+                            "type": "section",
+                            "label": "Never Reached Customer (6 units)"
+                        },
+                        {
+                            "type": "status",
+                            "label": "Courier Return (RTO)",
+                            "description": "Never reached the customer",
+                            "units": 6,
+                            "settlement": -1.84,
+                            "statusType": "warning"
+                        }
+                    ],
+                    "costBreakdown": {
+                        "note": "Breakdown of units that contribute to the purchaseCost cost calculation",
+                        "rows": [
+                            {
+                                "category": "Delivered",
+                                "units": 100,
+                                "settlement": 29779.8,
+                                "tone": "green"
+                            },
+                            {
+                                "category": "Returned Claimed (SAFE-T)",
+                                "units": 1,
+                                "settlement": 0,
+                                "tone": "blue"
+                            }
+                        ],
+                        "total": {
+                            "category": "Cost-bearing Units",
+                            "units": 101,
+                            "settlement": 27156.73
+                        },
+                        "costFormula": {
+                            "costPerUnit": 71.8,
+                            "units": 101,
+                            "total": 7251.8
+                        }
+                    },
+                    "profit": 19904.93,
+                    "costFooter": {
+                        "product": 50,
+                        "productGstPercent": 18,
+                        "productGst": 9,
+                        "packing": 10,
+                        "packingGstPercent": 18,
+                        "packingGst": 1.8,
+                        "other": 1
+                    }
+                }
+            },
+            {
+                "productName": "JUNIOR TURTLE | Wooden Alphabet Puzzle Board for Kids",
+                "sku": "JT-WT-02",
+                "fsn": "KECD8TNABC2",
+                "units": 115,
+                "returns": 11.9,
+                "settlement": 69000,
+                "purchaseCost": 50073.26,
+                "profit": 18926.74,
+                "profitType": "highProfit"
+            },
+            {
+                "productName": "WHUMIES Soft Plush Sleeping Dog Toy for Kids - Ultra Soft Teddy Puppy, Safe & Cuddly Stuffed Animal for Babies & Toddlers",
+                "sku": "ST25VT112500018",
+                "fsn": "KECGDQR36HV",
+                "units": 88,
+                "returns": 10.4,
+                "settlement": 42500,
+                "purchaseCost": 30100,
+                "profit": 12400,
+                "profitType": "highProfit"
+            },
+            {
+                "productName": "WHUMIES Brown Puppy Plush Bag | Ultra-Soft Backpack for Kids & Toddlers",
+                "sku": "ST25NT92500014",
+                "fsn": "KECG1YK57LY",
+                "units": 74,
+                "returns": 8.8,
+                "settlement": 38200,
+                "purchaseCost": 28100,
+                "profit": 10100,
+                "profitType": "mediumProfit"
+            },
+            {
+                "productName": "WHUMIES Grey Penguin Plush Pillow Toy | Soft Hugging Penguin Cushion for Kids, Girls & Boys",
+                "sku": "ST26MT012600009",
+                "fsn": "KECGH7R4MW2",
+                "units": 64,
+                "returns": 7.5,
+                "settlement": 31500,
+                "purchaseCost": 23400,
+                "profit": 8100,
+                "profitType": "mediumProfit"
+            },
+            {
+                "productName": "WHUMIES Cute Black Cat Plush Keychain with Pink Gingham Bib & Red Nose",
+                "sku": "KC26VT022600004",
+                "fsn": "KECGCKCAT01",
+                "units": 58,
+                "returns": 6.4,
+                "settlement": 20450,
+                "purchaseCost": 15200,
+                "profit": 5250,
+                "profitType": "mediumProfit"
+            },
+            {
+                "productName": "WHUMIES Purple Black Popsicle Cartoon Plush Keychain - Soft Bag Charm with Gold Clasp",
+                "sku": "KC26VT032600004",
+                "fsn": "KECGPOPSI02",
+                "units": 46,
+                "returns": 5.2,
+                "settlement": 16800,
+                "purchaseCost": 13200,
+                "profit": 3600,
+                "profitType": "lowProfit"
+            },
+            {
+                "productName": "WHUMIES Elegant Pearl Beaded Mobile Charm with Gold Bow Pendant",
+                "sku": "MC26VT032600004",
+                "fsn": "KECGPEARL03",
+                "units": 39,
+                "returns": 4.8,
+                "settlement": 14200,
+                "purchaseCost": 11650,
+                "profit": 2550,
+                "profitType": "lowProfit"
+            },
+            {
+                "productName": "WHUMIES Purple Pastel Plush Soft Toy for Girls & Kids | Ultra-Soft Kawaii Stuffed Animal with Bow",
+                "sku": "ST25VT112500021",
+                "fsn": "KECGPASTEL04",
+                "units": 32,
+                "returns": 9.2,
+                "settlement": 18400,
+                "purchaseCost": 19500,
+                "profit": -1100,
+                "profitType": "lossMaking"
+            },
+            {
+                "productName": "WHUMIES Cute Brown Raccoon Plush Keychain with Soft Fluffy Fabric, Mini Animal Bag Charm",
+                "sku": "KC26VFS012600029",
+                "fsn": "KECGRACCN05",
+                "units": 27,
+                "returns": 8.1,
+                "settlement": 9800,
+                "purchaseCost": 11250,
+                "profit": -1450,
+                "profitType": "lossMaking"
+            }
+        ]
+    },
+    "orderWiseDetails": {
+        "title": "Order Wise Profits",
+        "summary": {
+            "totalProfit": 180151.55,
+            "totalUnits": 1292,
+            "totalSettlement": 250084.75,
+            "averageProfit": 139.44
+        },
+        "tabs": [
+            {
+                "key": "all",
+                "label": "ALL"
+            },
+            {
+                "key": "cancelled",
+                "label": "CANCELLED"
+            },
+            {
+                "key": "claimed",
+                "label": "CLAIMED"
+            },
+            {
+                "key": "delivered",
+                "label": "DELIVERED"
+            },
+            {
+                "key": "rto",
+                "label": "RTO"
+            },
+            {
+                "key": "returned",
+                "label": "RETURNED"
+            }
+        ],
+        "orders": [
+            {
+                "orderId": "405-1152504-6520333",
+                "sku": "JT-WT-01",
+                "productName": "JUNIOR TURTLE | Wooden Shape Sorter Toy for Kids Learning",
+                "units": 0,
+                "quantity": 0,
+                "orderDate": "28 Feb 2026",
+                "status": "cancelled",
+                "settlement": 0,
+                "purchaseCost": 0,
+                "profit": 0,
+                "paymentEntries": []
+            },
+            {
+                "orderId": "407-2017897-5520353",
+                "sku": "JT-WT-02",
+                "productName": "JUNIOR TURTLE | Wooden Alphabet Puzzle Board for Kids",
+                "units": 1,
+                "quantity": 1,
+                "orderDate": "28 Feb 2026",
+                "status": "delivered",
+                "settlement": 317.66,
+                "purchaseCost": 71.8,
+                "profit": 245.86,
+                "paymentEntries": [
+                    {
+                        "date": "8 Mar 2026 8:49:55 pm UTC",
+                        "description": "Mogsa Women's Readymade Sar...",
+                        "breakdown": [
+                            {
+                                "name": "product sales",
+                                "amount": 380
+                            },
+                            {
+                                "name": "Total sales tax liable(GST before adjusting TCS)",
+                                "amount": 19
+                            },
+                            {
+                                "name": "TCS-CGST",
+                                "amount": -0.95
+                            },
+                            {
+                                "name": "TCS-SGST",
+                                "amount": -0.95
+                            },
+                            {
+                                "name": "TDS (Section 194-O)",
+                                "amount": -0.38
+                            },
+                            {
+                                "name": "fba fees",
+                                "amount": -63.72
+                            },
+                            {
+                                "name": "other transaction fees",
+                                "amount": -15.34
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "orderId": "405-7059821-3378059",
+                "sku": "JT-WT-3",
+                "productName": "JUNIOR TURTLE | Wooden Number Puzzle Learning Board for Kids",
+                "units": 1,
+                "quantity": 1,
+                "orderDate": "28 Feb 2026",
+                "status": "delivered",
+                "settlement": 301.21,
+                "purchaseCost": 71.8,
+                "profit": 229.41,
+                "paymentEntries": [
+                    {
+                        "date": "8 Mar 2026 9:12:21 pm UTC",
+                        "description": "Mogsa Women's Readymade Sar...",
+                        "breakdown": [
+                            {
+                                "name": "product sales",
+                                "amount": 360
+                            },
+                            {
+                                "name": "shipping credits",
+                                "amount": 20
+                            },
+                            {
+                                "name": "Total sales tax liable(GST before adjusting TCS)",
+                                "amount": 18
+                            },
+                            {
+                                "name": "TCS-CGST",
+                                "amount": -0.9
+                            },
+                            {
+                                "name": "TCS-SGST",
+                                "amount": -0.9
+                            },
+                            {
+                                "name": "TDS (Section 194-O)",
+                                "amount": -0.36
+                            },
+                            {
+                                "name": "selling fees",
+                                "amount": -49.28
+                            },
+                            {
+                                "name": "fba fees",
+                                "amount": -45.35
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "orderId": "402-0434038-0913919",
+                "sku": "JT-WT-4",
+                "productName": "JUNIOR TURTLE | Wooden Pull Along Elephant Toy for Toddlers",
+                "units": 1,
+                "quantity": 1,
+                "orderDate": "28 Feb 2026",
+                "status": "returned",
+                "settlement": -125.46,
+                "purchaseCost": 0,
+                "profit": -125.46,
+                "paymentEntries": [
+                    {
+                        "date": "8 Mar 2026 9:51:20 pm UTC",
+                        "description": "Mogsa Women's Readymade Sar...",
+                        "breakdown": [
+                            {
+                                "name": "TCS-CGST",
+                                "amount": 0.93
+                            },
+                            {
+                                "name": "TCS-SGST",
+                                "amount": 0.93
+                            },
+                            {
+                                "name": "product sales",
+                                "amount": -372.38
+                            },
+                            {
+                                "name": "Total sales tax liable(GST before adjusting TCS)",
+                                "amount": -18.62
+                            },
+                            {
+                                "name": "selling fees",
+                                "amount": -46.02
+                            }
+                        ]
+                    },
+                    {
+                        "date": "8 Mar 2026 11:38:54 pm UTC",
+                        "description": "Mogsa Women's Readymade Sar...",
+                        "breakdown": [
+                            {
+                                "name": "product sales",
+                                "amount": 372.38
+                            },
+                            {
+                                "name": "Total sales tax liable(GST before adjusting TCS)",
+                                "amount": 18.62
+                            },
+                            {
+                                "name": "TCS-CGST",
+                                "amount": -0.93
+                            },
+                            {
+                                "name": "TCS-SGST",
+                                "amount": -0.93
+                            },
+                            {
+                                "name": "TDS (Section 194-O)",
+                                "amount": -0.38
+                            },
+                            {
+                                "name": "fba fees",
+                                "amount": -63.72
+                            },
+                            {
+                                "name": "other transaction fees",
+                                "amount": -15.34
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "orderId": "403-9620174-1182022",
+                "sku": "JT-WT-5",
+                "productName": "JUNIOR TURTLE | Wooden Stacking Ring Toy for Babies",
+                "units": 1,
+                "quantity": 1,
+                "orderDate": "28 Feb 2026",
+                "status": "delivered",
+                "settlement": 307.34,
+                "purchaseCost": 71.8,
+                "profit": 235.54,
+                "paymentEntries": [
+                    {
+                        "date": "9 Mar 2026 10:15:44 am UTC",
+                        "description": "Kids Educational Toy Sale",
+                        "breakdown": [
+                            {
+                                "name": "product sales",
+                                "amount": 369
+                            },
+                            {
+                                "name": "Total sales tax liable(GST before adjusting TCS)",
+                                "amount": 18.45
+                            },
+                            {
+                                "name": "TCS-CGST",
+                                "amount": -0.92
+                            },
+                            {
+                                "name": "TCS-SGST",
+                                "amount": -0.92
+                            },
+                            {
+                                "name": "TDS (Section 194-O)",
+                                "amount": -0.37
+                            },
+                            {
+                                "name": "fba fees",
+                                "amount": -60.9
+                            },
+                            {
+                                "name": "other transaction fees",
+                                "amount": -17
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "orderId": "403-7699873-8842101",
+                "sku": "JT-WT-6",
+                "productName": "JUNIOR TURTLE | Wooden Rainbow Stacker Toy for Babies",
+                "units": 1,
+                "quantity": 1,
+                "orderDate": "28 Feb 2026",
+                "status": "delivered",
+                "settlement": 299.33,
+                "purchaseCost": 71.8,
+                "profit": 227.53,
+                "paymentEntries": [
+                    {
+                        "date": "9 Mar 2026 1:34:18 pm UTC",
+                        "description": "Wooden Toy Order Payment",
+                        "breakdown": [
+                            {
+                                "name": "product sales",
+                                "amount": 350
+                            },
+                            {
+                                "name": "shipping credits",
+                                "amount": 22
+                            },
+                            {
+                                "name": "Total sales tax liable(GST before adjusting TCS)",
+                                "amount": 17.5
+                            },
+                            {
+                                "name": "TCS-CGST",
+                                "amount": -0.88
+                            },
+                            {
+                                "name": "TCS-SGST",
+                                "amount": -0.88
+                            },
+                            {
+                                "name": "TDS (Section 194-O)",
+                                "amount": -0.35
+                            },
+                            {
+                                "name": "fba fees",
+                                "amount": -70.26
+                            },
+                            {
+                                "name": "other transaction fees",
+                                "amount": -17.8
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "orderId": "407-2600179-8834755",
+                "sku": "JT-WT-7",
+                "productName": "JUNIOR TURTLE | Wooden Animal Peg Puzzle Toy for Toddlers",
+                "units": 1,
+                "quantity": 1,
+                "orderDate": "28 Feb 2026",
+                "status": "delivered",
+                "settlement": 185.31,
+                "purchaseCost": 71.8,
+                "profit": 113.51,
+                "paymentEntries": [
+                    {
+                        "date": "9 Mar 2026 5:44:12 pm UTC",
+                        "description": "Wooden Puzzle Order",
+                        "breakdown": [
+                            {
+                                "name": "product sales",
+                                "amount": 249
+                            },
+                            {
+                                "name": "Total sales tax liable(GST before adjusting TCS)",
+                                "amount": 12.45
+                            },
+                            {
+                                "name": "TCS-CGST",
+                                "amount": -0.62
+                            },
+                            {
+                                "name": "TCS-SGST",
+                                "amount": -0.62
+                            },
+                            {
+                                "name": "TDS (Section 194-O)",
+                                "amount": -0.25
+                            },
+                            {
+                                "name": "selling fees",
+                                "amount": -35
+                            },
+                            {
+                                "name": "fba fees",
+                                "amount": -39.65
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "orderId": "408-6273901-4412088",
+                "sku": "JT-WT-8",
+                "productName": "JUNIOR TURTLE | Wooden Counting Board for Preschool Kids",
+                "units": 1,
+                "quantity": 1,
+                "orderDate": "28 Feb 2026",
+                "status": "returned",
+                "settlement": -133.71,
+                "purchaseCost": 0,
+                "profit": -133.71,
+                "paymentEntries": [
+                    {
+                        "date": "9 Mar 2026 7:12:39 pm UTC",
+                        "description": "Customer Return Reversal",
+                        "breakdown": [
+                            {
+                                "name": "TCS-CGST",
+                                "amount": 0.86
+                            },
+                            {
+                                "name": "TCS-SGST",
+                                "amount": 0.86
+                            },
+                            {
+                                "name": "product sales",
+                                "amount": -345
+                            },
+                            {
+                                "name": "Total sales tax liable(GST before adjusting TCS)",
+                                "amount": -17.25
+                            },
+                            {
+                                "name": "selling fees",
+                                "amount": -42.18
+                            },
+                            {
+                                "name": "refund commission",
+                                "amount": 268
+                            },
+                            {
+                                "name": "return processing fee",
+                                "amount": -0.0
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "orderId": "402-7883816-5491172",
+                "sku": "JT-WT-9",
+                "productName": "JUNIOR TURTLE | Wooden Montessori Learning Tray for Kids",
+                "units": 1,
+                "quantity": 1,
+                "orderDate": "28 Feb 2026",
+                "status": "delivered",
+                "settlement": 309.49,
+                "purchaseCost": 71.8,
+                "profit": 237.69,
+                "paymentEntries": [
+                    {
+                        "date": "10 Mar 2026 8:10:05 am UTC",
+                        "description": "Montessori Toy Payment",
+                        "breakdown": [
+                            {
+                                "name": "product sales",
+                                "amount": 372
+                            },
+                            {
+                                "name": "Total sales tax liable(GST before adjusting TCS)",
+                                "amount": 18.6
+                            },
+                            {
+                                "name": "TCS-CGST",
+                                "amount": -0.93
+                            },
+                            {
+                                "name": "TCS-SGST",
+                                "amount": -0.93
+                            },
+                            {
+                                "name": "TDS (Section 194-O)",
+                                "amount": -0.37
+                            },
+                            {
+                                "name": "fba fees",
+                                "amount": -62.88
+                            },
+                            {
+                                "name": "other transaction fees",
+                                "amount": -16
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "orderId": "403-8452802-7754109",
+                "sku": "JT-WT-10",
+                "productName": "JUNIOR TURTLE | Wooden Shape Matching Board for Toddlers",
+                "units": 1,
+                "quantity": 1,
+                "orderDate": "28 Feb 2026",
+                "status": "delivered",
+                "settlement": 309.7,
+                "purchaseCost": 71.8,
+                "profit": 237.9,
+                "paymentEntries": [
+                    {
+                        "date": "10 Mar 2026 9:03:17 am UTC",
+                        "description": "Shape Matching Toy Payment",
+                        "breakdown": [
+                            {
+                                "name": "product sales",
+                                "amount": 375
+                            },
+                            {
+                                "name": "Total sales tax liable(GST before adjusting TCS)",
+                                "amount": 18.75
+                            },
+                            {
+                                "name": "TCS-CGST",
+                                "amount": -0.94
+                            },
+                            {
+                                "name": "TCS-SGST",
+                                "amount": -0.94
+                            },
+                            {
+                                "name": "TDS (Section 194-O)",
+                                "amount": -0.38
+                            },
+                            {
+                                "name": "selling fees",
+                                "amount": -34
+                            },
+                            {
+                                "name": "fba fees",
+                                "amount": -47.79
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "orderId": "402-3284820-2394875",
+                "sku": "JT-WT-01",
+                "productName": "JUNIOR TURTLE | Wooden Shape Sorter Toy for Kids Learning",
+                "units": 1,
+                "quantity": 1,
+                "orderDate": "28 Feb 2026",
+                "status": "delivered",
+                "settlement": 290.27,
+                "purchaseCost": 71.8,
+                "profit": 218.47,
+                "paymentEntries": [
+                    {
+                        "date": "10 Mar 2026 10:42:41 am UTC",
+                        "description": "Shape Sorter Order Payment",
+                        "breakdown": [
+                            {
+                                "name": "product sales",
+                                "amount": 349
+                            },
+                            {
+                                "name": "shipping credits",
+                                "amount": 20
+                            },
+                            {
+                                "name": "Total sales tax liable(GST before adjusting TCS)",
+                                "amount": 17.45
+                            },
+                            {
+                                "name": "TCS-CGST",
+                                "amount": -0.87
+                            },
+                            {
+                                "name": "TCS-SGST",
+                                "amount": -0.87
+                            },
+                            {
+                                "name": "TDS (Section 194-O)",
+                                "amount": -0.35
+                            },
+                            {
+                                "name": "fba fees",
+                                "amount": -77.09
+                            },
+                            {
+                                "name": "other transaction fees",
+                                "amount": -17
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "orderId": "402-1780187-4813920",
+                "sku": "JT-WT-02",
+                "productName": "JUNIOR TURTLE | Wooden Alphabet Puzzle Board for Kids",
+                "units": 1,
+                "quantity": 1,
+                "orderDate": "28 Feb 2026",
+                "status": "delivered",
+                "settlement": 287.9,
+                "purchaseCost": 71.8,
+                "profit": 216.1,
+                "paymentEntries": [
+                    {
+                        "date": "10 Mar 2026 11:58:42 am UTC",
+                        "description": "Alphabet Puzzle Order",
+                        "breakdown": [
+                            {
+                                "name": "product sales",
+                                "amount": 342
+                            },
+                            {
+                                "name": "Total sales tax liable(GST before adjusting TCS)",
+                                "amount": 17.1
+                            },
+                            {
+                                "name": "promotional rebates",
+                                "amount": -10
+                            },
+                            {
+                                "name": "TCS-CGST",
+                                "amount": -0.86
+                            },
+                            {
+                                "name": "TCS-SGST",
+                                "amount": -0.86
+                            },
+                            {
+                                "name": "TDS (Section 194-O)",
+                                "amount": -0.34
+                            },
+                            {
+                                "name": "fba fees",
+                                "amount": -58.14
+                            },
+                            {
+                                "name": "other transaction fees",
+                                "amount": -1
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "orderId": "404-4290012-3209128",
+                "sku": "JT-WT-3",
+                "productName": "JUNIOR TURTLE | Wooden Number Puzzle Learning Board for Kids",
+                "units": 1,
+                "quantity": 1,
+                "orderDate": "28 Feb 2026",
+                "status": "delivered",
+                "settlement": 307.34,
+                "purchaseCost": 71.8,
+                "profit": 235.54,
+                "paymentEntries": [
+                    {
+                        "date": "10 Mar 2026 12:44:21 pm UTC",
+                        "description": "Number Puzzle Payment",
+                        "breakdown": [
+                            {
+                                "name": "product sales",
+                                "amount": 370
+                            },
+                            {
+                                "name": "Total sales tax liable(GST before adjusting TCS)",
+                                "amount": 18.5
+                            },
+                            {
+                                "name": "TCS-CGST",
+                                "amount": -0.93
+                            },
+                            {
+                                "name": "TCS-SGST",
+                                "amount": -0.93
+                            },
+                            {
+                                "name": "TDS (Section 194-O)",
+                                "amount": -0.37
+                            },
+                            {
+                                "name": "selling fees",
+                                "amount": -42.5
+                            },
+                            {
+                                "name": "fba fees",
+                                "amount": -36.43
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "orderId": "404-1023891-2274501",
+                "sku": "JT-WT-4",
+                "productName": "JUNIOR TURTLE | Wooden Pull Along Elephant Toy for Toddlers",
+                "units": 1,
+                "quantity": 1,
+                "orderDate": "28 Feb 2026",
+                "status": "delivered",
+                "settlement": 279.02,
+                "purchaseCost": 71.8,
+                "profit": 207.22,
+                "paymentEntries": [
+                    {
+                        "date": "10 Mar 2026 1:10:12 pm UTC",
+                        "description": "Pull Along Elephant Payment",
+                        "breakdown": [
+                            {
+                                "name": "product sales",
+                                "amount": 329
+                            },
+                            {
+                                "name": "Total sales tax liable(GST before adjusting TCS)",
+                                "amount": 16.45
+                            },
+                            {
+                                "name": "TCS-CGST",
+                                "amount": -0.82
+                            },
+                            {
+                                "name": "TCS-SGST",
+                                "amount": -0.82
+                            },
+                            {
+                                "name": "TDS (Section 194-O)",
+                                "amount": -0.33
+                            },
+                            {
+                                "name": "fba fees",
+                                "amount": -49.46
+                            },
+                            {
+                                "name": "other transaction fees",
+                                "amount": -15
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "orderId": "406-7645201-9987210",
+                "sku": "JT-WT-5",
+                "productName": "JUNIOR TURTLE | Wooden Stacking Ring Toy for Babies",
+                "units": 1,
+                "quantity": 1,
+                "orderDate": "28 Feb 2026",
+                "status": "delivered",
+                "settlement": 414.72,
+                "purchaseCost": 71.8,
+                "profit": 342.92,
+                "paymentEntries": [
+                    {
+                        "date": "10 Mar 2026 3:21:35 pm UTC",
+                        "description": "Stacking Ring Premium Order",
+                        "breakdown": [
+                            {
+                                "name": "product sales",
+                                "amount": 480
+                            },
+                            {
+                                "name": "shipping credits",
+                                "amount": 25
+                            },
+                            {
+                                "name": "Total sales tax liable(GST before adjusting TCS)",
+                                "amount": 24
+                            },
+                            {
+                                "name": "TCS-CGST",
+                                "amount": -1.2
+                            },
+                            {
+                                "name": "TCS-SGST",
+                                "amount": -1.2
+                            },
+                            {
+                                "name": "TDS (Section 194-O)",
+                                "amount": -0.48
+                            },
+                            {
+                                "name": "fba fees",
+                                "amount": -91.2
+                            },
+                            {
+                                "name": "other transaction fees",
+                                "amount": -20
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "orderId": "405-3331883-4190021",
+                "sku": "JT-WT-6",
+                "productName": "JUNIOR TURTLE | Wooden Rainbow Stacker Toy for Babies",
+                "units": 1,
+                "quantity": 1,
+                "orderDate": "28 Feb 2026",
+                "status": "rto",
+                "settlement": -1.84,
+                "purchaseCost": 0,
+                "profit": -1.84,
+                "paymentEntries": [
+                    {
+                        "date": "10 Mar 2026 4:02:19 pm UTC",
+                        "description": "Courier Return Adjustment",
+                        "breakdown": [
+                            {
+                                "name": "shipping credits",
+                                "amount": -76.2
+                            },
+                            {
+                                "name": "promotional rebates",
+                                "amount": 35.2
+                            },
+                            {
+                                "name": "TCS-IGST",
+                                "amount": 3.54
+                            },
+                            {
+                                "name": "other transaction fees",
+                                "amount": 35.62
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "orderId": "407-8890447-7813206",
+                "sku": "JT-WT-7",
+                "productName": "JUNIOR TURTLE | Wooden Animal Peg Puzzle Toy for Toddlers",
+                "units": 1,
+                "quantity": 1,
+                "orderDate": "27 Feb 2026",
+                "status": "claimed",
+                "settlement": 0,
+                "purchaseCost": 71.8,
+                "profit": -71.8,
+                "paymentEntries": [
+                    {
+                        "date": "12 Mar 2026 8:23:24 am UTC",
+                        "description": "FBA Inventory Reimbursement",
+                        "breakdown": [
+                            {
+                                "name": "other",
+                                "amount": 71.8
+                            }
+                        ]
+                    },
+                    {
+                        "date": "12 Mar 2026 9:02:11 am UTC",
+                        "description": "Claim Processing Reversal",
+                        "breakdown": [
+                            {
+                                "name": "adjustment",
+                                "amount": -71.8
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 }

@@ -86,8 +86,10 @@ function ReportDisplayMain() {
             />
             <OrderSummarySection />
             {selectedMarketplace === "amazon" && <FulfillmentDetailsSection />}
-            <SkuWiseDetailsSection />
-            <OrderWiseDetailsSection />
+            <SkuWiseDetailsSection selectedMarketplace={selectedMarketplace} />
+            <OrderWiseDetailsSection
+              selectedMarketplace={selectedMarketplace}
+            />
             {selectedMarketplace === "amazon" && <MultiOrdersSection />}
             {selectedMarketplace === "amazon" && <SkuStateBreakdownSection />}
             {selectedMarketplace === "amazon" && <StateWiseBreakdownSection />}

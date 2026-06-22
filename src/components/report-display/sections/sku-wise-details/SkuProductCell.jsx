@@ -6,7 +6,7 @@ function getAmazonProductUrl(asin) {
   return `https://www.amazon.in/dp/${asin}`;
 }
 
-function SkuProductCell({ product }) {
+function SkuProductCell({ product, selectedMarketplace = "amazon" }) {
   const [copiedType, setCopiedType] = useState(null);
 
   const copyText = async (value, type) => {
@@ -23,16 +23,22 @@ function SkuProductCell({ product }) {
     }
   };
 
+  const isFlipkart = selectedMarketplace === "flipkart";
+
   return (
     <div className="sku-product-detail-cell">
-      <a
-        href={getAmazonProductUrl(product.asin)}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="sku-product-name-link"
-      >
-        {product.productName}
-      </a>
+      {isFlipkart ? (
+        product.productName
+      ) : (
+        <a
+          href={getAmazonProductUrl(product.asin)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="sku-product-name-link"
+        >
+          {product.productName}
+        </a>
+      )}
 
       <div className="sku-product-meta">
         <span>SKU: {product.sku}</span>
@@ -53,16 +59,28 @@ function SkuProductCell({ product }) {
         <i>|</i>
 
         <span>
-          ASIN: <b>{product.asin}</b>
+          {isFlipkart ? (
+            <>
+              FSN: <b>{product.fsn}</b>
+            </>
+          ) : (
+            <>
+              ASIN: <b>{product.asin}</b>
+            </>
+          )}
         </span>
 
         <button
           type="button"
           className="sku-copy-btn"
-          onClick={() => copyText(product.asin, "asin")}
-          aria-label="Copy ASIN"
+          onClick={
+            isFlipkart
+              ? () => copyText(product.fsn, "fsn")
+              : () => copyText(product.asin, "asin")
+          }
+          aria-label={isFlipkart ? "Copy FSN" : "Copy ASIN"}
         >
-          {copiedType === "asin" ? (
+          {copiedType === "asin" || copiedType === "fsn" ? (
             <CheckIcon fill="#2f8f46" width={16} height={16} />
           ) : (
             <CopyIcon fill="#777777" width={15} height={15} />

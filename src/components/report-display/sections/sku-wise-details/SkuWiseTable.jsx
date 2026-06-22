@@ -1,7 +1,7 @@
 import { formatCurrency } from "../../../../utils/formatters";
 import SkuProductCell from "./SkuProductCell";
 
-function SkuWiseTable({ products, onViewSku }) {
+function SkuWiseTable({ products, onViewSku, selectedMarketplace = "amazon" }) {
   return (
     <div className="sku-wise-table-wrap">
       <table className="sku-wise-table">
@@ -26,9 +26,18 @@ function SkuWiseTable({ products, onViewSku }) {
             </tr>
           ) : (
             products.map((product) => (
-              <tr key={`${product.sku}-${product.asin}`}>
+              <tr
+                key={
+                  selectedMarketplace === "amazon"
+                    ? `${product.sku}-${product.asin}`
+                    : `${product.sku}-${product.fsn}`
+                }
+              >
                 <td>
-                  <SkuProductCell product={product} />
+                  <SkuProductCell
+                    product={product}
+                    selectedMarketplace={selectedMarketplace}
+                  />
                 </td>
 
                 <td>{Number(product.units || 0).toLocaleString("en-IN")}</td>

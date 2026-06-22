@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import reportData from "../../../../data/reportDataAmazon.json";
+import reportData from "../../../../data/reportDataFlipkart.json";
 import { downloadCsv } from "../../../../utils/downloadCsv";
 import SkuWiseTabs from "./SkuWiseTabs";
 import SkuWiseFilters from "./SkuWiseFilters";
@@ -11,7 +11,7 @@ import "./skuWiseDetails.css";
 
 const PAGE_SIZE = 15;
 
-function SkuWiseDetailsSection() {
+function SkuWiseDetailsSection({ selectedMarketplace = "amazon" }) {
   const data = reportData.skuWiseDetails;
 
   const [activeTab, setActiveTab] = useState("all");
@@ -150,6 +150,7 @@ function SkuWiseDetailsSection() {
       <SkuWiseStats summary={filteredSummary} />
 
       <SkuWiseTable
+        selectedMarketplace={selectedMarketplace}
         products={paginatedProducts}
         onViewSku={handleViewProduct}
       />
