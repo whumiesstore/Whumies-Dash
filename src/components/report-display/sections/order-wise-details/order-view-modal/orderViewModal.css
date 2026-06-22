@@ -227,7 +227,7 @@
   letter-spacing: 0.5px;
 }
 
-.payment-entry-list {
+.payment-entries-list {
   padding: 10px 14px 0;
   display: grid;
   gap: 8px;
@@ -256,24 +256,24 @@
   font-weight: 600;
 }
 
-/* Payment Entry Row */
+/* Amazon Payment Entry Row */
 
-.payment-entry-row {
+.amazon-payment-entry-row {
   border: 1px solid #e4e8ed;
   border-radius: 6px;
   overflow: hidden;
   background: #ffffff;
 }
 
-.payment-entry-row.positive {
+.amazon-payment-entry-row.positive {
   border-left: 3px solid #2f8f46;
 }
 
-.payment-entry-row.negative {
+.amazon-payment-entry-row.negative {
   border-left: 3px solid #bf0000;
 }
 
-.payment-entry-main {
+.amazon-payment-entry-main {
   width: 100%;
   min-height: 38px;
   border: none;
@@ -286,14 +286,14 @@
   cursor: pointer;
 }
 
-.payment-entry-date {
+.amazon-payment-entry-date {
   color: #4d6580;
   font-size: 11px;
   font-weight: 750;
   white-space: nowrap;
 }
 
-.payment-entry-description {
+.amazon-payment-entry-description {
   max-width: 170px;
   padding: 4px 8px;
   border-radius: 5px;
@@ -306,7 +306,7 @@
   white-space: nowrap;
 }
 
-.payment-entry-chevron {
+.amazon-payment-entry-chevron {
   color: #8b9aa8;
   font-size: 13px;
   font-weight: 850;
@@ -322,7 +322,7 @@
   font-weight: 850;
 }
 
-.payment-entry-breakdown {
+.amazon-payment-entry-breakdown {
   border-top: 1px solid #edf0f3;
   background: #ffffff;
 }
@@ -366,6 +366,163 @@
   text-transform: uppercase;
 }
 
+/* Flipkart Payment Entry Row */
+
+.flipkart-payment-entry-card {
+  border: 1px solid #dde2ea;
+  border-left: 4px solid #23b35b;
+  border-radius: 6px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.flipkart-payment-entry-card.negative {
+  border-left-color: #ef3b35;
+}
+
+.flipkart-payment-entry-top {
+  width: 100%;
+  min-height: 50px;
+  border: none;
+  background: #ffffff;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.flipkart-payment-entry-top > span {
+  color: #555555;
+  font-size: 12px;
+  font-weight: 750;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flipkart-payment-entry-top strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.flipkart-payment-entry-top i {
+  color: #8a95a3;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 1;
+  transform: rotate(180deg);
+  transition: transform 0.18s ease;
+}
+
+.flipkart-payment-entry-top i.open {
+  transform: rotate(0deg);
+}
+
+.flipkart-payment-entry-body {
+  background: #fbfcff;
+  border-top: 1px solid #d9dfe8;
+}
+
+.flipkart-payment-section {
+  border-bottom: 1px solid #d9dfe8;
+}
+
+.flipkart-payment-section h4 {
+  margin: 0;
+  padding: 9px 14px;
+  background: #f0f4ff;
+  color: #4265b1;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.flipkart-payment-row {
+  min-height: 32px;
+  padding: 0 14px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.flipkart-payment-row:last-child {
+  border-bottom: none;
+}
+
+.flipkart-payment-row span {
+  color: #4e5a6a;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.flipkart-payment-row strong {
+  color: #344054;
+  font-size: 12px;
+  font-weight: 850;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.flipkart-payment-net-row {
+  min-height: 42px;
+  padding: 0 14px;
+  background: #f9fafc;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+}
+
+.flipkart-payment-net-row span {
+  color: #344054;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.flipkart-payment-net-row strong {
+  font-size: 13px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.positive-text {
+  color: #1fa64a !important;
+}
+
+.negative-text {
+  color: #ef3b35 !important;
+}
+
+@media (max-width: 520px) {
+  .flipkart-payment-entry-top {
+    padding: 0 12px;
+  }
+
+  .flipkart-payment-row,
+  .flipkart-payment-net-row {
+    padding: 0 12px;
+    gap: 10px;
+  }
+
+  .flipkart-payment-row span,
+  .flipkart-payment-row strong {
+    font-size: 11.5px;
+  }
+}
+
+/* View Modal Footer */
+
 .order-view-footer {
   flex-shrink: 0;
   padding: 14px 22px;
@@ -384,6 +541,8 @@
   font-weight: 850;
   cursor: pointer;
 }
+
+/* Responsive */
 
 @media (max-width: 640px) {
   .order-view-overlay {
@@ -418,17 +577,17 @@
     grid-template-columns: 1fr;
   }
 
-  .payment-entry-main {
+  .amazon-payment-entry-main {
     grid-template-columns: 1fr auto;
     padding: 10px 12px;
   }
 
-  .payment-entry-description {
+  .amazon-payment-entry-description {
     grid-column: 1 / -1;
     max-width: 100%;
   }
 
-  .payment-entry-chevron {
+  .amazon-payment-entry-chevron {
     display: none;
   }
 

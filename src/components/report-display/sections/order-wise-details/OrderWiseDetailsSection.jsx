@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
-import reportData from "../../../../data/reportDataAmazon.json";
+import reportDataAmazon from "../../../../data/reportDataAmazon.json";
+import reportDataFlipkart from "../../../../data/reportDataFlipkart.json";
 import { downloadCsv } from "../../../../utils/downloadCsv";
 import OrderWiseTabs from "./OrderWiseTabs";
 import OrderWiseFilters from "./OrderWiseFilters";
@@ -11,8 +12,11 @@ import "./orderWiseDetails.css";
 
 const PAGE_SIZE = 15;
 
-function OrderWiseDetailsSection() {
-  const data = reportData.orderWiseDetails;
+function OrderWiseDetailsSection({ selectedMarketplace = "amazon" }) {
+  const data =
+    selectedMarketplace === "flipkart"
+      ? reportDataFlipkart.orderWiseDetails
+      : reportDataAmazon.orderWiseDetails;
 
   const [activeTab, setActiveTab] = useState("all");
   const [orderQuery, setOrderQuery] = useState("");
@@ -162,6 +166,7 @@ function OrderWiseDetailsSection() {
 
       {selectedOrder && (
         <OrderViewModal
+          selectedMarketplace={selectedMarketplace}
           order={selectedOrder}
           onClose={() => setSelectedOrder(null)}
         />

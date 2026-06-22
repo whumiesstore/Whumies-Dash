@@ -5,7 +5,7 @@ import OrderViewSummaryCards from "./OrderViewSummaryCards";
 import PaymentEntries from "./PaymentEntries";
 import "./orderViewModal.css";
 
-function OrderViewModal({ order, onClose }) {
+function OrderViewModal({ order, onClose, selectedMarketplace = "amazon" }) {
   useEffect(() => {
     const scrollY = window.scrollY;
 
@@ -39,7 +39,10 @@ function OrderViewModal({ order, onClose }) {
   return (
     <div className="order-view-overlay" onClick={onClose}>
       <div className="order-view-modal" onClick={(e) => e.stopPropagation()}>
-        <OrderViewHeader order={order} />
+        <OrderViewHeader
+          order={order}
+          selectedMarketplace={selectedMarketplace}
+        />
 
         <div className="order-view-scroll-body">
           <OrderViewMeta order={order} />
@@ -50,7 +53,10 @@ function OrderViewModal({ order, onClose }) {
             profit={profit}
           />
 
-          <PaymentEntries entries={order.paymentEntries || []} />
+          <PaymentEntries
+            entries={order.paymentEntries || []}
+            selectedMarketplace={selectedMarketplace}
+          />
         </div>
 
         <div className="order-view-footer">

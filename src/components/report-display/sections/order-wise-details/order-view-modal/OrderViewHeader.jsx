@@ -8,13 +8,18 @@ const statusLabels = {
   returned: "Returned",
 };
 
-function getSellerCentralUrl(orderId) {
+function getAmazonSellerCentralUrl(orderId) {
   return `https://sellercentral.amazon.in/payments/event/view?accountType=ALL&orderId=${encodeURIComponent(
     orderId,
   )}&resultsPerPage=10&pageNumber=1`;
 }
 
-function OrderViewHeader({ order }) {
+function getFlipkartSellerUrl() {
+  return "https://seller.flipkart.com/index.html#dashboard/payments/order-wise-settlements";
+}
+
+function OrderViewHeader({ order, selectedMarketplace = "amazon" }) {
+  const isFlipkart = selectedMarketplace === "flipkart";
   return (
     <div className="order-view-header">
       <div className="order-view-id-row">
@@ -25,12 +30,16 @@ function OrderViewHeader({ order }) {
           </span>
 
           <a
-            href={getSellerCentralUrl(order.orderId)}
+            href={
+              isFlipkart
+                ? getFlipkartSellerUrl()
+                : getAmazonSellerCentralUrl(order.orderId)
+            }
             target="_blank"
             rel="noopener noreferrer"
             className="order-view-seller-btn"
           >
-            View on Seller Central
+            {isFlipkart ? "View on Flipkart" : "View on Seller Central"}
           </a>
         </div>
       </div>
