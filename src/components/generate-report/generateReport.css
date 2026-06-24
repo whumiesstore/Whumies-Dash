@@ -1,7 +1,8 @@
 .generate-report-page {
-  width: 100%;
   max-width: 1080px;
   margin: 0 auto;
+  width: min(100% - 32px, 1080px);
+  padding: 34px 0 56px;
 }
 
 /* Breadcrumb */

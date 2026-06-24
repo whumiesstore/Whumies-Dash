@@ -1,6 +1,8 @@
 .dashboard-page {
-  width: 100%;
   color: #111111;
+  width: min(100% - 32px, 1080px);
+  margin: 0 auto;
+  padding: 34px 0 56px;
 }
 
 /* Header */

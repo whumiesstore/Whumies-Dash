@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./navbar.css";
 
 function Navbar({ isLoggedIn = false, userName = "My Profile", onLogout }) {
@@ -27,11 +28,16 @@ function Navbar({ isLoggedIn = false, userName = "My Profile", onLogout }) {
   const handleLogout = async () => {
     closeMenu();
 
-    if (onLogout) {
-      await onLogout();
-    }
+    try {
+      if (onLogout) {
+        await onLogout();
+      }
 
-    navigate("/login", { replace: true });
+      toast.success("Logged out successfully.");
+      navigate("/login", { replace: true });
+    } catch (error) {
+      toast.error("Logout failed. Please try again.");
+    }
   };
 
   return (
