@@ -1,9 +1,9 @@
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../../auth/AuthContext";
+import { useAuth } from "../../../auth/AuthContext";
 
-import ProfileStatusCard from "./profile/ProfileStatusCard";
-import ProfileDetailsForm from "./profile/ProfileDetailsForm";
-import ChangePasswordForm from "./profile/ChangePasswordForm";
+import ProfileStatusCard from "./ProfileStatusCard";
+import ProfileDetailsForm from "./ProfileDetailsForm";
+import ChangePasswordForm from "./ChangePasswordForm";
 
 import "./profile.css";
 

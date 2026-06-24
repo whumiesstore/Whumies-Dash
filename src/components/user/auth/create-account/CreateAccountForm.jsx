@@ -1,6 +1,6 @@
-import PasswordInput from "../common/PasswordInput";
-import PasswordChecklist from "../common/PasswordChecklist";
-import AuthAlert from "../common/AuthAlert";
+import PasswordInput from "../../common/PasswordInput";
+import PasswordChecklist from "../../common/PasswordChecklist";
+import AuthAlert from "../../common/AuthAlert";
 
 function CreateAccountForm({
   form,

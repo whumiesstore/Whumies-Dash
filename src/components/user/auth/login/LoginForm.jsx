@@ -1,5 +1,5 @@
-import PasswordInput from "../common/PasswordInput";
-import AuthAlert from "../common/AuthAlert";
+import PasswordInput from "../../common/PasswordInput";
+import AuthAlert from "../../common/AuthAlert";
 
 function LoginForm({
   form,

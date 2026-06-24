@@ -5,16 +5,18 @@ import Layout from "./components/ui/layout/Layout";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import PublicOnlyRoute from "./auth/PublicOnlyRoute";
 import OnboardingRoute from "./auth/OnboardingRoute";
+import LoggedInRoute from "./auth/LoggedInRoute.jsx";
 
 import HomePage from "./pages/HomePage.jsx";
-import AuthPage from "./pages/login/AuthPage.jsx";
-import OnboardingPage from "./pages/onboarding/OnboardingPage.jsx";
+import AuthPage from "./pages/user/auth/AuthPage.jsx";
+import OnboardingPage from "./pages/user/onboarding/OnboardingPage.jsx";
+import ProfilePage from "./pages/user/profile/ProfilePage.jsx";
 
 import DashboardPage from "./pages/dashboard/DashboardPage.jsx";
-import FirmReportsPage from "./pages/dashboard/FirmReportsPage.jsx";
-import MarketplaceReportsPage from "./pages/dashboard/MarketplaceReportsPage.jsx";
-import GenerateReportPage from "./pages/dashboard/GenerateReportPage.jsx";
-import ReportDisplayPage from "./pages/dashboard/ReportDisplayPage.jsx";
+import FirmReportsPage from "./pages/firm-reports/FirmReportsPage.jsx";
+import MarketplaceReportsPage from "./pages/marketplace-reports/MarketplaceReportsPage.jsx";
+import GenerateReportPage from "./pages/generate-report/GenerateReportPage.jsx";
+import ReportDisplayPage from "./pages/report-display/ReportDisplayPage.jsx";
 
 import "./app.css";
 
@@ -33,6 +35,11 @@ function App() {
         {/* Onboarding route */}
         <Route element={<OnboardingRoute />}>
           <Route path="/onboarding" element={<OnboardingPage />} />
+        </Route>
+
+        {/* Profile page route - do not need onboarding */}
+        <Route element={<LoggedInRoute />}>
+          <Route path="/profile" element={<ProfilePage />} />
         </Route>
 
         {/* Protected routes */}

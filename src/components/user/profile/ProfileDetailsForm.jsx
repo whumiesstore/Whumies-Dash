@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { updateProfile, getProfileErrorMessage } from "../utils/profileApi";
-import { validateProfileForm } from "../utils/profileValidation";
+import { updateProfile, getProfileErrorMessage } from "../../../api/profileApi";
+import { validateProfileForm } from "../../../utils/validators/profileValidation";
 
 function getInitialForm(user) {
   return {

@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import AuthLayout from "./common/AuthLayout";
-import OnboardingForm from "./onboarding/OnboardingForm";
+import AuthLayout from "../common/AuthLayout";
+import OnboardingForm from "./OnboardingForm";
 
-import { useAuth } from "../../auth/AuthContext";
-import { getAuthErrorMessage } from "../../api/authApi";
-import { validateOnboardingForm } from "../../utils/validators/authValidation";
+import { useAuth } from "../../../auth/AuthContext";
+import { getAuthErrorMessage } from "../../../api/authApi";
+import { validateOnboardingForm } from "../../../utils/validators/authValidation";
+import "../auth/auth.css";
+import "./onboarding.css";
 
 const initialOnboardingForm = {
   name: "",

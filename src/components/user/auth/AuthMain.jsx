@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import AuthLayout from "./common/AuthLayout";
-import AuthTabs from "./common/AuthTabs";
+import AuthLayout from "../common/AuthLayout";
+import AuthTabs from "../common/AuthTabs";
 import CreateAccountForm from "./create-account/CreateAccountForm";
 import LoginForm from "./login/LoginForm";
 
-import { useAuth } from "../../auth/AuthContext";
-import { getAuthErrorMessage } from "../../api/authApi";
+import { useAuth } from "../../../auth/AuthContext";
+import { getAuthErrorMessage } from "../../../api/authApi";
 
 import {
   validateCreateAccountForm,
   validateLoginForm,
-} from "../../utils/validators/authValidation";
+} from "../../../utils/validators/authValidation";
 
 import "./auth.css";
 

@@ -1,9 +1,9 @@
 import { useState } from "react";
-import PasswordInput from "../components/PasswordInput";
-import PasswordChecklist from "../components/PasswordChecklist";
+import PasswordInput from "../common/PasswordInput";
+import PasswordChecklist from "../common/PasswordChecklist";
 
-import { changePassword, getProfileErrorMessage } from "../utils/profileApi";
-import { validateChangePasswordForm } from "../utils/profileValidation";
+import { changePassword, getProfileErrorMessage } from "../../../api/profileApi";
+import { validateChangePasswordForm } from "../../../utils/validators/profileValidation";
 
 const initialForm = {
   currentPassword: "",
