@@ -7,7 +7,7 @@ import {
   hasProductCost,
   hasRowErrors,
   sanitizeNumberInput,
-} from "../../../../utils/costValidation";
+} from "../../../../utils/validators/costValidation";
 
 const ITEMS_PER_PAGE = 25;
 

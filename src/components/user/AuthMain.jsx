@@ -7,12 +7,12 @@ import CreateAccountForm from "./create-account/CreateAccountForm";
 import LoginForm from "./login/LoginForm";
 
 import { useAuth } from "../../auth/AuthContext";
-import { getAuthErrorMessage } from "../../auth/authApi";
+import { getAuthErrorMessage } from "../../api/authApi";
 
 import {
   validateCreateAccountForm,
   validateLoginForm,
-} from "../../auth/authValidation";
+} from "../../utils/validators/authValidation";
 
 import "./auth.css";
 

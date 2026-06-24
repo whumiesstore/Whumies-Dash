@@ -5,8 +5,8 @@ import AuthLayout from "./common/AuthLayout";
 import OnboardingForm from "./onboarding/OnboardingForm";
 
 import { useAuth } from "../../auth/AuthContext";
-import { getAuthErrorMessage } from "../../auth/authApi";
-import { validateOnboardingForm } from "../../auth/authValidation";
+import { getAuthErrorMessage } from "../../api/authApi";
+import { validateOnboardingForm } from "../../utils/validators/authValidation";
 
 const initialOnboardingForm = {
   name: "",

@@ -14,7 +14,7 @@ import {
   loginUser,
   logoutUser,
   registerUser,
-} from "./authApi";
+} from "../api/authApi";
 
 const AuthContext = createContext(null);
 
@@ -120,6 +120,13 @@ export function AuthProvider({ children }) {
     }
   }, [clearAuth]);
 
+  const updateAuthUser = useCallback((result) => {
+    const authData = result?.data;
+
+    setUser(authData?.user || null);
+    setNeedsOnboarding(Boolean(authData?.needsOnboarding));
+  }, []);
+
   useEffect(() => {
     checkAuth();
 
@@ -148,6 +155,7 @@ export function AuthProvider({ children }) {
       finishOnboarding,
       logout,
       clearAuth,
+      updateAuthUser,
     }),
     [
       user,
@@ -159,6 +167,7 @@ export function AuthProvider({ children }) {
       finishOnboarding,
       logout,
       clearAuth,
+      updateAuthUser,
     ],
   );
 

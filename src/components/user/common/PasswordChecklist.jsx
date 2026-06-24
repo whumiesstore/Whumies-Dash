@@ -1,4 +1,4 @@
-import { getPasswordChecks } from "../../../auth/authValidation";
+import { getPasswordChecks } from "../../../utils/validators/authValidation";
 
 function PasswordChecklist({ password }) {
   const checks = getPasswordChecks(password);

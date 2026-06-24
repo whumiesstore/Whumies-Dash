@@ -1,4 +1,4 @@
-import AuthMain from "../../components/auth/AuthMain";
+import AuthMain from "../../components/user/AuthMain";
 
 function AuthPage() {
   return <AuthMain />;

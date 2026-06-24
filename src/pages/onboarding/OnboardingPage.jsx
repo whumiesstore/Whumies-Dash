@@ -1,4 +1,4 @@
-import OnboardingMain from "../../components/auth/OnboardingMain";
+import OnboardingMain from "../../components/user/OnboardingMain";
 
 function OnboardingPage() {
   return <OnboardingMain />;

@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import {
   getFirstValidationMessage,
   validateCostRow,
-} from "../../../../utils/costValidation";
+} from "../../../../utils/validators/costValidation";
 
 function getAmazonProductLink(asin) {
   return `https://www.amazon.in/dp/${asin}`;

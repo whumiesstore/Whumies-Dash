@@ -3,7 +3,7 @@ import {
   getCostTotal,
   sanitizeNumberInput,
   validateCostRow,
-} from "../../../../utils/costValidation";
+} from "../../../../utils/validators/costValidation";
 
 function SkuBulkEditView({
   skus,
