@@ -121,6 +121,16 @@
   cursor: pointer;
 }
 
+.navbar-user-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-user-actions .btn {
+  white-space: nowrap;
+}
+
 @media (max-width: 980px) {
   .navbar-container {
     grid-template-columns: auto auto;
@@ -161,6 +171,16 @@
   }
 
   .btn {
+    width: 100%;
+  }
+
+  .navbar-user-actions {
+    width: 100%;
+    display: grid;
+    gap: 10px;
+  }
+
+  .navbar-user-actions .btn {
     width: 100%;
   }
 }

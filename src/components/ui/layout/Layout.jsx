@@ -1,13 +1,18 @@
 import Navbar from "./Navbar";
-import "./layout.css";
+import { useAuth } from "../../../auth/AuthContext";
 
 function Layout({ children }) {
+  const { isAuthenticated, user, logout } = useAuth();
+
   return (
     <>
-      <Navbar />
-      <main className="layout-main">
-        <div className="layout-container">{children}</div>
-      </main>
+      <Navbar
+        isLoggedIn={isAuthenticated}
+        userName={user?.name || "My Profile"}
+        onLogout={logout}
+      />
+
+      {children}
     </>
   );
 }

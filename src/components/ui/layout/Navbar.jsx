@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./navbar.css";
 
-function Navbar({ isLoggedIn = false, userName = "My Profile" }) {
+function Navbar({ isLoggedIn = false, userName = "My Profile", onLogout }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const publicLinks = [
     { label: "Home", to: "/" },
@@ -16,14 +17,22 @@ function Navbar({ isLoggedIn = false, userName = "My Profile" }) {
     { label: "Dashboard", to: "/dashboard" },
     { label: "Amazon", to: "/amazon" },
     { label: "Flipkart", to: "/flipkart" },
-    { label: "Meesho", to: "/meesho" },
     { label: "Other Tools", to: "/other-tools" },
-    { label: "Plans", to: "/plans" },
   ];
 
   const linksToShow = isLoggedIn ? privateLinks : publicLinks;
 
   const closeMenu = () => setMenuOpen(false);
+
+  const handleLogout = async () => {
+    closeMenu();
+
+    if (onLogout) {
+      await onLogout();
+    }
+
+    navigate("/login", { replace: true });
+  };
 
   return (
     <header className="navbar">
@@ -62,10 +71,24 @@ function Navbar({ isLoggedIn = false, userName = "My Profile" }) {
 
         <div className={`nav-actions ${menuOpen ? "active" : ""}`}>
           {isLoggedIn ? (
-            <Link to="/profile" className="btn btn-outline" onClick={closeMenu}>
-              <span className="profile-icon">♟</span>
-              {userName}
-            </Link>
+            <div className="navbar-user-actions">
+              <Link
+                to="/profile"
+                className="btn btn-outline"
+                onClick={closeMenu}
+              >
+                <span className="profile-icon">👤</span>
+                {userName || "My Profile"}
+              </Link>
+
+              <button
+                type="button"
+                className="btn btn-filled"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </div>
           ) : (
             <Link to="/login" className="btn btn-filled" onClick={closeMenu}>
               Login / Register

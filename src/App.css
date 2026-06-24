@@ -3,3 +3,29 @@
   min-height: 100vh;
   background: linear-gradient(180deg, #ffffff 0%, #fff7f7 100%);
 }
+
+.route-loader {
+  min-height: calc(100vh - 68px);
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 14px;
+  color: #555555;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.route-loader-spinner {
+  width: 34px;
+  height: 34px;
+  border: 4px solid #f3d6d6;
+  border-top-color: #bf0000;
+  border-radius: 50%;
+  animation: routeLoaderSpin 0.8s linear infinite;
+}
+
+@keyframes routeLoaderSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}

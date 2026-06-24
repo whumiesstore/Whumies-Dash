@@ -1,7 +1,7 @@
 import HomeMain from "../components/home/HomeMain";
 
-function Home() {
+function HomePage() {
   return <HomeMain />;
 }
 
-export default Home;
+export default HomePage;

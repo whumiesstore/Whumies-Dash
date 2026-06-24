@@ -1,36 +1,60 @@
 import { Routes, Route } from "react-router-dom";
 
 import Layout from "./components/ui/layout/Layout";
-import Home from "./pages/Home.jsx";
-import Dashboard from "./pages/Dashboard";
-import FirmReports from "./pages/FirmReports";
-import MarketplaceReports from "./pages/MarketplaceReports";
-import GenerateReport from "./pages/GenerateReport.jsx";
-import ReportDisplay from "./pages/ReportDisplay.jsx";
+
+import ProtectedRoute from "./auth/ProtectedRoute";
+import PublicOnlyRoute from "./auth/PublicOnlyRoute";
+import OnboardingRoute from "./auth/OnboardingRoute";
+
+import HomePage from "./pages/HomePage.jsx";
+import AuthPage from "./pages/login/AuthPage.jsx";
+import OnboardingPage from "./pages/onboarding/OnboardingPage.jsx";
+
+import DashboardPage from "./pages/dashboard/DashboardPage.jsx";
+import FirmReportsPage from "./pages/dashboard/FirmReportsPage.jsx";
+import MarketplaceReportsPage from "./pages/dashboard/MarketplaceReportsPage.jsx";
+import GenerateReportPage from "./pages/dashboard/GenerateReportPage.jsx";
+import ReportDisplayPage from "./pages/dashboard/ReportDisplayPage.jsx";
+
 import "./app.css";
 
 function App() {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/dashboard/:firmName" element={<FirmReports />} />
+        {/* Public route */}
+        <Route path="/" element={<HomePage />} />
 
-        <Route
-          path="/dashboard/:firmName/:marketplace/generate-report"
-          element={<GenerateReport />}
-        />
+        {/* Login/Register route */}
+        <Route element={<PublicOnlyRoute />}>
+          <Route path="/login" element={<AuthPage />} />
+        </Route>
 
-        <Route
-          path="/dashboard/:firmName/:marketplace/:year/:month"
-          element={<ReportDisplay />}
-        />
+        {/* Onboarding route */}
+        <Route element={<OnboardingRoute />}>
+          <Route path="/onboarding" element={<OnboardingPage />} />
+        </Route>
 
-        <Route
-          path="/dashboard/:firmName/:marketplace"
-          element={<MarketplaceReports />}
-        />
+        {/* Protected routes */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/dashboard/:firmName" element={<FirmReportsPage />} />
+
+          <Route
+            path="/dashboard/:firmName/:marketplace/generate-report"
+            element={<GenerateReportPage />}
+          />
+
+          <Route
+            path="/dashboard/:firmName/:marketplace/:year/:month"
+            element={<ReportDisplayPage />}
+          />
+
+          <Route
+            path="/dashboard/:firmName/:marketplace"
+            element={<MarketplaceReportsPage />}
+          />
+        </Route>
       </Routes>
     </Layout>
   );
