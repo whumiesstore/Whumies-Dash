@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getFirmErrorMessage } from "../../../api/firmsApi";
+import { getFirmErrorMessage } from "../../../api/firmApi";
 
 function EditFirmModal({ firm, onClose, onUpdate }) {
   const [firmName, setFirmName] = useState(firm.firmName || "");
@@ -75,10 +75,6 @@ function EditFirmModal({ firm, onClose, onUpdate }) {
                 : "Make this my primary firm"}
             </span>
           </label>
-
-          <div className="firm-modal-note">
-            Amazon and Flipkart will remain enabled for this firm.
-          </div>
 
           <button type="submit" className="save-firm-btn" disabled={isSaving}>
             {isSaving ? "Saving..." : "Save Changes"}

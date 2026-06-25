@@ -18,7 +18,7 @@ import {
   getFirms,
   makeFirmPrimary,
   updateFirm,
-} from "../../api/firmsApi";
+} from "../../api/firmApi";
 
 import "./dashboard.css";
 

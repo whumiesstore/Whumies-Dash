@@ -6,7 +6,7 @@ function FirmCard({ firm, onEdit, onDelete, onMakePrimary }) {
   const navigate = useNavigate();
 
   const openFirmReportPage = () => {
-    navigate(`/dashboard/${encodeURIComponent(firm.firmName)}`);
+    navigate(`/dashboard/firms/${firm.id}`);
   };
 
   return (

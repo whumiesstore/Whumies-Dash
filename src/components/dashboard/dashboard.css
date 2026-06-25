@@ -9,7 +9,6 @@
 
 .dashboard-header {
   display: grid;
-  grid-template-columns: 1fr 1.55fr;
   gap: 28px;
   align-items: start;
   margin-bottom: 32px;
@@ -474,14 +473,14 @@
 }
 
 .firm-checkbox-row input {
-  width: 15px;
-  height: 15px;
+  width: 30px;
+  height: 30px;
   accent-color: #bf0000;
 }
 
 .firm-checkbox-row span {
   color: #333333;
-  font-size: 12.5px;
+  font-size: 15px;
   font-weight: 750;
 }
 
@@ -653,19 +652,14 @@
 }
 
 .edit-firm-modal label {
-  width: fit-content;
   background: #ffffff;
   color: #bf0000;
   font-size: 12px;
   font-weight: 700;
-  margin-left: 14px;
-  margin-bottom: -28px;
-  padding: 0 6px;
   z-index: 1;
 }
 
 .edit-firm-modal input {
-  width: 100%;
   min-height: 58px;
   border: 2px solid #bf0000;
   border-radius: 12px;

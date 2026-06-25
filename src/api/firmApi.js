@@ -6,6 +6,12 @@ export function getFirms() {
     });
 }
 
+export function getFirmById(firmId) {
+    return apiRequest(`/firms/${firmId}`, {
+        method: "GET",
+    });
+}
+
 export function createFirm(payload) {
     return apiRequest("/firms", {
         method: "POST",

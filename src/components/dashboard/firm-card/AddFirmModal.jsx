@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getFirmErrorMessage } from "../../../api/firmsApi";
+import { getFirmErrorMessage } from "../../../api/firmApi";
 
 function AddFirmModal({ onClose, onCreate }) {
   const [firmName, setFirmName] = useState("");
@@ -44,8 +44,7 @@ function AddFirmModal({ onClose, onCreate }) {
 
         <h3>Add New Firm</h3>
         <p>
-          Create another business firm. Amazon and Flipkart will be enabled by
-          default.
+          Create another business firm.
         </p>
 
         {error && <div className="firm-modal-error">{error}</div>}
@@ -73,10 +72,6 @@ function AddFirmModal({ onClose, onCreate }) {
             />
             <span>Make this my primary firm</span>
           </label>
-
-          <div className="firm-modal-note">
-            Both Amazon and Flipkart will be active for this firm.
-          </div>
 
           <button type="submit" className="save-firm-btn" disabled={isSaving}>
             {isSaving ? "Creating..." : "Create Firm"}

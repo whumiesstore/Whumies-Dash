@@ -45,20 +45,24 @@ function App() {
         {/* Protected routes */}
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/dashboard/:firmName" element={<FirmReportsPage />} />
 
           <Route
-            path="/dashboard/:firmName/:marketplace/generate-report"
+            path="/dashboard/firms/:firmId"
+            element={<FirmReportsPage />}
+          />
+
+          <Route
+            path="/dashboard/firms/:firmId/:marketplace/generate-report"
             element={<GenerateReportPage />}
           />
 
           <Route
-            path="/dashboard/:firmName/:marketplace/:year/:month"
+            path="/dashboard/firms/:firmId/:marketplace/:year/:month"
             element={<ReportDisplayPage />}
           />
 
           <Route
-            path="/dashboard/:firmName/:marketplace"
+            path="/dashboard/firms/:firmId/:marketplace"
             element={<MarketplaceReportsPage />}
           />
         </Route>

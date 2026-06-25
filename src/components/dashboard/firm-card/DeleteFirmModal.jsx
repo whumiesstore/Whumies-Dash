@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { getFirmErrorMessage } from "../../../api/firmsApi";
+import { getFirmErrorMessage } from "../../../api/firmApi";
 
 function DeleteFirmModal({ firm, onClose, onDelete }) {
   const [confirmName, setConfirmName] = useState("");
