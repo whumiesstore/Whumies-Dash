@@ -1,101 +1,79 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EditIcon from "../../ui/icons/EditIcon";
+import DeleteIcon from "../../ui/icons/DeleteIcon";
 
-function FirmCard({ firmName = "Whumies Shopper", isPrimary = true }) {
+function FirmCard({ firm, onEdit, onDelete, onMakePrimary }) {
   const navigate = useNavigate();
 
-  const [currentFirmName, setCurrentFirmName] = useState(firmName);
-  const [editedFirmName, setEditedFirmName] = useState(firmName);
-  const [isEditOpen, setIsEditOpen] = useState(false);
-
   const openFirmReportPage = () => {
-    navigate(`/dashboard/${encodeURIComponent(currentFirmName)}`);
+    navigate(`/dashboard/${encodeURIComponent(firm.firmName)}`);
   };
 
   return (
-    <>
-      <article className="firm-card active">
+    <article className={`firm-card active ${firm.isPrimary ? "primary" : ""}`}>
+      <div className="firm-card-actions">
         <button
           type="button"
-          className="firm-edit-btn"
-          onClick={() => {
-            setEditedFirmName(currentFirmName);
-            setIsEditOpen(true);
-          }}
-          aria-label="Edit firm name"
+          className="firm-icon-btn"
+          onClick={onEdit}
+          aria-label="Edit firm"
+          title="Edit firm"
         >
           <EditIcon fill="#bf0000" width={18} height={18} />
         </button>
 
-        {isPrimary && <span className="tag">Primary Firm</span>}
+        {!firm.isPrimary && (
+          <button
+            type="button"
+            className="firm-icon-btn danger"
+            onClick={onDelete}
+            aria-label="Delete firm"
+            title="Delete firm"
+          >
+            <DeleteIcon fill="#bf0000" width={18} height={18} />
+          </button>
+        )}
+      </div>
 
-        <h2>{currentFirmName.toUpperCase()}</h2>
-
+      {firm.isPrimary ? (
+        <span className="tag">Primary Firm</span>
+      ) : (
         <button
           type="button"
-          className="generate-report-btn"
-          onClick={openFirmReportPage}
+          className="make-primary-pill"
+          onClick={onMakePrimary}
         >
-          Generate a REPORT
+          Make Primary
         </button>
-
-        <ul>
-          <li>
-            <span>1</span> Pick Amazon, Flipkart, or Meesho
-          </li>
-          <li>
-            <span>2</span> Upload your orders and payment files
-          </li>
-          <li>
-            <span>3</span> Get your free profit report in seconds
-          </li>
-        </ul>
-      </article>
-
-      {isEditOpen && (
-        <div className="modal-overlay" onClick={() => setIsEditOpen(false)}>
-          <div className="edit-firm-modal" onClick={(e) => e.stopPropagation()}>
-            <button
-              type="button"
-              className="modal-close-btn"
-              onClick={() => setIsEditOpen(false)}
-              aria-label="Close modal"
-            >
-              ×
-            </button>
-
-            <h3>Edit Firm</h3>
-            <p>Update your firm details below</p>
-
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-
-                if (!editedFirmName.trim()) return;
-
-                setCurrentFirmName(editedFirmName.trim());
-                setIsEditOpen(false);
-              }}
-            >
-              <label htmlFor="firmName">Firm Name *</label>
-
-              <input
-                id="firmName"
-                type="text"
-                value={editedFirmName}
-                onChange={(e) => setEditedFirmName(e.target.value)}
-                autoFocus
-              />
-
-              <button type="submit" className="save-firm-btn">
-                Save Changes
-              </button>
-            </form>
-          </div>
-        </div>
       )}
-    </>
+
+      <h2>{firm.firmName.toUpperCase()}</h2>
+
+      <div className="firm-marketplace-pills">
+        {firm.marketplaces?.amazon && <span>Amazon</span>}
+        {firm.marketplaces?.flipkart && <span>Flipkart</span>}
+      </div>
+
+      <button
+        type="button"
+        className="generate-report-btn"
+        onClick={openFirmReportPage}
+      >
+        Generate a REPORT
+      </button>
+
+      <ul>
+        <li>
+          <span>1</span> Pick Amazon or Flipkart
+        </li>
+        <li>
+          <span>2</span> Upload your orders and payment files
+        </li>
+        <li>
+          <span>3</span> Get your profit report in seconds
+        </li>
+      </ul>
+    </article>
   );
 }
 

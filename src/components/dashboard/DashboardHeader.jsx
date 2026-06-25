@@ -28,7 +28,7 @@ function getGreeting() {
   };
 }
 
-function DashboardHeader({ userName }) {
+function DashboardHeader({ userName = "there" }) {
   const { greeting, message } = getGreeting();
 
   return (

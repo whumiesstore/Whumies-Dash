@@ -115,7 +115,7 @@ function HomeMain() {
           <h2>Simple Pricing</h2>
           <p>
             Start with sample reports and generate detailed profit analysis for
-            your Amazon, Flipkart, and Meesho business.
+            your Amazon and Flipkart business.
           </p>
         </section>
 
