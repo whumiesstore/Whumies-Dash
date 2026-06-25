@@ -64,15 +64,20 @@ export function validateLoginForm(form) {
     return errors;
 }
 
-export function validateOnboardingForm(form) {
+export function validateOnboardingForm(form, requiredFields = {}) {
     const errors = {};
 
-    if (!form.name.trim()) {
-        errors.name = "Name is required.";
+    if (requiredFields.name && !form.name.trim()) {
+        errors.name = "Please enter your name.";
     }
 
-    if (!form.businessName.trim()) {
-        errors.businessName = "Business name is required.";
+    if (requiredFields.businessName && !form.businessName.trim()) {
+        errors.businessName = "Please enter your business name.";
+    }
+
+    if (!form.sellOnAmazon && !form.sellOnFlipkart) {
+        errors.marketplaces =
+            "Please select at least one marketplace where you sell. This helps us personalize your dashboard.";
     }
 
     return errors;

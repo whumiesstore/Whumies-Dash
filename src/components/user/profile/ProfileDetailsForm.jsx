@@ -31,6 +31,10 @@ function ProfileDetailsForm({ user, onProfileUpdated }) {
     setErrors((prev) => ({
       ...prev,
       [field]: "",
+      marketplaces:
+        field === "sellOnAmazon" || field === "sellOnFlipkart"
+          ? ""
+          : prev.marketplaces,
     }));
 
     setServerError("");
@@ -112,8 +116,17 @@ function ProfileDetailsForm({ user, onProfileUpdated }) {
         )}
       </div>
 
-      <div className="profile-marketplace-box">
+      <div
+        className={`profile-marketplace-box ${
+          errors.marketplaces ? "has-error" : ""
+        }`}
+      >
         <p>Marketplaces you sell on</p>
+
+        <span className="profile-marketplace-helper">
+          Please keep at least one marketplace selected so Whumies Dash can
+          prepare the right tools and reports for your business.
+        </span>
 
         <label>
           <input
@@ -132,6 +145,10 @@ function ProfileDetailsForm({ user, onProfileUpdated }) {
           />
           <span>Flipkart</span>
         </label>
+
+        {errors.marketplaces && (
+          <small className="profile-error">{errors.marketplaces}</small>
+        )}
       </div>
 
       <button type="submit" className="profile-primary-btn" disabled={isSaving}>

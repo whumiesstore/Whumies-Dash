@@ -297,6 +297,20 @@
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
 }
 
+.profile-marketplace-box.has-error {
+  border-color: rgba(191, 0, 0, 0.38);
+  background: #fff5f5;
+}
+
+.profile-marketplace-helper {
+  display: block;
+  color: #666666;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.5;
+  margin: -2px 0 4px;
+}
+
 @media (max-width: 860px) {
   .profile-grid {
     grid-template-columns: 1fr;

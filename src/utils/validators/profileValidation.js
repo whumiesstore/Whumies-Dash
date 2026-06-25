@@ -23,6 +23,11 @@ export function validateProfileForm(form) {
         errors.businessName = "Business name is required.";
     }
 
+    if (!form.sellOnAmazon && !form.sellOnFlipkart) {
+        errors.marketplaces =
+            "Please select at least one marketplace. Whumies Dash needs this to keep your dashboard relevant to your business.";
+    }
+
     return errors;
 }
 

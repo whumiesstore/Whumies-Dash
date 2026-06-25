@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import AuthLayout from "../common/AuthLayout";
@@ -10,21 +10,33 @@ import { validateOnboardingForm } from "../../../utils/validators/authValidation
 import "../auth/auth.css";
 import "./onboarding.css";
 
-const initialOnboardingForm = {
-  name: "",
-  businessName: "",
-  sellOnAmazon: false,
-  sellOnFlipkart: false,
-};
+function getInitialOnboardingForm(user) {
+  return {
+    name: user?.name || "",
+    businessName: user?.businessName || "",
+    sellOnAmazon: Boolean(user?.marketplaces?.amazon),
+    sellOnFlipkart: Boolean(user?.marketplaces?.flipkart),
+  };
+}
 
 function OnboardingMain() {
   const navigate = useNavigate();
-  const { finishOnboarding } = useAuth();
+  const { user, finishOnboarding } = useAuth();
 
-  const [form, setForm] = useState(initialOnboardingForm);
+  const [form, setForm] = useState(() => getInitialOnboardingForm(user));
   const [errors, setErrors] = useState({});
   const [serverError, setServerError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const requiredFields = useMemo(
+    () => ({
+      name: !user?.name?.trim(),
+      businessName: !user?.businessName?.trim(),
+      marketplaces:
+        !user?.marketplaces?.amazon && !user?.marketplaces?.flipkart,
+    }),
+    [user],
+  );
 
   const updateForm = (field, value) => {
     setForm((prev) => ({
@@ -35,6 +47,7 @@ function OnboardingMain() {
     setErrors((prev) => ({
       ...prev,
       [field]: "",
+      marketplaces: "",
     }));
 
     setServerError("");
@@ -43,7 +56,7 @@ function OnboardingMain() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const validationErrors = validateOnboardingForm(form);
+    const validationErrors = validateOnboardingForm(form, requiredFields);
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -51,6 +64,7 @@ function OnboardingMain() {
     }
 
     setIsLoading(true);
+    setServerError("");
 
     try {
       await finishOnboarding({
@@ -75,6 +89,7 @@ function OnboardingMain() {
         errors={errors}
         isLoading={isLoading}
         serverError={serverError}
+        requiredFields={requiredFields}
         onChange={updateForm}
         onSubmit={handleSubmit}
       />
