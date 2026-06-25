@@ -23,29 +23,31 @@ function FirmCard({ firm, onEdit, onDelete, onMakePrimary }) {
         </button>
 
         {!firm.isPrimary && (
-          <button
-            type="button"
-            className="firm-icon-btn danger"
-            onClick={onDelete}
-            aria-label="Delete firm"
-            title="Delete firm"
-          >
-            <DeleteIcon fill="#bf0000" width={18} height={18} />
-          </button>
+          <>
+            <button
+              type="button"
+              className="firm-icon-btn danger"
+              onClick={onDelete}
+              aria-label="Delete firm"
+              title="Delete firm"
+            >
+              <DeleteIcon fill="#bf0000" width={18} height={18} />
+            </button>
+
+            <button
+              type="button"
+              className="firm-icon-btn primary-action"
+              onClick={onMakePrimary}
+              aria-label="Make this firm primary"
+              title="Make this firm primary"
+            >
+              P
+            </button>
+          </>
         )}
       </div>
 
-      {firm.isPrimary ? (
-        <span className="tag">Primary Firm</span>
-      ) : (
-        <button
-          type="button"
-          className="make-primary-pill"
-          onClick={onMakePrimary}
-        >
-          Make Primary
-        </button>
-      )}
+      {firm.isPrimary && <span className="tag">Primary Firm</span>}
 
       <h2>{firm.firmName.toUpperCase()}</h2>
 
