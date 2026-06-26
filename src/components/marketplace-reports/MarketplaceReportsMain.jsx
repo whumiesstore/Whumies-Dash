@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import useFirm from "../../hooks/useFirm";
 
 import WhyLockedModal from "./WhyLockedModal";
 import {
@@ -8,7 +9,6 @@ import {
   formatMonthDay,
 } from "../../utils/formatters";
 import { marketplaceConfig } from "../../config/MarketplaceConfig";
-import { getFirmById, getFirmErrorMessage } from "../../api/firmApi";
 
 import LockIcon from "../ui/icons/LockIcon";
 import "./marketplaceReports.css";
@@ -91,10 +91,7 @@ function getReportMonths() {
 function MarketplaceReportsMain() {
   const navigate = useNavigate();
   const { firmId, marketplace } = useParams();
-
-  const [firm, setFirm] = useState(null);
-  const [isFirmLoading, setIsFirmLoading] = useState(true);
-  const [firmError, setFirmError] = useState("");
+  const { firm, firmName, isFirmLoading, firmError } = useFirm(firmId);
 
   const [showWhyLockedModal, setShowWhyLockedModal] = useState(false);
 
@@ -104,28 +101,6 @@ function MarketplaceReportsMain() {
     marketplaceConfig[selectedMarketplace] || marketplaceConfig.amazon;
 
   const { availableMonths, lockedMonth } = getReportMonths();
-
-  useEffect(() => {
-    async function fetchFirm() {
-      setIsFirmLoading(true);
-      setFirmError("");
-
-      try {
-        const result = await getFirmById(firmId);
-        const fetchedFirm = result?.data?.firm || result?.data;
-
-        setFirm(fetchedFirm);
-      } catch (error) {
-        setFirmError(getFirmErrorMessage(error));
-      } finally {
-        setIsFirmLoading(false);
-      }
-    }
-
-    if (firmId) {
-      fetchFirm();
-    }
-  }, [firmId]);
 
   const openGenerateReportPage = (item) => {
     const monthValue = `${item.year}-${String(item.month + 1).padStart(
@@ -166,7 +141,7 @@ function MarketplaceReportsMain() {
 
         <div className="marketplace-reports-error-card">
           <h2>Unable to load firm</h2>
-          <p>{firmError || "This firm could not be found."}</p>
+          <p>{firmError || "This `firm` could not be found."}</p>
 
           <button type="button" onClick={() => navigate("/dashboard")}>
             Back to Dashboard
@@ -181,7 +156,7 @@ function MarketplaceReportsMain() {
       <div className="marketplace-report-breadcrumb">
         <Link to="/dashboard">My Firms</Link>
         <span>/</span>
-        <Link to={`/dashboard/firms/${firmId}`}>{firm.firmName}</Link>
+        <Link to={`/dashboard/firms/${firmId}`}>{firmName}</Link>
         <span>/</span>
         <strong style={{ color: config.color }}>{config.title}</strong>
       </div>
@@ -195,7 +170,7 @@ function MarketplaceReportsMain() {
 
           <h1>{config.title}</h1>
 
-          <p>{firm.firmName} · Monthly reports</p>
+          <p>{firmName} · Monthly reports</p>
         </div>
 
         <div className="marketplace-report-actions">

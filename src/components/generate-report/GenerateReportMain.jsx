@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import useFirm from "../../hooks/useFirm";
+
 import { marketplaceConfig } from "../../config/MarketplaceConfig";
 import sampleSkus from "../../data/sampleSkus.json";
 
@@ -19,7 +21,7 @@ function getMonthDetails(monthParam) {
 
   const [yearValue, monthValue] = monthParam
     ? monthParam.split("-").map(Number)
-    : [today.getFullYear(), today.getMonth()];
+    : [today.getFullYear(), today.getMonth() + 1];
 
   const date = new Date(yearValue, monthValue - 1, 1);
 
@@ -94,10 +96,11 @@ function getMonthDetails(monthParam) {
 }
 
 function GenerateReportMain() {
-  const { firmName, marketplace } = useParams();
+  const navigate = useNavigate();
+  const { firmId, marketplace } = useParams();
+  const { firm, firmName, isFirmLoading, firmError } = useFirm(firmId);
   const [searchParams] = useSearchParams();
 
-  const decodedFirmName = decodeURIComponent(firmName || "");
   const selectedMarketplace = marketplace?.toLowerCase() || "amazon";
 
   const config =
@@ -160,8 +163,6 @@ function GenerateReportMain() {
   const handleSkuCostsComplete = () => {
     setIsSavingCosts(true);
 
-    // Mock backend save for now.
-    // Later replace this with API call to save SKU cost data.
     setTimeout(() => {
       setIsSavingCosts(false);
       setShowSkuCostModal(false);
@@ -176,12 +177,38 @@ function GenerateReportMain() {
     setStep(flow[0] || "upload-orders-report");
   };
 
+  if (isFirmLoading) {
+    return (
+      <main className="generate-report-page">
+        <div className="generate-report-state-card">
+          <div className="generate-report-loader" />
+          <p>Loading firm details...</p>
+        </div>
+      </main>
+    );
+  }
+
+  if (firmError || !firm) {
+    return (
+      <main className="generate-report-page">
+        <div className="generate-report-error-card">
+          <h2>Unable to load firm</h2>
+          <p>{firmError || "This firm could not be found."}</p>
+
+          <button type="button" onClick={() => navigate("/dashboard")}>
+            Back to Dashboard
+          </button>
+        </div>
+      </main>
+    );
+  }
+
   return (
     <>
       {step === "upload-orders-report" && (
         <UploadOrdersReport
+          firmId={firmId}
           firmName={firmName}
-          decodedFirmName={decodedFirmName}
           selectedMarketplace={selectedMarketplace}
           config={config}
           monthDetails={monthDetails}
@@ -192,8 +219,8 @@ function GenerateReportMain() {
 
       {step === "upload-amazon-payments-report" && (
         <UploadPaymentsReport
+          firmId={firmId}
           firmName={firmName}
-          decodedFirmName={decodedFirmName}
           selectedMarketplace={selectedMarketplace}
           config={config}
           monthDetails={monthDetails}
@@ -205,8 +232,8 @@ function GenerateReportMain() {
 
       {step === "upload-flipkart-payments-report-1" && (
         <UploadPaymentsReport
+          firmId={firmId}
           firmName={firmName}
-          decodedFirmName={decodedFirmName}
           selectedMarketplace={selectedMarketplace}
           config={config}
           monthDetails={monthDetails}
@@ -218,8 +245,8 @@ function GenerateReportMain() {
 
       {step === "upload-flipkart-payments-report-2" && (
         <UploadPaymentsReport
+          firmId={firmId}
           firmName={firmName}
-          decodedFirmName={decodedFirmName}
           selectedMarketplace={selectedMarketplace}
           config={config}
           monthDetails={monthDetails}
@@ -231,8 +258,8 @@ function GenerateReportMain() {
 
       {step === "upload-flipkart-ads-report" && (
         <UploadAdsReport
+          firmId={firmId}
           firmName={firmName}
-          decodedFirmName={decodedFirmName}
           selectedMarketplace={selectedMarketplace}
           config={config}
           monthDetails={monthDetails}
@@ -245,8 +272,8 @@ function GenerateReportMain() {
 
       {step === "report-ready" && (
         <ReportReady
+          firmId={firmId}
           firmName={firmName}
-          decodedFirmName={decodedFirmName}
           selectedMarketplace={selectedMarketplace}
           config={config}
           monthDetails={monthDetails}

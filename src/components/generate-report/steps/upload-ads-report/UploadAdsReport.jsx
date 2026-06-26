@@ -5,7 +5,6 @@ import UploadErrorModal from "../../shared/UploadErrorModal";
 
 function UploadAdsReport({
   firmName,
-  decodedFirmName,
   selectedMarketplace,
   config,
   monthDetails,
@@ -22,7 +21,6 @@ function UploadAdsReport({
     <div className="generate-report-page">
       <ReportBreadcrumb
         firmName={firmName}
-        decodedFirmName={decodedFirmName}
         selectedMarketplace={selectedMarketplace}
         marketplaceTitle={config.title}
         monthDetails={monthDetails}

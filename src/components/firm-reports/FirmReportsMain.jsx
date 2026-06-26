@@ -1,10 +1,8 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 
 import MarketplaceCard from "./MarketplaceCard";
-
 import { marketplaceConfig } from "../../config/MarketplaceConfig";
-import { getFirmById, getFirmErrorMessage } from "../../api/firmApi";
+import useFirm from "../../hooks/useFirm";
 
 import "./firmReports.css";
 
@@ -12,33 +10,9 @@ function FirmReportsMain() {
   const { firmId } = useParams();
   const navigate = useNavigate();
 
-  const [firm, setFirm] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [pageError, setPageError] = useState("");
+  const { firm, firmName, isFirmLoading, firmError } = useFirm(firmId);
 
-  useEffect(() => {
-    async function fetchFirm() {
-      setIsLoading(true);
-      setPageError("");
-
-      try {
-        const result = await getFirmById(firmId);
-        const fetchedFirm = result?.data?.firm || result?.data;
-
-        setFirm(fetchedFirm);
-      } catch (error) {
-        setPageError(getFirmErrorMessage(error));
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    if (firmId) {
-      fetchFirm();
-    }
-  }, [firmId]);
-
-  if (isLoading) {
+  if (isFirmLoading) {
     return (
       <main className="firm-reports-page">
         <div className="firm-breadcrumb">
@@ -55,7 +29,7 @@ function FirmReportsMain() {
     );
   }
 
-  if (pageError || !firm) {
+  if (firmError || !firm) {
     return (
       <main className="firm-reports-page">
         <div className="firm-breadcrumb">
@@ -66,7 +40,7 @@ function FirmReportsMain() {
 
         <div className="firm-reports-error-card">
           <h2>Unable to load this firm</h2>
-          <p>{pageError || "This firm could not be found."}</p>
+          <p>{firmError || "This firm could not be found."}</p>
 
           <button type="button" onClick={() => navigate("/dashboard")}>
             Back to Dashboard
@@ -81,13 +55,13 @@ function FirmReportsMain() {
       <div className="firm-breadcrumb">
         <Link to="/dashboard">My Firms</Link>
         <span>/</span>
-        <strong>{firm.firmName}</strong>
+        <strong>{firmName}</strong>
       </div>
 
       <div className="firm-reports-top">
         <div>
           <div className="firm-title-row">
-            <h1>{firm.firmName.toUpperCase()}</h1>
+            <h1>{firmName.toUpperCase()}</h1>
 
             {firm.isPrimary && (
               <span className="firm-primary-badge">Primary</span>

@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 
 function ReportBreadcrumb({
   firmName,
-  decodedFirmName,
   selectedMarketplace,
   marketplaceTitle,
   monthDetails,
@@ -12,7 +11,7 @@ function ReportBreadcrumb({
     <div className="generate-report-breadcrumb">
       <Link to="/dashboard">My Firms</Link>
       <span>/</span>
-      <Link to={`/dashboard/${firmName}`}>{decodedFirmName}</Link>
+      <Link to={`/dashboard/${firmName}`}>{firmName}</Link>
       <span>/</span>
       <Link to={`/dashboard/${firmName}/${selectedMarketplace}`}>
         {marketplaceTitle}

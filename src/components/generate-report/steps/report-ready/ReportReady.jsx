@@ -5,7 +5,6 @@ import GeneratingProfitReport from "./GeneratingProfitReport";
 
 function ReportReady({
   firmName,
-  decodedFirmName,
   selectedMarketplace,
   config,
   monthDetails,
@@ -86,7 +85,6 @@ function ReportReady({
     <div className="generate-report-page">
       <ReportBreadcrumb
         firmName={firmName}
-        decodedFirmName={decodedFirmName}
         selectedMarketplace={selectedMarketplace}
         marketplaceTitle={config.title}
         monthDetails={monthDetails}

@@ -6,7 +6,6 @@ import UploadSuccessModal from "../../shared/UploadSuccessModal";
 
 function UploadOrdersReport({
   firmName,
-  decodedFirmName,
   selectedMarketplace,
   config,
   monthDetails,
@@ -20,7 +19,6 @@ function UploadOrdersReport({
     <div className="generate-report-page">
       <ReportBreadcrumb
         firmName={firmName}
-        decodedFirmName={decodedFirmName}
         selectedMarketplace={selectedMarketplace}
         marketplaceTitle={config.title}
         monthDetails={monthDetails}
