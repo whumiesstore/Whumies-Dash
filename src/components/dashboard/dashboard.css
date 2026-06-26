@@ -487,17 +487,6 @@
   font-weight: 750;
 }
 
-.firm-modal-note {
-  margin: 12px 0 14px;
-  padding: 10px 12px;
-  border-radius: 8px;
-  background: #fafafa;
-  color: #666666;
-  font-size: 12px;
-  font-weight: 650;
-  line-height: 1.45;
-}
-
 /* Delete Firm Modal */
 
 .delete-firm-confirm-btn {

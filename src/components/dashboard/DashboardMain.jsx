@@ -73,8 +73,6 @@ function DashboardMain() {
       const result = await createFirm({
         firmName: firmName.trim(),
         isPrimary,
-        sellOnAmazon: true,
-        sellOnFlipkart: true,
       });
 
       toast.success(result?.message || "Firm created successfully.");
@@ -90,8 +88,6 @@ function DashboardMain() {
       const result = await updateFirm(firmId, {
         firmName: firmName.trim(),
         isPrimary,
-        sellOnAmazon: true,
-        sellOnFlipkart: true,
       });
 
       toast.success(result?.message || "Firm updated successfully.");

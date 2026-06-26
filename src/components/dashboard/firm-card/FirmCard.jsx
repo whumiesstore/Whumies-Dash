@@ -52,8 +52,8 @@ function FirmCard({ firm, onEdit, onDelete, onMakePrimary }) {
       <h2>{firm.firmName.toUpperCase()}</h2>
 
       <div className="firm-marketplace-pills">
-        {firm.marketplaces?.amazon && <span>Amazon</span>}
-        {firm.marketplaces?.flipkart && <span>Flipkart</span>}
+        <span>Amazon</span>
+        <span>Flipkart</span>
       </div>
 
       <button
