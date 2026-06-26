@@ -1,52 +1,28 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import MarketplaceCard from "./MarketplaceCard";
 import { marketplaceConfig } from "../../config/MarketplaceConfig";
 import useFirm from "../../hooks/useFirm";
+import FirmPageState from "../shared/FirmPageState";
 
 import "./firmReports.css";
 
 function FirmReportsMain() {
   const { firmId } = useParams();
-  const navigate = useNavigate();
 
   const { firm, firmName, isFirmLoading, firmError } = useFirm(firmId);
 
   if (isFirmLoading) {
-    return (
-      <main className="firm-reports-page">
-        <div className="firm-breadcrumb">
-          <Link to="/dashboard">My Firms</Link>
-          <span>/</span>
-          <strong>Loading...</strong>
-        </div>
-
-        <div className="firm-reports-state-card">
-          <div className="firm-reports-loader" />
-          <p>Loading firm details...</p>
-        </div>
-      </main>
-    );
+    return <FirmPageState type="loading" message="Loading firm details..." />;
   }
 
   if (firmError || !firm) {
     return (
-      <main className="firm-reports-page">
-        <div className="firm-breadcrumb">
-          <Link to="/dashboard">My Firms</Link>
-          <span>/</span>
-          <strong>Firm Not Found</strong>
-        </div>
-
-        <div className="firm-reports-error-card">
-          <h2>Unable to load this firm</h2>
-          <p>{firmError || "This firm could not be found."}</p>
-
-          <button type="button" onClick={() => navigate("/dashboard")}>
-            Back to Dashboard
-          </button>
-        </div>
-      </main>
+      <FirmPageState
+        type="error"
+        title="Unable to load this firm"
+        message={firmError || "This firm could not be found."}
+      />
     );
   }
 
@@ -79,7 +55,9 @@ function FirmReportsMain() {
         </div>
 
         <div className="report-actions">
-          <button className="sample-report-btn">Sample Reports</button>
+          <button type="button" className="sample-report-btn">
+            Sample Reports
+          </button>
         </div>
       </div>
 

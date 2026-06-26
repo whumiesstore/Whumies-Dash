@@ -1,7 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 import { useAuth } from "../../auth/AuthContext";
+import { useFirms } from "../../context/FirmsContext";
+import { getFirmErrorMessage } from "../../api/firmApi";
 
 import DashboardHeader from "./DashboardHeader";
 import ActionButtons from "./ActionButtons";
@@ -11,73 +13,47 @@ import AddFirmModal from "./firm-card/AddFirmModal";
 import EditFirmModal from "./firm-card/EditFirmModal";
 import DeleteFirmModal from "./firm-card/DeleteFirmModal";
 
-import {
-  createFirm,
-  deleteFirm,
-  getFirmErrorMessage,
-  getFirms,
-  makeFirmPrimary,
-  updateFirm,
-} from "../../api/firmApi";
-
 import "./dashboard.css";
-
-function sortFirms(firms) {
-  return [...firms].sort((a, b) => {
-    if (a.isPrimary && !b.isPrimary) return -1;
-    if (!a.isPrimary && b.isPrimary) return 1;
-    return new Date(a.createdAt) - new Date(b.createdAt);
-  });
-}
 
 function DashboardMain() {
   const { user } = useAuth();
 
-  const [firms, setFirms] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const {
+    firms,
+    isFirmsLoading,
+    firmsError,
+    fetchFirms,
+    addFirm,
+    editFirm,
+    setPrimaryFirm,
+    removeFirm,
+  } = useFirms();
+
   const [isRefreshing, setIsRefreshing] = useState(false);
-  const [pageError, setPageError] = useState("");
 
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [editingFirm, setEditingFirm] = useState(null);
   const [deletingFirm, setDeletingFirm] = useState(null);
 
-  const sortedFirms = useMemo(() => sortFirms(firms), [firms]);
-
-  const fetchFirms = async ({ silent = false } = {}) => {
-    if (silent) {
-      setIsRefreshing(true);
-    } else {
-      setIsLoading(true);
-    }
-
-    setPageError("");
-
-    try {
-      const result = await getFirms();
-      setFirms(result?.data?.firms || []);
-    } catch (error) {
-      setPageError(getFirmErrorMessage(error));
-    } finally {
-      setIsLoading(false);
-      setIsRefreshing(false);
-    }
-  };
-
   useEffect(() => {
     fetchFirms();
-  }, []);
+  }, [fetchFirms]);
+
+  const handleRefresh = async () => {
+    setIsRefreshing(true);
+    await fetchFirms({ silent: true });
+    setIsRefreshing(false);
+  };
 
   const handleCreateFirm = async ({ firmName, isPrimary }) => {
     try {
-      const result = await createFirm({
-        firmName: firmName.trim(),
+      const result = await addFirm({
+        firmName,
         isPrimary,
       });
 
       toast.success(result?.message || "Firm created successfully.");
       setIsAddOpen(false);
-      await fetchFirms({ silent: true });
     } catch (error) {
       throw error;
     }
@@ -85,14 +61,13 @@ function DashboardMain() {
 
   const handleUpdateFirm = async ({ firmId, firmName, isPrimary }) => {
     try {
-      const result = await updateFirm(firmId, {
-        firmName: firmName.trim(),
+      const result = await editFirm(firmId, {
+        firmName,
         isPrimary,
       });
 
       toast.success(result?.message || "Firm updated successfully.");
       setEditingFirm(null);
-      await fetchFirms({ silent: true });
     } catch (error) {
       throw error;
     }
@@ -100,9 +75,8 @@ function DashboardMain() {
 
   const handleMakePrimary = async (firmId) => {
     try {
-      const result = await makeFirmPrimary(firmId);
+      const result = await setPrimaryFirm(firmId);
       toast.success(result?.message || "Primary firm updated.");
-      await fetchFirms({ silent: true });
     } catch (error) {
       toast.error(getFirmErrorMessage(error));
     }
@@ -110,10 +84,10 @@ function DashboardMain() {
 
   const handleDeleteFirm = async (firmId) => {
     try {
-      const result = await deleteFirm(firmId);
+      const result = await removeFirm(firmId);
+
       toast.success(result?.message || "Firm deleted successfully.");
       setDeletingFirm(null);
-      await fetchFirms({ silent: true });
     } catch (error) {
       throw error;
     }
@@ -135,33 +109,34 @@ function DashboardMain() {
         <button
           type="button"
           className="dashboard-refresh-btn"
-          onClick={() => fetchFirms({ silent: true })}
-          disabled={isRefreshing || isLoading}
+          onClick={handleRefresh}
+          disabled={isRefreshing || isFirmsLoading}
         >
           {isRefreshing ? "Refreshing..." : "Refresh"}
         </button>
       </div>
 
-      {isLoading && (
+      {isFirmsLoading && (
         <div className="dashboard-state-card">
           <div className="dashboard-loader" />
           <p>Loading your firms...</p>
         </div>
       )}
 
-      {!isLoading && pageError && (
+      {!isFirmsLoading && firmsError && (
         <div className="dashboard-error-card">
           <h3>Unable to load firms</h3>
-          <p>{pageError}</p>
+          <p>{firmsError}</p>
+
           <button type="button" onClick={() => fetchFirms()}>
             Try Again
           </button>
         </div>
       )}
 
-      {!isLoading && !pageError && (
+      {!isFirmsLoading && !firmsError && (
         <section className="firm-grid">
-          {sortedFirms.map((firm) => (
+          {firms.map((firm) => (
             <FirmCard
               key={firm.id}
               firm={firm}

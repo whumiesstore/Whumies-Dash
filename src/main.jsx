@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import "./index.css";
 import App from "./App.jsx";
 import { AuthProvider } from "./auth/AuthContext.jsx";
+import { FirmsProvider } from "./context/FirmsContext.jsx";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -13,18 +14,20 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <App />
+        <FirmsProvider>
+          <App />
 
-        <ToastContainer
-          position="top-right"
-          autoClose={2200}
-          hideProgressBar={false}
-          newestOnTop
-          closeOnClick
-          pauseOnHover
-          draggable
-          theme="light"
-        />
+          <ToastContainer
+            position="top-right"
+            autoClose={2200}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            pauseOnHover
+            draggable
+            theme="light"
+          />
+        </FirmsProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,

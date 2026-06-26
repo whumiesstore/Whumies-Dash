@@ -1,0 +1,63 @@
+.firm-page-state {
+  width: min(100% - 32px, 1080px);
+  margin: 0 auto;
+  padding: 56px 0;
+}
+
+.firm-page-state-card {
+  width: min(100%, 540px);
+  margin: 0 auto;
+  padding: 28px;
+  border-radius: 14px;
+  border: 1px solid #eeeeee;
+  background: #ffffff;
+  text-align: center;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.07);
+}
+
+.firm-page-state-card p {
+  color: #666666;
+  font-size: 13.5px;
+  font-weight: 650;
+  line-height: 1.6;
+}
+
+.firm-page-state-card h2 {
+  color: #111111;
+  font-size: 20px;
+  font-weight: 850;
+  margin-bottom: 8px;
+}
+
+.firm-page-state-card button {
+  margin-top: 16px;
+  min-height: 42px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 8px;
+  background: #bf0000;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.firm-page-state-card button:hover {
+  background: #970000;
+}
+
+.firm-page-loader {
+  width: 34px;
+  height: 34px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  border: 4px solid #f3d6d6;
+  border-top-color: #bf0000;
+  animation: firmPageLoaderSpin 0.8s linear infinite;
+}
+
+@keyframes firmPageLoaderSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,51 +1,65 @@
-import { useCallback, useEffect, useState } from "react";
-import { getFirmById, getFirmErrorMessage } from "../api/firmApi";
+import { useEffect, useState } from "react";
+import { useFirms } from "../context/FirmsContext";
 
 function useFirm(firmId) {
-    const [firm, setFirm] = useState(null);
-    const [isFirmLoading, setIsFirmLoading] = useState(Boolean(firmId));
+    const { getCachedFirm, fetchFirmById } = useFirms();
+
+    const [firm, setFirm] = useState(() => getCachedFirm(firmId));
+    const [isFirmLoading, setIsFirmLoading] = useState(Boolean(firmId && !firm));
     const [firmError, setFirmError] = useState("");
 
-    const fetchFirm = useCallback(async () => {
-        if (!firmId) {
-            setFirm(null);
-            setFirmError("Firm ID is missing.");
-            setIsFirmLoading(false);
-            return;
-        }
+    useEffect(() => {
+        let isMounted = true;
 
-        setIsFirmLoading(true);
-        setFirmError("");
+        async function loadFirm() {
+            if (!firmId) {
+                if (!isMounted) return;
 
-        try {
-            const result = await getFirmById(firmId);
-            const fetchedFirm = result?.data?.firm || result?.data;
-
-            if (!fetchedFirm?.id) {
-                throw {
-                    message: "Firm details were not found.",
-                };
+                setFirm(null);
+                setFirmError("Firm ID is missing.");
+                setIsFirmLoading(false);
+                return;
             }
 
-            setFirm(fetchedFirm);
-        } catch (error) {
-            setFirm(null);
-            setFirmError(getFirmErrorMessage(error));
-        } finally {
+            const cachedFirm = getCachedFirm(firmId);
+
+            if (cachedFirm) {
+                setFirm(cachedFirm);
+                setFirmError("");
+                setIsFirmLoading(false);
+                return;
+            }
+
+            setIsFirmLoading(true);
+            setFirmError("");
+
+            const result = await fetchFirmById(firmId);
+
+            if (!isMounted) return;
+
+            if (result.ok) {
+                setFirm(result.firm);
+                setFirmError("");
+            } else {
+                setFirm(null);
+                setFirmError(result.message || "Unable to load firm.");
+            }
+
             setIsFirmLoading(false);
         }
-    }, [firmId]);
 
-    useEffect(() => {
-        fetchFirm();
-    }, [fetchFirm]);
+        loadFirm();
+
+        return () => {
+            isMounted = false;
+        };
+    }, [firmId, getCachedFirm, fetchFirmById]);
 
     return {
         firm,
         firmName: firm?.firmName || "",
         isFirmLoading,
         firmError,
-        refetchFirm: fetchFirm,
     };
 }
 

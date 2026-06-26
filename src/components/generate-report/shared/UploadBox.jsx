@@ -1,10 +1,14 @@
-import { useRef, useState } from "react";
+import { useId, useState } from "react";
 import ValidatingFile from "./ValidatingFile.jsx";
 
 const MAX_FILE_SIZE_MB = 10;
 
 function getFileExtension(fileName) {
-  return fileName.slice(fileName.lastIndexOf(".")).toLowerCase();
+  const dotIndex = fileName.lastIndexOf(".");
+
+  if (dotIndex === -1) return "";
+
+  return fileName.slice(dotIndex).toLowerCase();
 }
 
 function getAllowedExtensions(acceptedFileTypes) {
@@ -23,7 +27,7 @@ function UploadBox({
   showMonthInButton = true,
   validatingMessage = "Validating file...",
 }) {
-  const inputRef = useRef(null);
+  const inputId = useId();
 
   const [isDragging, setIsDragging] = useState(false);
   const [selectedFileName, setSelectedFileName] = useState("");
@@ -47,8 +51,8 @@ function UploadBox({
     if (!allowedExtensions.includes(fileExtension)) {
       onUploadError({
         title: "Invalid File Type",
-        message: `Invalid file type. Please upload a valid ${config.title} ${uploadConfig.reportName.toLowerCase()} (${uploadConfig.acceptedFileLabel} format only)`,
-        detail: `Please upload a valid ${config.title} ${uploadConfig.reportName.toLowerCase()} (${uploadConfig.acceptedFileLabel} format only)`,
+        message: `Invalid file type. Please upload a valid ${config.title} ${uploadConfig.reportName.toLowerCase()} (${uploadConfig.acceptedFileLabel} format only).`,
+        detail: `Please upload a valid ${config.title} ${uploadConfig.reportName.toLowerCase()} (${uploadConfig.acceptedFileLabel} format only).`,
       });
       return;
     }
@@ -81,7 +85,7 @@ function UploadBox({
     // Later replace this with backend/API response.
     setTimeout(() => {
       setIsValidating(false);
-      onUploadSuccess();
+      onUploadSuccess(file);
     }, 1500);
   };
 
@@ -99,29 +103,35 @@ function UploadBox({
     validateAndProcessFile(file);
   };
 
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = () => {
+    setIsDragging(false);
+  };
+
   if (isValidating) {
     return <ValidatingFile message={validatingMessage} />;
   }
+
   return (
     <div
       className={`upload-box ${isDragging ? "dragging" : ""}`}
-      onDragOver={(e) => {
-        e.preventDefault();
-        setIsDragging(true);
-      }}
-      onDragLeave={() => setIsDragging(false)}
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
       onDrop={handleDrop}
     >
       <input
-        ref={inputRef}
-        id="ordersFile"
+        id={inputId}
         type="file"
         accept={uploadConfig.acceptedFileTypes}
         hidden
         onChange={handleFileChange}
       />
 
-      <label htmlFor="ordersFile" className="upload-main-btn">
+      <label htmlFor={inputId} className="upload-main-btn">
         <span>☁</span>
         {uploadConfig.uploadButtonText}
         {showMonthInButton && <> — {monthDetails.displayMonth}</>}

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import useFirm from "../../hooks/useFirm";
+import FirmPageState from "../shared/FirmPageState";
 
 import { marketplaceConfig } from "../../config/MarketplaceConfig";
 import sampleSkus from "../../data/sampleSkus.json";
@@ -96,10 +97,9 @@ function getMonthDetails(monthParam) {
 }
 
 function GenerateReportMain() {
-  const navigate = useNavigate();
   const { firmId, marketplace } = useParams();
-  const { firm, firmName, isFirmLoading, firmError } = useFirm(firmId);
   const [searchParams] = useSearchParams();
+  const { firm, firmName, isFirmLoading, firmError } = useFirm(firmId);
 
   const selectedMarketplace = marketplace?.toLowerCase() || "amazon";
 
@@ -178,28 +178,16 @@ function GenerateReportMain() {
   };
 
   if (isFirmLoading) {
-    return (
-      <main className="generate-report-page">
-        <div className="generate-report-state-card">
-          <div className="generate-report-loader" />
-          <p>Loading firm details...</p>
-        </div>
-      </main>
-    );
+    return <FirmPageState type="loading" message="Loading firm details..." />;
   }
 
   if (firmError || !firm) {
     return (
-      <main className="generate-report-page">
-        <div className="generate-report-error-card">
-          <h2>Unable to load firm</h2>
-          <p>{firmError || "This firm could not be found."}</p>
-
-          <button type="button" onClick={() => navigate("/dashboard")}>
-            Back to Dashboard
-          </button>
-        </div>
-      </main>
+      <FirmPageState
+        type="error"
+        title="Unable to load firm"
+        message={firmError || "This firm could not be found."}
+      />
     );
   }
 

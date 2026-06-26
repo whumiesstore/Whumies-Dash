@@ -4,6 +4,7 @@ import ReportBreadcrumb from "../../shared/ReportBreadcrumb";
 import GeneratingProfitReport from "./GeneratingProfitReport";
 
 function ReportReady({
+  firmId,
   firmName,
   selectedMarketplace,
   config,
@@ -74,7 +75,7 @@ function ReportReady({
     // Later replace this with actual API call.
     setTimeout(() => {
       navigate(
-        `/dashboard/${firmName}/${selectedMarketplace}/${monthDetails.year}/${String(
+        `/dashboard/firms/${firmId}/${selectedMarketplace}/${monthDetails.year}/${String(
           monthDetails.monthNumber,
         ).padStart(2, "0")}`,
       );
@@ -84,6 +85,7 @@ function ReportReady({
   return (
     <div className="generate-report-page">
       <ReportBreadcrumb
+        firmId={firmId}
         firmName={firmName}
         selectedMarketplace={selectedMarketplace}
         marketplaceTitle={config.title}

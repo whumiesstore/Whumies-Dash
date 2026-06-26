@@ -5,6 +5,7 @@ import UploadErrorModal from "../../shared/UploadErrorModal";
 import UploadSuccessModal from "../../shared/UploadSuccessModal";
 
 function UploadOrdersReport({
+  firmId,
   firmName,
   selectedMarketplace,
   config,
@@ -18,6 +19,7 @@ function UploadOrdersReport({
   return (
     <div className="generate-report-page">
       <ReportBreadcrumb
+        firmId={firmId}
         firmName={firmName}
         selectedMarketplace={selectedMarketplace}
         marketplaceTitle={config.title}

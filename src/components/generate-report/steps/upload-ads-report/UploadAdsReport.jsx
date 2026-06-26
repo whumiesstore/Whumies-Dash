@@ -4,6 +4,7 @@ import UploadBox from "../../shared/UploadBox";
 import UploadErrorModal from "../../shared/UploadErrorModal";
 
 function UploadAdsReport({
+  firmId,
   firmName,
   selectedMarketplace,
   config,
@@ -20,6 +21,7 @@ function UploadAdsReport({
   return (
     <div className="generate-report-page">
       <ReportBreadcrumb
+        firmId={firmId}
         firmName={firmName}
         selectedMarketplace={selectedMarketplace}
         marketplaceTitle={config.title}

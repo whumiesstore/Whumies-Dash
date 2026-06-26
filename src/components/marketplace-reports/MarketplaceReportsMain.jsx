@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import useFirm from "../../hooks/useFirm";
+import FirmPageState from "../shared/FirmPageState";
 
 import WhyLockedModal from "./WhyLockedModal";
 import {
@@ -115,39 +116,17 @@ function MarketplaceReportsMain() {
 
   if (isFirmLoading) {
     return (
-      <main className="marketplace-reports-page">
-        <div className="marketplace-report-breadcrumb">
-          <Link to="/dashboard">My Firms</Link>
-          <span>/</span>
-          <strong>Loading...</strong>
-        </div>
-
-        <div className="marketplace-reports-state-card">
-          <div className="marketplace-reports-loader" />
-          <p>Loading marketplace reports...</p>
-        </div>
-      </main>
+      <FirmPageState type="loading" message="Loading marketplace reports..." />
     );
   }
 
   if (firmError || !firm) {
     return (
-      <main className="marketplace-reports-page">
-        <div className="marketplace-report-breadcrumb">
-          <Link to="/dashboard">My Firms</Link>
-          <span>/</span>
-          <strong>Firm Not Found</strong>
-        </div>
-
-        <div className="marketplace-reports-error-card">
-          <h2>Unable to load firm</h2>
-          <p>{firmError || "This `firm` could not be found."}</p>
-
-          <button type="button" onClick={() => navigate("/dashboard")}>
-            Back to Dashboard
-          </button>
-        </div>
-      </main>
+      <FirmPageState
+        type="error"
+        title="Unable to load firm"
+        message={firmError || "This firm could not be found."}
+      />
     );
   }
 
