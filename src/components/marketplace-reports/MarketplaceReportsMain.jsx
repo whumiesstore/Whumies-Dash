@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import WhyLockedModal from "./WhyLockedModal";
@@ -8,8 +8,10 @@ import {
   formatMonthDay,
 } from "../../utils/formatters";
 import { marketplaceConfig } from "../../config/MarketplaceConfig";
-import "./marketplaceReports.css";
+import { getFirmById, getFirmErrorMessage } from "../../api/firmApi";
+
 import LockIcon from "../ui/icons/LockIcon";
+import "./marketplaceReports.css";
 
 function getDaysRemaining(targetDate, today) {
   const oneDay = 1000 * 60 * 60 * 24;
@@ -88,11 +90,14 @@ function getReportMonths() {
 
 function MarketplaceReportsMain() {
   const navigate = useNavigate();
-  const { firmName, marketplace } = useParams();
+  const { firmId, marketplace } = useParams();
+
+  const [firm, setFirm] = useState(null);
+  const [isFirmLoading, setIsFirmLoading] = useState(true);
+  const [firmError, setFirmError] = useState("");
 
   const [showWhyLockedModal, setShowWhyLockedModal] = useState(false);
 
-  const decodedFirmName = decodeURIComponent(firmName || "");
   const selectedMarketplace = marketplace?.toLowerCase() || "amazon";
 
   const config =
@@ -100,20 +105,83 @@ function MarketplaceReportsMain() {
 
   const { availableMonths, lockedMonth } = getReportMonths();
 
+  useEffect(() => {
+    async function fetchFirm() {
+      setIsFirmLoading(true);
+      setFirmError("");
+
+      try {
+        const result = await getFirmById(firmId);
+        const fetchedFirm = result?.data?.firm || result?.data;
+
+        setFirm(fetchedFirm);
+      } catch (error) {
+        setFirmError(getFirmErrorMessage(error));
+      } finally {
+        setIsFirmLoading(false);
+      }
+    }
+
+    if (firmId) {
+      fetchFirm();
+    }
+  }, [firmId]);
+
   const openGenerateReportPage = (item) => {
-    const monthValue = `${item.year}-${String(item.month + 1).padStart(2, "0")}`;
+    const monthValue = `${item.year}-${String(item.month + 1).padStart(
+      2,
+      "0",
+    )}`;
 
     navigate(
-      `/dashboard/${firmName}/${selectedMarketplace}/generate-report?month=${monthValue}`,
+      `/dashboard/firms/${firmId}/${selectedMarketplace}/generate-report?month=${monthValue}`,
     );
   };
 
+  if (isFirmLoading) {
+    return (
+      <main className="marketplace-reports-page">
+        <div className="marketplace-report-breadcrumb">
+          <Link to="/dashboard">My Firms</Link>
+          <span>/</span>
+          <strong>Loading...</strong>
+        </div>
+
+        <div className="marketplace-reports-state-card">
+          <div className="marketplace-reports-loader" />
+          <p>Loading marketplace reports...</p>
+        </div>
+      </main>
+    );
+  }
+
+  if (firmError || !firm) {
+    return (
+      <main className="marketplace-reports-page">
+        <div className="marketplace-report-breadcrumb">
+          <Link to="/dashboard">My Firms</Link>
+          <span>/</span>
+          <strong>Firm Not Found</strong>
+        </div>
+
+        <div className="marketplace-reports-error-card">
+          <h2>Unable to load firm</h2>
+          <p>{firmError || "This firm could not be found."}</p>
+
+          <button type="button" onClick={() => navigate("/dashboard")}>
+            Back to Dashboard
+          </button>
+        </div>
+      </main>
+    );
+  }
+
   return (
-    <div className="marketplace-reports-page">
+    <main className="marketplace-reports-page">
       <div className="marketplace-report-breadcrumb">
         <Link to="/dashboard">My Firms</Link>
         <span>/</span>
-        <Link to={`/dashboard/${firmName}`}>{decodedFirmName}</Link>
+        <Link to={`/dashboard/firms/${firmId}`}>{firm.firmName}</Link>
         <span>/</span>
         <strong style={{ color: config.color }}>{config.title}</strong>
       </div>
@@ -123,10 +191,11 @@ function MarketplaceReportsMain() {
           <span
             className="marketplace-heading-line"
             style={{ background: config.color }}
-          ></span>
+          />
 
           <h1>{config.title}</h1>
-          <p>{decodedFirmName} · Monthly reports</p>
+
+          <p>{firm.firmName} · Monthly reports</p>
         </div>
 
         <div className="marketplace-report-actions">
@@ -222,7 +291,7 @@ function MarketplaceReportsMain() {
           onClose={() => setShowWhyLockedModal(false)}
         />
       )}
-    </div>
+    </main>
   );
 }
 
